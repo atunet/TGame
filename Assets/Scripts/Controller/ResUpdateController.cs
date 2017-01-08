@@ -24,6 +24,19 @@ public class ResUpdateController : MonoBehaviour
         m_localDict = new Dictionary<string, Hash128>();
         m_downloadList = new List<string>();
 
+		if(!Directory.Exists(AppConst.PERSISTENT_PATH))
+        {
+			try
+			{
+				Directory.CreateDirectory(AppConst.PERSISTENT_PATH);
+			}
+			catch(Exception e_) 
+			{
+				Utility.LogError (e_.ToString ());
+				return;
+			}
+        }
+
         StartCoroutine(DownloadManifestFile());
     }
 
