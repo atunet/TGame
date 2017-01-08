@@ -1,0 +1,540 @@
+
+//
+// 数据库中Blob字段采用Google::protobuf格式存储,方便二进制数据结构的版本管理
+
+// 字段只能增加不允许删除,对于一些optional的字段需判断是否有该值
+//
+
+package Bin;
+
+/**
+ * 以下下协议仅是缓存服务器对外提供的角色数据格式
+ */
+message CacheBladeData
+{
+    optional uint32 id                  = 1;    // 刀id
+    optional uint64 userid              = 2;    // 角色id
+    optional uint32 star                = 3;    // 星级
+    optional uint32 quality             = 4;    // 品质
+    optional uint32 strengthlv          = 5;    // 强化等级
+    optional uint32 equipindex          = 6;    // 装备位置
+    optional uint64 liberationnode      = 7;    // 解放id
+    optional uint32 skillid1            = 8;   // 技能id
+    optional uint32 level1              = 9;   // 技能等级
+    optional uint32 skillid2            = 10;   // 技能id
+    optional uint32 level2              = 11;   // 技能等级
+    optional uint32 skillid3            = 12;   // 技能id
+    optional uint32 level3              = 13;   // 技能等级
+    optional uint32 bklv                = 14;   // 卍解阶级
+    optional uint32 state               = 15;   // 卍解始解状态
+}
+
+message CacheSoulData
+{
+	optional uint64 thisid 				= 1; 	// 魂实例id
+	optional uint64 userid 				= 2; 	// 角色id
+	optional uint32 soulid 				= 3; 	// 魂id
+	optional uint64 exp 				= 4; 	// 经验
+	optional uint32 level 				= 5; 	// 等级
+	optional uint32 star 				= 6; 	// 星级
+	optional uint32 equipindex 			= 7; 	// 装备索性id
+	optional uint32 grade 				= 8; 	// 升阶等级
+}
+message CacheEffectData
+{
+	optional uint32 logic 				= 1; 	// 逻辑id
+	optional uint32 param1 				= 2; 	// 参数1
+	optional uint32 times 				= 3; 	// 次数
+	optional uint32 fixtype 			= 4; 	// 修正类型
+	optional uint32 value 				= 5; 	// 修正值
+	optional uint32 orivalue 			= 6; 	// 原始值
+    repeated uint32 params              = 7;    // 其他参数
+}
+message CacheBuffData
+{
+	optional uint32 			buffid 				= 1; 	// buffid
+	optional uint64 			starttime 			= 2; 	// buff开始时间
+	optional uint32 			layer 				= 3; 	// 层数
+	repeated CacheEffectData 	effects 			= 4; 	// 效果
+}
+
+message CacheAvatar
+{
+    optional uint32     eye     = 1;
+    optional uint32     nose    = 2;
+    optional uint32     mouth   = 3;
+    optional uint32     hair    = 4;
+}
+
+//
+// 角色属性
+//
+message CacheCharbase
+{
+    optional uint64 userid  	= 1;    // 角色id
+    optional string username 	= 2; 	// 角色名字
+	optional uint32 type		= 3;	// 角色类型
+    optional uint32 level   	= 5;    // 等级
+    optional CacheAvatar avatar = 6;    // avatar
+    optional uint32 lock        = 7;    // 锁结
+	optional uint32 bp			= 8;	// 战斗力
+	optional uint32 title		= 9;	// title
+}
+
+//
+// 角色刀数据
+//
+message CacheBlade
+{
+	optional CacheBladeData base		= 1;	// 刀信息
+}
+
+//
+// 魂数据
+//
+message CacheSoul
+{
+	optional CacheSoulData souls 		= 1; 	// 魂属性
+}
+
+//
+// buff数据
+//
+message CacheBuff
+{
+	optional CacheBuffData 	buffs 	= 1; 	// buff数据
+}
+
+//
+// 时装数据
+//
+message CacheDress
+{
+    optional uint32     dressid = 1;    // 时装id
+    optional uint32     lv      = 2;    // 等级
+    optional bool       isequip = 3;    // 是否装备
+}
+
+//
+// 魂睡数据
+//
+message CacheSoulCore
+{
+    optional uint32     maxhp   = 1;  // 最大值
+    optional uint32     patt    = 2;
+    optional uint32     pdef    = 3;
+    optional uint32     catt    = 4;
+    optional uint32     cdef    = 5;
+    optional uint32     cpstren = 6;
+}
+
+// 刀匣数据
+message CacheScabbard
+{
+    optional uint32     index   = 1;    // 坑索引
+    optional uint32     bladeid = 2;    // 坑中的刀
+    optional uint32     lv      = 3;    // 坑的等级
+}
+
+message CacheUserProto
+{
+    optional CacheCharbase  base    = 1;    // 角色基础属性
+    repeated CacheBlade     blades  = 2;    // 刀数据
+    repeated CacheSoul      souls   = 3;    // 魂数据
+    repeated CacheDress     dress   = 4;    // 时装数据
+    optional CacheSoulCore  soulcore = 5;   // 魂睡数据
+    repeated uint32			title	= 6;    // 称号
+    optional bytes          unionname = 7;  // 公会名字
+    repeated CacheScabbard  scabbard  = 8;  // 刀匣
+    repeated CacheBladeData  grabmine = 9;   // 某个矿点对应的刀
+}
+
+
+//--------------------------------------------------------------
+
+//
+// 道具相关
+//
+message ItemData
+{
+	optional uint64 thisid		=	1;
+	optional uint32 itemid		=	2;
+	optional uint32 createtime	=	3;
+	optional uint32 num			=	4;
+}
+
+message ItemList
+{
+	repeated ItemData list		=	1;
+}
+
+message ItemNotiTypeBlob
+{
+	required uint32 type = 1;  /**< 类型*/
+	required uint32 itemid = 2;/**< 物品id*/
+	required uint32 count = 3; /**< 数量*/
+}
+
+//
+// 技能相关
+//
+message SkillData
+{
+	optional uint32 skillid		=	1;
+	optional uint32 level		=	2;
+}
+
+
+message SkillList
+{
+	repeated SkillData	list	=	1;
+}
+
+
+//
+// 任务相关
+//
+message SubmitQuestIDList
+{
+	repeated uint32 questid 	=  	1;
+}
+
+message QuestData
+{
+	optional uint32 questid 	= 	1;
+	optional uint32 type 		= 	2;
+	optional uint32 count 		= 	3;
+}
+
+message DoingQuestList
+{
+    repeated QuestData  list 	    = 	1;
+}
+
+//
+// buff相关
+//
+message EffectData
+{
+	required uint32 		logic_ 		= 1;    // 大类
+	required uint32 		param1 		= 2;    // 小类
+	required uint32 		times 		= 3;    // 作用次数
+	required uint32 		fixtype 	= 4;    // 修正类型
+	required uint32 		value 		= 5;    // 作用值
+	required uint32 		orivalue 	= 6;    //
+
+	repeated uint32 		params 		= 7;    // 其他参数数组
+}
+
+message BuffData
+{
+	required uint32 		buffid 		= 1;
+	required uint64 		starttime	= 2;
+	required uint32 		layer 		= 3;
+	repeated EffectData		effects 	= 4;
+}
+
+message BuffList
+{
+	repeated BuffData 		buffs 		= 1;
+}
+
+//
+// 角色关卡
+//
+message CopyData
+{
+	required uint32 		copyid 		= 1; //副本id
+	required uint32 		status 		= 2; //星级
+    required uint32         fighttimes  = 3; //打击次数
+    required uint32         resettimes  = 4; //重置次数
+}
+message CopyList
+{
+	repeated CopyData 		list 		= 1;
+}
+
+
+//
+// 邮件配置模板
+//
+message SysMailConf
+{
+	optional string sender		=	1;		// 发送者
+	optional string title		=	2;		// 邮件标题
+	optional string text        =	3;		// 邮件正文
+	repeated ItemNotiTypeBlob item	=	4;  // 道具列表 包含
+}
+
+message MailArgs
+{
+	repeated uint32 arg				=   1;		//邮件参数
+}
+
+//
+// 竞技场商店
+//
+message ShopData
+{
+	required uint32 	shopid 		= 1;		// 商品id
+	required uint32 	num 		= 2;		// 商品数量
+}
+
+message ArenaShopData
+{
+	repeated ShopData 	shops 		= 1; 		// 商品列表
+	optional uint32 	time 		= 2; 		// 竞技场商品刷新时间
+    optional uint32     count       = 3;        // 竞技场商品刷新次数
+}
+
+//
+// 缓存服务器返回角色装备数据
+//
+message CharData
+{
+	required uint32 	userid 		= 1;
+	required string 	username 	= 2;
+	required uint32 	type		= 4;
+	required uint32 	level 		= 5;
+}
+
+message SkillBase
+{
+	required uint32 	id 			= 1;
+	required uint32 	level		= 2;
+}
+
+message BladeBase
+{
+	required uint32 	id 			= 1;
+	required uint32 	userid 		= 2;
+	required uint32 	star		= 3;
+	required uint32 	quality		= 4;
+	required uint32 	strengthlv	= 5;
+	required uint32 	releaselv	= 6;
+	required uint32 	equipindex	= 7;
+	required uint32 	libernode1	= 8;
+	required uint32 	libernode2	= 9;
+	required uint32 	libernode3	= 10;
+	required uint32 	libernode4	= 11;
+}
+
+message BladeData
+{
+	required BladeBase 	base		= 1;
+	repeated SkillBase	skill 		= 2;
+}
+
+message SoulData
+{
+	required uint64 thisid			= 1;
+	required uint32 userid			= 2;
+	required uint32 soulid			= 3;
+	required uint32 level			= 4;
+	required uint32 star			= 5;
+	required uint32 equipindex		= 6;
+}
+
+message EquipInfo
+{
+	required CharData 	charbase	= 1;
+	repeated BladeData  blade		= 2;
+	repeated SoulData   soul		= 3;
+}
+
+
+//
+// 玩家副本打怪记录
+//
+message MonsterRecord
+{
+    required uint32 copyid      = 1;
+    required uint32 dropid      = 2;
+    required uint32 times       = 3;
+    required uint32 totaltimes  = 4;
+    required bool   isdrop      = 5;
+}
+
+message MonsterRecordInfo
+{
+    repeated MonsterRecord  records     = 1;
+    optional uint32         time        = 2;
+}
+
+/* 浦原商店定义
+*/
+message ItemCount
+{
+	required uint32 itemid = 1;
+	required uint32 count = 2;
+}
+
+//刷新商店列表
+message RefreshShopList
+{
+	repeated ItemCount item = 1;
+}
+
+//每日必做商店列表
+message DailyShopList
+{
+	repeated ItemCount item = 1;
+}
+
+message SoulFightBlade
+{
+	required uint32 bladeid = 1;
+	required uint32 sp = 2;
+}
+
+message SoulFightBladeList
+{
+	repeated SoulFightBlade blade  = 1;
+}
+
+//灵魂热斗其它玩家信息
+message SoulFightPlayer
+{
+	required uint64 userId	= 1;	//用户id
+	required uint32 level = 2;	    // level
+	optional uint32 hp		= 4;	//生命值
+	required uint32 winFlag = 6;	//0-初始状态 1-胜利 2-完胜 3-失败
+	optional uint32 winCond = 7;	//完美获胜条件
+	repeated SoulFightBlade blade = 10;	//灵压值 3把刀
+}
+
+//灵魂热斗列表
+message SoulFightList
+{
+	repeated SoulFightPlayer player = 1;	//用户信息
+}
+
+//灵魂热斗blob信息存储其它玩家信息和自已刀灵信息
+message SoulFightInfo
+{
+	repeated SoulFightPlayer player = 1;	//用户信息
+	repeated SoulFightBlade  blade = 2;		//刀灵信息
+}
+
+// 章节领取奖励信息
+message MessageChapterRewardUnit
+{
+    required uint32 chapterid   = 1;    // 章节id
+    required uint32 rewards     = 2;    // 领取奖励信息
+}
+
+message MessageChapterRewards
+{
+    repeated MessageChapterRewardUnit rewards = 1;     // 章节领取奖励信息
+}
+
+// 礼包奖励内容
+message GiftUnit
+{
+	optional uint32 type 	= 1; 	// 奖励类型
+	optional uint32 key 	= 2; 	// 奖励key
+	optional uint32 value 	= 3; 	// 奖励值
+}
+
+message GiftList
+{
+	repeated GiftUnit list 	= 1; 	// 礼包列表
+}
+
+// 时装存储单元
+message MsgDressUnit
+{
+    optional uint32 dressid     = 1;    // 时装id
+    optional uint32 lv          = 2;    // 等级
+	optional uint32 exp 		= 3; 	// 经验
+}
+
+message MsgDressUnitList
+{
+    repeated MsgDressUnit   dress = 1;  // 装备列表
+}
+
+// 爬塔奖励单元
+message MsgClimbTowerRewardUnit
+{
+    optional uint32 key     =   1;      // 奖励id
+    optional uint32 type    =   2;      // 类型
+    optional uint32 value   =   3;      // 奖励值
+}
+message MsgClimbTowerRewardList
+{
+    repeated MsgClimbTowerRewardUnit list = 1;  // 奖励列表
+}
+
+// 活动数据
+message MsgActionConf
+{
+    optional uint32 confid  = 1;    // 条件id
+    optional uint32 count   = 2;    // 计数
+    repeated uint32 param   = 3;    // 参数列表
+}
+
+message MsgAction
+{
+    optional uint32 id          = 1;        // 活动id
+    repeated MsgActionConf list = 2;        // 任务列表
+	repeated uint32 dones		= 3; 		// 已完成的条件id
+}
+
+message MsgActionList
+{
+    repeated MsgAction  actions = 1;    // 存储的活动
+}
+
+message MsgRecharge
+{
+	repeated  ItemCount item = 1;
+}
+
+message SoulCoreUnit
+{
+	optional int32 	maxhp 		= 1;
+	optional int32 	patt 		= 2;
+	optional int32 	pdef 		= 3;
+	optional int32  catt 		= 4;
+	optional int32 	cdef 		= 5;
+	optional int32 	cpstren 	= 6;
+}
+
+message SoulCoreData
+{
+	optional SoulCoreUnit total = 1;
+	optional SoulCoreUnit cache = 2;
+	optional uint32		  frees = 3; //免费金币
+	optional uint32		  lasttype = 4; //上次类型
+}
+
+//测试回馈2奖励
+message TestFeedBack2Unit
+{
+	optional uint32		itemid		=	1; //物品id
+	optional uint32		count		=	2; //数量
+	optional uint32		flag		=	3; //0-未领取 1-已领取
+}
+
+message TestFeedback2Data
+{
+	repeated TestFeedBack2Unit gift = 1;
+}
+
+message UserLikeData
+{
+	repeated uint64 userid		=	1;	//用户id列表
+}
+
+message TitleUnit
+{
+	optional uint32		titleid		= 1; // 称号id
+	optional uint32		cond		= 2; // 条件参数或者完成次数
+	optional uint32		flag		= 3; // 激活标志 1-已激活 0-未激活
+}
+
+message TitleList
+{
+	repeated TitleUnit title		= 1;
+}

@@ -1,0 +1,178 @@
+package Cmd;
+
+
+enum EMessageID
+{
+	// 心跳包消息
+	TICK_CMD                =   0x0000;         // 服务器发送的心跳包ID
+	TICK_CLIENT_CMD         =   0x0001;         // 客户端发送的心跳包ID
+
+	// 错误消息
+	ERROR_CMD				= 	0xff00;			// 错误协议ID
+	ERROR_CODE_S			= 	0xff01;			// 错误返回码
+
+	// 登录相关
+	LOGIN_CMD				=	0x0100;			// 登录协议ID
+	VERIFY_VERSION_CS		=	0x0101;			// 验证版本号
+	LOGIN_LOGIN_CS          =	0x0102;			// 请求登录登录服务器
+	LOGIN_LOGIN_SC			=	0x0103;			// 登录登录服务器返回
+	LOGIN_GATEW_CS			=	0x0104;			// 请求登录网关服务器
+	LOGIN_GATEW_SC			=	0x0105;			// 登录网关服务器返回
+    LOGIN_CROSS_CS          =   0x010b;         // 登录跨服服务器
+    LOGIN_CROSS_SC          =   0x010c;         // 登录跨服服务器返回
+
+	// 角色基础数据相关
+    // 以及后续无法(或者无需)单独分类的协议都放在该部分
+	USER_CMD				=	0x0200;			// 角色协议ID
+	USER_LIST_S			    =	0x0201;			// 发送角色列表给玩家
+	CREATE_USER_CS			=	0x0203;			// 玩家请求创建角色
+	CREATE_USER_SC			=	0x0204;			// 创建角色服务器返回
+	USER_ONLINE_CS		    =	0x0202;			// 玩家选择角色上线
+	USER_OFFLINE_CS	        =	0x0216;			// 玩家当前角色下线,可在游戏内切角色
+	USER_BASE_DATA_SC	    =	0x0205;			// 发送角色基础数据给玩家
+	DATA_LOAD_OK_S          =	0x0223;			// 角色上线数据加载完成
+    MODULE_DATA_CS          =   0x027b;         // 请求角色的指定模块的数据
+	MARQUEE_INFO_S		    =	0x0224;			// 跑马灯通知
+
+	// 道具相关
+	ITEM_CMD				=	0x0300;			// 道具协议ID
+	ITEM_LIST_S			    =	0x0301;			// 发送道具列表给玩家
+	UPDATE_ITEM_LIST_S		=	0x0302;			// 更新道具通知给玩家
+	REMOVE_ITEM_LIST_S		=	0x0303;			// 删除道具通知给玩家
+	SELL_ITEM_CS            =	0x0304;			// 玩家请求出售道具
+	SELL_ITEM_SC			=	0x0305;			// 出售道具服务器返回
+	USE_ITEM_CS			    =	0x0306;			// 使用消耗品请求
+	USE_ITEM_SC			    =	0x0307;			// 使用消耗品返回
+
+	// 伙伴相关
+	HERO_CMD				=	0x0400;			// 伙伴协议ID
+	HERO_LIST_S			    =	0x0401;			// 发送伙伴列表给玩家
+	UPDATE_HERO_LIST_S		=	0x0402;			// 更新伙伴通知给玩家
+	REMOVE_HERO_LIST_S		=	0x0403;			// 删除伙伴通知给玩家
+	HERO_ITEM_2_EXP_CS	    =	0x0404;			// 道具换伙伴经验
+	HERO_ITEM_2_EXP_SC	    =	0x0405;			// 道具换伙伴经验
+	HERO_STAGE_UP_CS	    =	0x0406;			// 伙伴升阶
+	HERO_STAGE_UP_SC	    =	0x0407;			// 伙伴升阶
+	HERO_QUALITY_UP_CS	    =	0x0408;			// 伙伴升品
+	HERO_QUALITY_UP_SC	    =	0x0409;			// 伙伴升品
+	HERO_STAR_UP_CS	        =	0x040a;			// 伙伴升星
+	HERO_STAR_UP_SC	        =	0x040b;			// 伙伴升星
+
+    /*
+    // 任务相关
+    QUEST_CMD               =   0x0400;         // 任务协议ID
+    GET_QUESTLIST_C         =   0x0401;         // 获取任务列表
+    GET_QUESTLIST_S         =   0x0402;         // 获取任务列表(服务器返回)
+    ACCEPT_QUEST_C          =   0x0403;         // 接受任务
+    ACCEPT_QUEST_S          =   0x0404;         // 接受任务(服务器返回)
+    SUBMIT_QUEST_C          =   0x0405;         // 提交任务
+    SUBMIT_QUEST_S          =   0x0406;         // 提交任务(服务器返回)
+    QUEST_PROGRESS_S        =   0x0407;         // 任务进度
+	GET_DAILYQUEST_C        =   0x0408;         // 获取日常任务列表
+    GET_DAILYQUEST_S 		= 	0x0409; 		// 获取日常任务列表(服务器返回)
+	GET_DAILYQUESTRW_C 		= 	0x040a; 		// 获取日常任务完成数量奖励
+	GET_DAILYQUESTRW_S 		= 	0x040b; 		// 获取日常任务完成数量奖励(服务器返回)
+
+
+    // 邮件相关
+    MAIL_CMD				=   0x0800;         // 邮件协议ID
+	SEND_MAIL_LIST			=	0x0801;			// 发送邮件列表 TODO
+	SEND_NEW_MAIL			=	0x0802;			// 发送新邮件通知
+	ACCEPT_MAIL_REQ			=	0x0803;			// 客户端请求接收邮件
+	ACCEPT_MAIL_RET			=	0x0804;			// 接收邮件服务器返回
+	MAIL_LIST_REQ			=   0x0805;			// 请求获取邮件列表
+	MAIL_LIST_RET			=   0x0806;			// 请求邮件列表返回
+	MAIL_DEL_REQ			=	0x0807;			// 删除邮件请求
+	MAIL_DEL_RET			=	0x0808;			// 删除邮件返回
+    */
+
+	// 聊天相关
+	CHAT_CMD				=	0x1100;			// 聊天协议ID
+	CHAT_PRIVATE_CS		    =	0x1101;			// 客户端发起私聊
+	CHAT_PRIVATE_SC		    =	0x1102;			// 服务器返回私聊
+	CHAT_WORLD_CS			=	0x1103;			// 客户端发起世界聊
+	CHAT_WORLD_SC			=	0x1104;			// 发送世界聊
+	CHAT_UNION_CS		    =	0x1106;			// 客户端发起公会聊
+	CHAT_UNION_SC		    =	0x1107;			// 发送公会聊
+
+
+    // 工具相关
+    UTILS_CMD				=   0x0900;         // 工具协议ID
+    SERVER_TIME_CS		    =   0x0901;         // 客户端请求服务器时间
+    SERVER_TIME_SC			=   0x0902;         // 服务器返回系统时间
+    UTILS_ECHO				=   0x0903;         // 回显协议,收到后原样返回
+
+	// 战斗相关
+/*	FIGHT_CMD				=	0x1000;			// 战斗协议ID
+	FIGHT_WALK_CS 			=	0x1001;			// 走路命令
+	FIGHT_RUN_CS 			= 	0x1002;			// 跑步命令
+	FIGHT_JUMP_CS 			= 	0x1003;			// 跳跃命令
+	FIGHT_DIRECT_CS 		= 	0x1004; 		// 方向变更命令
+	FIGHT_ATTACK_CS 		= 	0x1005;			// 攻击指令
+	FIGHT_READY_CS 			= 	0x1006;			// 预备命令
+	FIGHT_BLOOD_S			= 	0x1007; 		// 扣血命令
+	FIGHT_DIE_S 			= 	0x1008;			// 死亡命令
+	FIGHT_WAITRESULT_C 		= 	0x1009; 		// 等待结果命令
+	FIGHT_HIT_C 			= 	0x100a;			// 击打命令
+	FIGHT_RESULT_S 			= 	0x100b;			// 战斗结果
+	FIGHT_CALCULATE_S		= 	0x100c;			// 战斗结算
+	FIGHT_LEAVE_S			= 	0x100d;			// 离开战斗
+	FIGHT_SUSPEND_S 		= 	0x100e;			// 终止同步
+	FIGHT_SKILL_CS			= 	0x100f;			// 技能指令
+	FIGHT_WAIT4REVIVE_S 	= 	0x1010;			// 等待复活
+	FIGHT_DESTROY_S 		=	0x1011;			// 全部死亡
+	FIGHT_CROSS_C           =   0x1012;         // 战斗中切换场景
+    FIGHT_CROSS_S           =   0x1013;         // 全部切换成功开打
+	FIGHT_CHANGESWORD_C		= 	0x1014;			// 战斗中换刀
+    FIGHT_CHANGESWORD_S		= 	0x1015;			// 战斗中换刀(服务器返回)
+	FIGHT_REVIVE_S 			= 	0x1016;			// 复活
+	FIGHT_BUFF_C			= 	0x1017;			// 作用buff
+	FIGHT_ENDBUFF_C         =   0x1018;         // 结束buff
+    FIGHT_DYING_C           =   0x1019;         // 要死命令
+    FIGHT_RELEASESKILL_C 	= 	0x101a;			// 技能开始
+	FIGHT_RELEASEBULLET_C   =   0x101b;         // 飞行道具开始
+    FIGHT_ENDBULLET_C       =   0x101c;         // 飞行道具结束
+	FIGHT_SYNCREWARD_C 		= 	0x101d; 		// 同步魂屋战斗波次
+	FIGHT_SYNC_CS 			= 	0x101e;			// pvp战斗同步包
+	FIGHT_SOULFIGHT_S       =   0x101f;         // 灵魂热斗奖励返回
+    FIGHT_FIGHTAGAIN_C      =   0x1020;         // pve副本再来一次
+    FIGHT_FIGHTAGAIN_S      =   0x1021;         // pve副本再来一次返回
+    FIGHT_CALLSUMMON_C 		= 	0x1022; 		// 召唤召唤物
+	FIGHT_CALLSUMMON_S 		= 	0x1023; 		// 召唤召唤物(服务器返回)
+	FIGHT_ADD_CALCULATE_S   =   0x1024;         // 关卡特殊加成通知(服务器返回)
+	FIGHT_TRIGGER_BUFF_C    =   0x1025;         // 触发buff(除了时常触发类)
+    FIGHT_MONSTER_S 		= 	0x1026; 		// 后端通知前端怪物
+	FIGHT_CLIMBTOWERFIGHT_S =   0x1027;         // 爬塔战斗结束奖励通知
+    FIGHT_WORDZHUNAN_S      =   0x1028;         // 猪男战斗结算
+    FIGHT_GETHITSEQ_C       =   0x1029;         // 获取打击验证包序列
+    FIGHT_GETHITSEQ_S       =   0x102a;         // 获取打击验证包序列(服务器返回)
+    FIGHT_YAMI_HITDOWN_S    =   0x102b;         // 世界boss压密最后一击
+    FIGHT_WAITRESULT_AG_C   =   0x102c;         // 再次请求战斗结果
+    FIGHT_WAITRESULT_AG_S   =   0x102d;         // 再次请求战斗结果(暂时只有胜负)
+
+    PVP_KEY_ACTION_CS       =   0x102e;         // PVP关键操作同步
+    PVP_TRANSFORM_CS        =   0x102f;         // PVP位置同步
+    PVP_TIME_SYNC           =   0x1030;         // PVP时间同步
+    */
+
+	PVP_FRAME_DATA_CS		=	0x1034;			// 新加的帧同步消息
+	PVP_FRAME_ACTION_S		=	0x1035;			// 帧同步玩家动作同步
+
+    PVP_KEY_ACTION_CS       =   0x1031;         // 客户端发送关键操作给服务器(逻辑帧方式)
+	PVP_KEY_ACTION_SC		=	0X1033;			// 服务器发送给客户端的玩家动作及状态信息更新
+	PVP_UNIT_INFO_S			=	0x1032;			// 同步角色状态信息
+	PVP_RESULT_S			=	0x1036;			//pvp战斗结果
+    
+    // TODO
+
+    // pvp系统
+	PVP_CMD                     =   0x1c00; 		
+	PVP_MATCH_CS                =   0x1c01; 		// 客户端请求pvp匹配
+	PVP_MATCH_SC                =   0x1c03; 		// 加入pvp匹配服务器返回
+	PVP_MATCH_CANCEL_CS         =   0x1c02; 		// 客户端请求取消pvp匹配
+	BATTLE_INFO_S               =   0x1c04; 		// 匹配成功后战斗内信息同步
+	BATTLE_CLIENT_READY_CS      =   0x1c05; 		// 客户端通知服务器准备好了
+	BATTLE_ALL_READY_S          =   0x1c06; 		// 服务器通知所有客户端都准备好了
+	BATTLE_COUNTDOWN_S          =   0x1c07; 		// 服务器战斗开始倒计时
+}
+

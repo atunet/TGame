@@ -1,0 +1,438 @@
+//
+// 战斗相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+import "fighttype.proto";
+
+/*
+//走路指令
+message MessageWalkCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_WALK_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+}
+
+//跑步指令
+message MessageRunCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_RUN_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+}
+
+//跳跃指令
+message MessageJumpCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_JUMP_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+}
+
+//方向变更指令
+message MessageDirectCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_DIRECT_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+optional int32			dir			= 3;	// 方向标记
+}
+
+//攻击指令
+message MessageAttackCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_ATTACK_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+}
+
+//技能指令
+message MessageSkillCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_SKILL_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+optional string 		type		= 3;	// 技能类型
+}
+
+//预备指令
+message MessageReadyCommand
+{
+optional EMessageID		id   		= 1		[default = FIGHT_READY_CS];
+optional uint64			unitid		= 2;	// 玩家ID
+}
+
+//血量变更指令
+message MessageBloodCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_BLOOD_S];
+optional FightUnitInfo	unit		= 2;	// 战斗单位
+optional int32	 		blood		= 3;	// 剩余血量
+}
+
+//死亡指令
+message MessageDieCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_DIE_S];
+optional FightUnitInfo	unit		= 2;	// 战斗单位
+}
+
+// 等待结果
+message MessageWaitResultCommand
+{
+optional EMessageID 		id   		= 1		[default = FIGHT_WAITRESULT_C];
+optional int32 			timestamp	= 2;	// 时间戳
+optional uint64         winner      = 3;    // 胜利者角色id
+optional uint32 		combo 		= 4; 	// 战斗内连接数
+}
+
+// 开始放技能
+message MessageReleaseSkillCommand
+{
+optional EMessageID 		id 			= 1 	[default = FIGHT_RELEASESKILL_C];
+required uint64 		userid 		= 2;	// 释放角色id
+required int32 			skillid 	= 3;	// 技能id
+required int32 			timestamp 	= 4; 	// 释放时间
+required int32          type        = 5;    // 1技能和普攻 2拔刀技
+optional uint32 		sequence 	= 6;
+}
+
+// 开始释放风行道具
+message MessageReleaseBulletCommand
+{
+optional EMessageID       id          = 1     [default = FIGHT_RELEASEBULLET_C];
+required int32          index       = 2;    // 飞行道具索引
+required int32          bulletid    = 3;    // 飞行道具id
+required uint64         unitid      = 4;    // 释放人id
+required int32          belongid    = 5;    // 飞行道具所属id 技能id 或者 buffid
+required int32          type        = 6;    // 1 技能id 2 buff发射
+required int32          time        = 7;    // 时间
+optional uint32 		sequence 	= 8;
+}
+
+// 结束释放飞行道具
+message MessageEndBulletCommand
+{
+optional EMessageID       id          = 1     [default = FIGHT_ENDBULLET_C];
+required int32          index       = 2;    // 飞行道具索引
+required uint64         unitid      = 3;    // 释放人id
+optional uint32 		sequence 	= 4;
+}
+
+//击打消息包
+message MessageHitCommand
+{
+optional EMessageID 			id			= 1		[default = FIGHT_HIT_C];
+repeated FightHit 			list		= 2;	// 击打列表
+optional uint32 			sequence 	= 3; 	// 打击序列
+}
+
+//战斗结果
+message MessageResultCommand
+{
+optional EMessageID 		id			= 1		[default = FIGHT_RESULT_S];
+required eFightResult	result		= 2;	// 结果
+}
+
+//战斗结算
+message MessageCalculateCommand
+{
+optional EMessageID 			id			= 1		[default = FIGHT_CALCULATE_S];
+optional int32				maxhitnumer	= 2;	// 最大连击数
+optional int32				damagerate	= 3;	// 剩余血量
+optional int32				passtime	= 4;	// 通关时间(ms)
+required eFightScoreLevel	score		= 5;	// 评分
+optional int32				awardsexp	= 6;	// 获得的经验奖励
+optional int32				awardscoin	= 7;	// 获得的金币奖励
+optional int32              awardslinzi = 8;    // 获得的灵子奖励
+repeated MixUnits           awardfix    = 9;    // 获得的固定奖励
+repeated MixUnits           awardrandom = 10;   // 获得的随机奖励
+}
+
+//关卡其他类型加成奖励
+message MessageAddCalculateCommand
+{
+optional EMessageID           id          = 1     [default = FIGHT_ADD_CALCULATE_S];
+optional uint32             addexp      = 2;    // 经验奖励
+optional uint32             addcoin     = 3;    // 金币奖励
+optional uint32             addlinzi    = 4;    // 灵子奖励
+repeated MixUnits           addothers   = 5;    // 其他的奖励
+}
+
+//离开战斗
+message MessageLeaveCommand
+{
+optional EMessageID 			id			= 1		[default = FIGHT_LEAVE_S];
+optional uint64				unitid		= 2;	// 离开的玩家ID
+}
+
+//取消同步
+message MessageSuspendCommand
+{
+optional EMessageID 			id			= 1		[default = FIGHT_SUSPEND_S];
+optional uint64				unitid		= 2;	// 需要取消同步的玩家ID
+}
+
+// 复活命令
+message MessageReviveCommand
+{
+optional EMessageID 			id		= 1		[default = FIGHT_REVIVE_S];
+optional uint64				unitid	= 2;	// 玩家ID
+}
+
+// 死亡后等待复活指令
+message MessageWait4ReviveCommand
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_WAIT4REVIVE_S];
+optional int32 				seconds  	= 2;	// 等待时间
+}
+
+// 全部死亡
+message MessageDestroyCommand
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_DESTROY_S];
+}
+
+// 切换战斗地图
+message MessageCrossSceneRequest
+{
+optional EMessageID           id          = 1     [default = FIGHT_CROSS_C];
+optional int32              mapid       = 2;
+optional uint32 			sequence 	= 3;
+}
+
+// 切换后可以开打通知
+message MessageCrossSceneNotify
+{
+optional EMessageID           id          = 1     [default = FIGHT_CROSS_S];
+}
+
+// 战斗中换刀
+message MessageChangeSwordRequest
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_CHANGESWORD_C];
+optional int32 				swordid 	= 2;	// 刀id
+optional uint64             unitid     	= 3;    // 换刀人id
+required int32 				time 		= 4; 	// 时间
+optional uint32 			sequence 	= 5; 	// 消息序号
+}
+
+// 战斗中换刀服务器返回
+message MessageChangeSwordResponse
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_CHANGESWORD_S];
+}
+
+message MessageBufferRequest
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_BUFF_C];
+required uint64 			caster 		= 2;	// 释放者
+required uint64 			agenter		= 3; 	// 作用者
+required int32 				buffid 		= 4; 	// buffid
+required uint64 			timestamp 	= 5; 	// 作用时间
+optional uint32 			sequence 	= 6;
+}
+
+message MessageEndBufferRequest
+{
+optional EMessageID           id          = 1     [default = FIGHT_ENDBUFF_C];
+repeated uint64			    agentlist   = 2;    // 作用者
+required int32              buffid      = 3;    // buffid
+required uint64             timestamp   = 4;    // 作用时间
+optional uint32 			sequence 	= 5;
+}
+
+message MessageDyingCommand
+{
+optional EMessageID           id          = 1     [default = FIGHT_DYING_C];
+optional FightUnitInfo      killer      = 2;    // 杀手
+optional FightUnitInfo      dead        = 3;    // 死者
+optional bool               isforce     = 4;    // true 强制致死 false 普通死亡验证
+optional uint32 			sequence 	= 5; 	// 消息序号
+}
+
+message MessageSyncRewardRequest
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_SYNCREWARD_C];
+optional uint32             battletype  = 2;    // 战斗类型 8 攻击战斗 9 防御战斗 10 增强战斗
+optional uint32 			index 		= 3; 	// 奖励段
+optional uint32 			sequence 	= 4;
+}
+
+message MessageSyncCommand
+{
+optional EMessageID 			id 			= 1 	[default = FIGHT_SYNC_CS];
+optional uint64 			timestamp  	= 2; 	// 时间戳
+optional uint64 			instanceid 	= 3; 	// 实例号
+optional uint64 			targetid 	= 4; 	// 目标id
+optional uint32 			compid 		= 5; 	// comp号
+optional bytes 				packdata 	= 6; 	// 数据
+repeated uint64             unitid      = 7;    // 转发玩家
+optional uint32 			index 		= 8; 	// 转发包序号
+}
+
+message MessageSoulFightRewardResponse
+{
+optional EMessageID           id              = 1     [default = FIGHT_SOULFIGHT_S];
+optional uint32             skillpoint      = 2;    // 奖励的灵子
+optional bool               isperfect       = 3;    // 是否完美
+repeated SoulFightBladeCp   blades          = 4;    // 斩魄刀恢复灵压
+}
+
+message MessageFightAgainRequest
+{
+optional EMessageID       id          = 1     [default = FIGHT_FIGHTAGAIN_C];
+}
+
+message MessageFightAgainResponse
+{
+optional EMessageID       id          = 1     [default = FIGHT_FIGHTAGAIN_S];
+}
+
+message MessageCallSummonRequest
+{
+optional EMessageID 		id 			= 1 	[default = FIGHT_CALLSUMMON_C];
+optional uint64         castid      = 2;    // 施放者
+required eSummonType    type        = 3;    // 召唤物类型
+optional uint32         param       = 4;    // 技能id或者buffid
+optional SummonUnit     summon      = 5;    // 召唤物单位
+optional uint64         timestamp   = 6;    // 时间
+optional uint32 		sequence 	= 7;
+}
+
+message MessageCallSummonResponse
+{
+optional EMessageID 		id 			= 1 	[default = FIGHT_CALLSUMMON_S];
+}
+
+message MessageTriggerBuffRequest
+{
+optional EMessageID       id          = 1     [default = FIGHT_TRIGGER_BUFF_C];
+optional uint64         castid      = 2;    // 被触发者Id
+optional uint32         buffid      = 3;    // buffId
+optional uint32         timestamp   = 4;    // 触发时间
+optional uint32         trigger     = 5;    // 触发类型(除了时常buff)
+optional uint32 		sequence 	= 6;
+}
+
+message MessageBattleMonsterNotice
+{
+optional EMessageID 		id 			= 1 	[default = FIGHT_MONSTER_S];
+repeated MonsterUnit 	monsters 	= 2; 	// 怪物列表
+}
+
+message MessageClimbTowerFightNotice
+{
+optional EMessageID       id          = 1     [default = FIGHT_CLIMBTOWERFIGHT_S];
+optional uint32         floors      = 2;    // 跳到多少层
+}
+
+message MessageWorldZhunanFightNotice
+{
+optional EMessageID       id          = 1     [default = FIGHT_WORDZHUNAN_S];
+optional uint32         hitcount    = 2;
+optional uint32         skillpoint  = 3;    // 奖励的灵子数量
+}
+
+message MessageGetHitSequenceReq
+{
+optional EMessageID       id          = 1     [default = FIGHT_GETHITSEQ_C];
+}
+
+message MessageGetHitSequenceRet
+{
+optional EMessageID       id          = 1     [default = FIGHT_GETHITSEQ_S];
+optional uint32         hitsequence = 2;
+}
+
+message MessageYamiHitDownNotice
+{
+optional EMessageID       id          = 1     [default = FIGHT_YAMI_HITDOWN_S];
+optional uint64         hituid      = 2;    // 尾刀角色id
+}
+
+message MessageWaitResultAgReq
+{
+optional EMessageID       id          = 1     [default = FIGHT_WAITRESULT_AG_C];
+}
+
+message MessageWaitResultAgRet
+{
+optional EMessageID       id          = 1     [default = FIGHT_WAITRESULT_AG_S];
+optional uint64         uid         = 2;
+required eFightResult   result      = 3;
+}
+*/
+
+/*
+message PvpKeyAction
+{
+    optional EMessageID         id          = 1     [default = PVP_KEY_ACTION];
+    optional uint64             uid         = 2;
+    optional uint64             actiontime  = 3;
+    optional EKeyAction         action      = 4		[default = IDLE];
+    optional Vector_float       position    = 5;
+    optional Vector_float       rotation    = 6;
+}
+
+message PvpTransformSync
+{
+    optional EMessageID         id          = 1     [default = PVP_TRANSFORM_SYNC];
+    optional uint64             uid         = 2;
+    optional uint64             actiontime  = 3;
+    optional Vector_float       position    = 4;
+    optional Vector_float       rotation    = 5;
+    optional Vector_float       velocity    = 6;
+    repeated AnimationInfo      animations  = 7;
+}
+
+message PvpTimeSync 
+{
+    optional EMessageID         id          = 1     [default = PVP_TIME_SYNC];
+    optional uint64             uid         = 2;
+    optional uint64             clienttime  = 3;
+    optional uint64             svrtime     = 4;
+}
+*/
+
+message PvpKeyAction
+{
+    optional EMessageID         id          = 1     [default = PVP_KEY_ACTION_CS];
+    optional KeyAction          action      = 2;
+}
+
+
+//状态同步
+//服务器返回给客户端的玩家动作以及状态信息
+message KeyActionSync
+{
+	optional EMessageID 		id			= 1		[default = PVP_KEY_ACTION_SC];
+	repeated UnitState			units 		= 2;
+}
+
+message UnitInfoSync
+{
+	optional EMessageID 		id			= 1		[default = PVP_UNIT_INFO_S];
+	repeated HpChange 			hp_info		= 2;
+
+}
+
+
+//帧同步
+message PvpFrameData
+{
+	optional EMessageID 		id 			= 1		[default = PVP_FRAME_DATA_CS];
+	optional FrameData 			data 		= 2;
+}
+
+message PvpFrameActionSync
+{
+    optional EMessageID         id          = 1     [default = PVP_FRAME_ACTION_S];
+    optional uint64             svrtime     = 2;
+    repeated FrameData          list        = 3;
+}
+
+//战斗结算
+message PvpResult
+{
+	optional EMessageID 		id 			= 1		[default = PVP_RESULT_S];
+	optional uint32				win 		= 2; //1,胜利，2失败
+
+}

@@ -1,0 +1,61 @@
+package Cmd;
+
+import "prototype.proto";
+import "errorcode.proto";
+
+
+/// 客户端发送版本号
+message VerifyVersion
+{
+	optional EMessageID	id				=	1		[default = VERIFY_VERSION_CS];
+	required uint64		clientversion	=	2;		// 客户端版本号
+}
+
+/// 请求登录登录服务器
+message LoginReq
+{
+	optional EMessageID	id				=	1		[default = LOGIN_LOGIN_CS];
+	required uint64		accountid		=	2;		// 帐号id
+    required uint32     zoneid          =   3;      // 区服id,应对合服之后的情况
+	optional string		verifier		=	4;		// 验证
+}
+
+/// 登录返回,成功则返回网关地址
+message LoginRet
+{
+	optional uint32		id				=	1		[default = 0x0103];
+	optional uint64		accountid		=	2;		// 帐号id
+	optional uint32		tempid          =	3;		// 临时id
+	optional string		gatewayip		=	4;		// 网关ip
+	optional uint32		gatewayport		=	5;		// 网关端口
+}
+
+/// 请求登录网关服务器
+message LoginGatewayReq
+{
+	optional EMessageID	id				=	1		[default = LOGIN_GATEW_CS];
+	required uint64		accountid		=	2;		// 帐号id
+	required uint32		tempid          =	3;		// 临时id
+	optional string		appVersion      =   4;		// 版本号 如1.1.2 不超过10位
+	optional uint32		deviceId		=   5;		// 8: iOS, 16:Android, 32: windows phone
+}
+
+/// 客户端登录网关成功
+message LoginGatewayRet
+{
+	optional EMessageID	id	=	1		[default = LOGIN_GATEW_SC];
+}
+
+/// 请求登录跨服服务器
+message LoginCrossReq
+{
+    optional EMessageID   id            =   1       [default = LOGIN_CROSS_CS];
+    required uint64     userid          =   2;      // 角色id
+	required uint32		tempid          =	3;		// 本次登录唯一临时id,用于登录验证
+}
+
+// 请求登录跨服服务器返回
+message LoginCrossRet
+{
+    optional EMessageID   id              =  1        [default = LOGIN_CROSS_SC];
+}

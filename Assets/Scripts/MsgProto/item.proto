@@ -1,0 +1,102 @@
+
+//
+// 道具相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+import "itemtype.proto";
+
+
+/// 发送角色道具数据给玩家
+message SendItemList
+{
+	optional EMessageID	id		=	1		[default = ITEM_LIST_S];
+	repeated ItemInfo	list	=	2;		// 道具列表
+}
+
+/// 道具更新通知玩家(包括新增)
+message UpdateItemList
+{
+	optional EMessageID	id		=	1		[default = UPDATE_ITEM_LIST_S];
+	repeated ItemInfo	list	=	2;		// 更新道具列表
+}
+
+/// 删除道具通知玩家
+message RemoveItemList
+{
+	optional EMessageID	id		=	1		[default = REMOVE_ITEM_LIST_S];
+	repeated uint64		list	=	2;		// 道具实例id列表
+}
+
+/// 玩家请求出售道具
+message SellItemReq
+{
+	optional EMessageID	id		=	1		[default = SELL_ITEM_CS];
+	required uint32		itemid	=	2;		// 道具类型id
+	required uint32		num		=	3;		// 道具数量
+}
+
+/// 出售道具服务器返回
+message SellItemRet
+{
+	optional EMessageID	id		=	1		[default = SELL_ITEM_SC];
+}
+
+/// 使用所有道具
+message UseItemReq
+{
+	optional EMessageID	id		=	1		[default = USE_ITEM_CS];
+	required  uint32	itemid	=	2;		//道具类型id
+	required  uint32	type	=   3;		// 0-打开所有 1-打开一个
+}
+
+/// 打开所有道具返回
+message UseItemRet
+{
+	optional EMessageID		id		=	1		[default = USE_ITEM_SC];
+	repeated ItemNotiType	item	=	2;		//通过获得列表
+}
+
+/*
+/// 碎片合成刀灵
+message PieceToBladeReq
+{
+	optional EMessageID	id			=	1		[default = PIECE_TO_BLADE_REQ];
+	required uint32		bladeid		=	2;		// 刀灵id
+}
+
+/// 碎片合成刀灵服务器返回
+message PieceToBladeRet
+{
+	optional EMessageID	id		=	1		[default = PIECE_TO_BLADE_RET];
+}
+
+/// 灵魂结晶合成灵魂
+message PieceToSoulReq
+{
+	optional EMessageID	id		=	1		[default = PIECE_TO_SOUL_REQ];
+	required uint32		soulid	=	2;		// 灵魂id
+}
+
+/// 灵魂结晶合成灵魂服务器返回
+message PieceToSoulRet
+{
+	optional EMessageID	id		=	1		[default = PIECE_TO_SOUL_RET];
+	required uint32 soulid  =   2 ;		//灵魂id
+}
+
+/// 碎片合成精魄
+message PieceToRefinedReq 
+{
+	optional EMessageID	id			=	1		[default = PIECE_TO_REFINED_REQ];
+	required uint64		thisid		=	2;		// 精魄碎片实例id
+}
+
+/// 碎片合成精魄返回
+message PieceToRefinedRet 
+{
+	optional EMessageID	id			=	1		[default = PIECE_TO_REFINED_RET];
+}
+*/

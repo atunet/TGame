@@ -1,0 +1,201 @@
+//
+// 战斗相关的子模块
+//
+
+package Cmd;
+
+import "prototype.proto";
+
+enum eBehaviourType
+{
+eBehaviourType_Walk			= 1;	// 走路
+eBehaviourType_Run			= 2;	// 跑步
+eBehaviourType_Jump			= 3;	// 跳跃
+eBehaviourType_Direct		= 4;	// 方向变更
+eBehaviourType_Attack		= 5;	// 攻击
+}
+
+enum eFightUnitType
+{
+eFightUnitType_User			= 1;	// 玩家
+eFightUnitType_Monster		= 2;	// 怪物
+}
+
+enum eAttackMode
+{
+eAttackMode_CP				= 1;	// cp受伤
+eAttackMode_HP				= 2;	// hp受伤
+}
+
+enum eFightScoreLevel
+{
+eFightScoreLevel_S			= 1;
+eFightScoreLevel_A			= 2;
+eFightScoreLevel_B			= 3;
+}
+
+enum eFightResult
+{
+eFightResult_LOSE			= 0;	// 失败
+eFightResult_WIN			= 1;	// 胜利
+eFightResult_ERROR			= 2;	// 错误
+eFightResult_ESCAPE			= 3;	// 逃跑
+eFightResult_FATAL 			= 4; 	// 致命错误
+eFightResult_INVALID        = 5;    // 无效
+}
+
+enum eSummonType
+{
+eSummonType_Level 			= 1; 	// 关卡召唤物
+eSummonType_Skill 			= 2; 	// 技能召唤物
+eSummonType_Buff			= 3; 	// buff召唤物
+}
+
+message FightHit
+{
+required FightUnitInfo 		strongman 		= 1;	// 攻击信息
+repeated FightHitInfo 		hitinfo 		= 2;	// 打击信息
+required int32				attackid		= 3;	// 攻击ID
+required int32   			time 			= 4;	// 打击时间
+required int32              index           = 5;    // hit索引
+optional int32 				bulletid 		= 6; 	// 释放的飞行道具id
+}
+
+message FightHitInfo
+{
+repeated FightUnitInfo		weaknesslist	= 1;	// 被击者信息列表
+}
+
+message FightUnitInfo
+{
+optional eFightUnitType		unittype	= 1;	// 战斗单位类型
+optional uint64				unitid		= 2;	// 战斗单位ID
+optional eAttackMode		attackmode	= 3;	// 攻击模式
+optional int32              time        = 4;    // 攻击击中时间
+}
+
+message ItemUnits
+{
+optional int32              itemid      = 1;
+optional int32              nums        = 2;
+}
+
+message PropUnits
+{
+optional int32              key         = 1;
+optional int32              value       = 2;
+}
+
+message MixUnits
+{
+optional int32              key         = 1;
+optional int32              value       = 2;
+optional int32              type        = 3;
+}
+
+message SoulFightBladeCp
+{
+optional uint32             bladeid     = 1;
+optional uint32             cp          = 2;
+}
+
+message SummonUnit
+{
+optional uint32             id          = 1;    // 召唤物实例id
+optional uint32             camp        = 2;    // 阵营
+}
+
+message MonsterUnit
+{
+optional uint32 			id 			= 1;
+optional uint32 			monsterid 	= 2;
+optional uint32 			wave 		= 3;
+optional uint32 			stageid 	= 4;
+}
+
+
+
+
+enum EKeyAction
+{
+    IDLE            =   1;
+    MOVE            =   2;
+    ATTACK1         =   3;
+    ATTACK2         =   4;
+    ATTACK3         =   5;
+}
+
+message Vector_float
+{
+    optional float x    = 1;
+    optional float y    = 2;
+    optional float z    = 3;
+}
+
+message AnimationInfo
+{
+    optional string state   = 1;
+    optional float time     = 2;
+}
+
+enum ESkillOperationType
+{
+	OPERATION_CLICK	=	1;
+	OPERATION_PRESS	=	2;
+	OPERATION_RELEASE =	3;
+}
+message FrameSkillData
+{
+	optional uint32 skillid = 1;
+	optional ESkillOperationType  operation_type = 2[default=OPERATION_CLICK];
+}
+message FrameDataOperation
+{
+	optional int32  directorx = 1;
+	optional int32  directorz = 2;
+	optional bool 	attack 	= 3;
+	optional bool 	jump 	= 4;
+	optional bool 	roll	= 5;
+}
+
+//帧同步
+message FrameData
+{
+	optional uint64 uid = 1;
+	optional uint32 seq	= 2;
+	optional FrameDataOperation frame_operation = 3;
+	repeated FrameSkillData skills = 4;
+}
+
+//状态同步
+message KeyAction
+{
+    optional uint64             uid         = 1;
+	optional Vector_float       direct 		= 2;
+    optional bytes              keytype     = 3;
+    optional uint32             action      = 4;
+}
+
+message ActionPosition
+{
+	optional Vector_float 		pos 		= 1;
+	optional uint32 			duration 	= 2;
+}
+
+message UnitState
+{
+	optional uint64 			uid 		= 1;
+	repeated ActionPosition 	positions	= 2;
+	optional KeyAction 		    action 		= 3;
+	optional Vector_float 		cur_pos 	= 4;
+}
+
+message HpChange
+{
+	optional uint64 			uid 		= 1; //目标
+	optional uint64 			releaser	= 2; //行为释放者
+	optional uint32 			current_hp  = 3;
+
+}
+
+

@@ -1,0 +1,369 @@
+
+//
+// 角色相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+import "usertype.proto";
+
+/// 发送角色列表给玩家
+message UserList
+{
+	optional EMessageID	id			=	1		[default = USER_LIST_S];
+	repeated UserBase	userbase	=	2;		//	角色基础信息
+}
+
+/// 玩家选择角色上线
+message SelectUserOnline
+{
+	optional EMessageID	id			=	1		[default = USER_ONLINE_CS];
+	required uint64		userid		=	2;		// 选择上线的角色id
+}
+
+/// 玩家当前角色下线,客户端返回到角色列表,可重新选角登录
+message CurrentUserOffline
+{
+	optional EMessageID	id			=	1		[default = USER_OFFLINE_CS];
+}
+
+/// 玩家请求创建角色
+message CreateUserReq
+{
+	optional EMessageID	id			=	1		[default = CREATE_USER_CS];
+	required int32		usertype	=	2;		// 创建角色类型
+	required bytes		username	=	3;		// 创建角色名称
+}
+
+/// 创建角色服务器返回
+message CreateUserRet
+{
+	optional EMessageID	id			=	1		[default = CREATE_USER_SC];
+	required UserBase	userbase	=	2;		// 新角色的基本信息
+}
+
+/// 发送角色基础数据给玩家
+message SendUserBaseData
+{
+	optional EMessageID	id			=	1		[default = USER_BASE_DATA_SC];
+	required UserInfo	info        =	2;		// 角色基础数据
+}
+
+// 角色数据加载完成
+message UserDataLoadOk
+{
+	optional EMessageID 		id 			= 1 	[default = DATA_LOAD_OK_S];
+}
+
+/// 请求指定游戏模块的数据,支持多模块请求
+message GameModuleDataReq
+{
+	optional EMessageID	id			=	1		[default = MODULE_DATA_CS];
+	repeated uint32     modulelist  =	2;		// 游戏模块id列表,参见gamemodule.proto
+}
+
+message MessageMarqueeNotice
+{
+	optional EMessageID		id			= 1		[default = MARQUEE_INFO_S];
+	required uint32			priority	= 2;	// 优先级 0-系统 1-运营
+	required bytes			content		= 3;	// 内容
+	required uint32			interval	= 4;	// 间隔
+	required uint32			count		= 5;	// 次数
+	optional uint32			type		= 6;	// 显示位置: 0-跑马灯与系统聊天 1-只是跑马灯 2-系统聊天
+}
+
+/*
+/// 角色属性变化通知前端
+/// ProtoId:USER_ATTRCHANGES_S
+message UserAttrChange
+{
+	optional EMessageID		id			=	1	[default = USER_ATTRCHANGES_S];
+    repeated UserAttrPair   changelist  =	2;	// 改变列表
+}
+
+/// 获取玩家buff列表
+message GetUserBuffReq
+{
+    optional EMessageID	id	=	1	[default = USER_GETBUFF_C];
+}
+
+/// 获取玩家buff列表返回
+message GetUserBuffRet
+{
+    optional EMessageID	id      =	1	[default = USER_GETBUFF_S];
+    repeated BuffUnit   list    =	2;
+}
+
+//炼金机请求
+message GoldMachineReq
+{
+    optional EMessageID	id				= 1		[default = GOLD_MACHINE_C];
+}
+
+//炼金机返回
+message GoldMachineRet
+{
+    optional EMessageID	id				= 1		[default = GOLD_MACHINE_S];
+	required uint32		goldnum			= 2;	//获取的金币数
+	required uint32		criticalrate	= 3;	//暴击率 1表示不暴击
+	required uint32		goldMachineCount = 4;	//炼金机次数
+	required uint32		lastGoldMachine = 5;	//上次炼金数量
+}
+
+//购买体力请求
+message BuyEnergyReq
+{
+    optional EMessageID	id      =	1		[default = BUY_ENERGY_C];
+}
+
+//购买体力返回
+message BuyEnergyRet
+{
+    optional EMessageID	id      =	1		[default = BUY_ENERGY_S];
+	required uint32		energy	=	2;		//获取的体力数
+	required uint32		buyEnergyCount = 3; //购买炼金机次数
+
+}
+
+message UserChangeNickReq
+{
+	optional EMessageID	id		=	1		[default = USER_CHANGE_NICK_C];
+	required string		name	=	2;		//昵称
+}
+
+message UserChangeNickRet
+{
+	optional EMessageID	id		=	1		[default = USER_CHANGE_NICK_S];
+	required string		name	=	2;		//昵称
+}
+
+message BuyUseMbReq
+{
+	optional EMessageID	id				=	1		[default = BUY_USE_MB_C];
+	required string		transactionId	=	2;
+	required uint32		itemid			=	3;		//购买的商品id
+}
+
+message BuyUseMbRet
+{
+	optional EMessageID	id		=	1		[default = BUY_USE_MB_S];
+	required uint32		itemid	=	2;		// 购买的商品id
+	required uint32		cash	=	3;		// 得到的魂钻
+	required uint32     extraCash = 4;		// 额外获得的魂钻
+	required uint32     doubleTimes = 5;	// 双倍次数
+}
+
+//客户端通知服务器更新新手引导步骤
+message UpdateGuideStepReq
+{
+    optional EMessageID	id      =	1		[default = UPDATE_GUIDE_STEP];
+	required uint32		guide	=	2;
+}
+
+//vip等级变化通知
+message VipChangeNotiRet
+{
+	optional EMessageID  id		=	1		[default = VIP_CHANGE_NOTI_S];
+	required uint32 oldVip		=   2;      // 老的vip等级
+	required uint32 newVip		=   3;		// 新vip等级
+}
+
+message MessageGetUserInfoReq
+{
+	optional EMessageID 		id 			= 1 	[default = GET_USERINFO_C];
+    optional uint64         userid      = 2;
+}
+
+message MessageGetUserInfoRet
+{
+	optional EMessageID 		id 			= 1 	[default = GET_USERiNFO_S];
+	optional UserBase 		userbase 	= 2;
+	repeated BladeUnit 		blades 		= 3;
+	repeated SoulUnit 		souls 		= 4;
+	repeated DressRetUnit 	dress 		= 5;
+	optional SoulCoreUnit   soulcore 	= 6;
+    optional bytes          unionname   = 7;    // 公会名
+}
+
+message MessageGetActionReq
+{
+    optional EMessageID       id          = 1     [default = GET_ACTION_C];
+}
+
+message MessageGetActionRankReq
+{
+    optional EMessageID       id          = 1     [default = GET_ACTIONRANK_C];
+    optional uint32         actid       = 2;    // 活动id
+    optional uint32         startpos    = 3;    // 开始位置
+    optional uint32         offset      = 4;   	// 偏移量
+}
+
+message MessageGetActionRewardsReq
+{
+    optional EMessageID       id          = 1     [default = GET_ACTIONREWARD_C];
+    optional uint32         actionid    = 2;
+    optional uint32         condid      = 3;
+}
+
+message MessageGetActionRewardsRet
+{
+    optional EMessageID       id          = 1     [default = GET_ACTIONREWARD_S];
+}
+
+message MessageSendActionNotify
+{
+    optional EMessageID       id          = 1     [default = SEND_ACTION_S];
+    repeated ActionUnit     info        = 2;
+}
+
+message MessageSendActionRankNotify
+{
+    optional EMessageID       id          = 1     [default = SEND_ACTIONRANK_S];
+    optional uint32         actid       = 2;
+    optional uint32         count       = 3;    // 总行数
+    optional uint32         rank        = 4;    // 我的位置
+    optional uint32         score       = 5;    // 我的分数
+    optional bool           isget       = 6;    // 是否领奖
+    repeated ActionRankUnit list        = 7;    // 列表
+}
+
+message MessageSendRedPointNotify
+{
+    optional EMessageID       id          = 1     [default = SEND_RED_POINT_S];
+    required uint32         from_type   = 2;    //见from_type
+}
+
+message UpdateBpReq
+{
+	optional EMessageID		id			= 1		[default = UPDATE_BP_C];
+}
+
+message ArenaGetBPReq
+{
+    optional EMessageID       id      =   1       [default = ARENA_GET_BP_REQ];
+	repeated uint64			userId  =   2;      //角色id列表
+}
+
+message ArenaGetBPRet
+{
+    optional EMessageID       id      =   1       [default = ARENA_GET_BP_RET];
+	repeated ArenaUserBPInfo userbp	=   2;      //战斗力列表
+}
+
+message GetUserListReq
+{
+    optional EMessageID       id      =   1       [default = GET_USERLIST_C];
+	repeated uint64			userId  =   2;      //角色id列表
+	optional uint32			type	=   3;      // 1-基本 2-包含战斗力 3-所有 4-包含点赞
+}
+
+message GetUserListRet
+{
+    optional EMessageID       id      =   1       [default = GET_USERLIST_S];
+	repeated UserBase		userbase    =   2;      //角色基本信息
+}
+
+message ChatBanNoti
+{
+    optional EMessageID       id      =   1       [default = CHAT_BAN_S];
+	required uint32			min		=   2;		//禁言分钟数 0表示无限长
+	required uint32			banChat =	3;		//禁言过期时间 大于3600 * 24 * 365为永久禁言
+}
+
+message GetTestFeedbackInfoRet
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK_INFO_S];
+	required uint32			level	=	2;
+	required uint32			arenaRank = 3;		// 竞技场排名
+	required uint32			flag	=	4;		// 标志 从低位开始
+}
+
+message GetTestFeedbackGiftReq
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK_GIFT_C];
+	required uint32			type	=   2;		//第几档奖励 1-登录  2-竞技场 3-等级
+}
+
+message GetTestFeedbackGiftRet
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK_GIFT_S];
+	required uint32			flag	=	2;      //标志
+}
+
+message GetChargeFeedbackInfoRet
+{
+    optional EMessageID       id      =   1       [default = GET_CHARGE_FEEDBACK_INFO_S];
+	required uint32			totalPay=	2;
+	required uint32			flag	=	3;		// 标志 从低位开始
+}
+
+message GetChargeFeedbackGiftReq
+{
+    optional EMessageID       id      =   1       [default = GET_CHARGE_FEEDBACK_GIFT_C];
+	required uint32			activityId = 2;		//活动id
+	required uint32			type	=   3;		//第几档奖励
+}
+
+message GetChargeFeedbackGiftRet
+{
+    optional EMessageID       id      =   1       [default = GET_CHARGE_FEEDBACK_GIFT_S];
+	required uint32			flag	=	2;      //标志
+}
+
+message GetVipRewardReq
+{
+    optional EMessageID       id      =   1       [default = GET_VIP_REWARD_C];
+	required uint32			vipLevel=	2;		//领哪个vip等级
+}
+
+message GetVipRewardRet
+{
+    optional EMessageID       id      =   1       [default = GET_VIP_REWARD_S];
+	required uint32			vipFlag =	2;		//vip奖励标志
+}
+
+message GetFreeRewardReq
+{
+    optional EMessageID       id      =   1       [default = GET_FREE_REWARD_C];
+	required uint32			type	=   2;		//第几档 从1开始
+}
+
+message GetFreeRewardRet
+{
+    optional EMessageID       id      =   1       [default = GET_FREE_REWARD_S];
+	required uint32			freeRewardFlag = 2; //免费领奖标志
+}
+
+message MessageGetStrongRewardReq
+{
+	optional EMessageID 		id 		= 1 		[default = GET_STRONG_C];
+	optional uint32 		index 	= 2;// 领取变强奖励索引
+}
+
+message MessageGetStrongRewardRet
+{
+	optional EMessageID 		id 		= 1 		[default = GET_STRONG_S];
+	optional uint32 		index 	= 2;
+}
+
+message GetTestFeedback2InfoRet
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK2_INFO_S];
+	repeated TestFeedBack2Unit gift =	2;
+}
+
+message GetTestFeedback2GiftReq
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK2_GIFT_C];
+	required uint32			itemid	=   2;		//礼包id
+}
+
+message GetTestFeedback2GiftRet
+{
+    optional EMessageID       id      =   1       [default = GET_TEST_FEEDBACK2_GIFT_S];
+	required TestFeedBack2Unit gift	=   2;
+}
+
+
+*/

@@ -1,0 +1,12 @@
+package Cmd;
+
+/**
+ *	@brief	游戏功能模块标志位定义,对应CharBase.moduleFlag中的每一位(1L<<(n-1))
+ */
+enum EGameModule
+{
+	MODULE_USER             =	1;			// 角色
+	MODULE_ITEM             =	2;			// 道具
+	MODULE_HERO             =	3;			// 伙伴
+    MODULE_MAX              =   63;         // 最大标志位
+}

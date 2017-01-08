@@ -1,0 +1,12 @@
+package Cmd;
+
+message HeroInfo
+{
+	required uint64 thisid			=	1;		// 伙伴实例id
+	required uint32 heroid			=	2;		// 伙伴类型id
+	required uint32 level           =	4;		// 伙伴等级
+	required uint32 exp             =	8;		// 伙伴经验
+	required uint32 stage           =	5;		// 伙伴阶数
+	required uint32 quality         =	6;		// 伙伴品质
+	required uint32 star            =	7;		// 伙伴星级
+}

@@ -1,0 +1,22 @@
+package Cmd;
+
+message ItemInfo
+{
+	required uint64 thisid			=	1;		// 道具实例id
+	required uint32 itemid			=	2;		// 道具类型id
+	required uint64 uid			    =	3;		// 角色id 
+	required uint32 num				=	4;		// 叠加数量
+}
+
+message ItemNotiType
+{
+	required uint32 type        = 1;    // 类型
+	required uint32 itemid      = 2;    // 物品id
+	required uint32 count       = 3;    // 数量
+}
+
+message ItemCountType
+{
+	required uint32 itemid  = 1;
+	required uint32 count   = 2;
+}

@@ -1,0 +1,18 @@
+package Cmd;
+import "fighttype.proto";
+
+message PvpHeroInfo
+{
+    optional uint64 thisid      = 1;    // 英雄实例id
+    optional uint32  heroid      = 2;    // 英雄类型id
+    optional uint32 inithp      = 3;    // 英雄初始血量
+	optional Vector_float init_pos = 4; // 初始位置
+	optional Vector_float direct = 5; //初始朝向
+	
+}
+
+message FighterInfo
+{
+    optional uint64 uid             = 1;    // 角色id
+    repeated PvpHeroInfo heros     = 2;    // 上阵英雄列表
+}

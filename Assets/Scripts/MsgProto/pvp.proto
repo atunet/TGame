@@ -1,0 +1,52 @@
+package Cmd;
+
+import "prototype.proto";
+import "pvptype.proto";
+
+/**
+ *  @brief  pvp(rt)/pvp(ai)等相关的功能系统协议都放在该proto文件中,具体战斗协议放在fight.proto中
+ */
+
+
+message PvpMatchReq
+{
+    optional EMessageID 		id 			= 1 [default = PVP_MATCH_CS];
+}
+
+message PvpMatchCancel
+{
+    optional EMessageID 		id 			= 1 [default = PVP_MATCH_CANCEL_CS];
+}
+
+message PvpMatchRet
+{
+    optional EMessageID 		id          = 1 [default = PVP_MATCH_SC];
+    optional bytes              svrip       = 2; // pvp服务器ip
+    optional int32              svrport     = 3; // pvp服务器端口
+    optional uint32             tempid      = 4; // 临时id
+}
+
+message BattleInfoSync
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_INFO_S];
+    repeated FighterInfo        fighters    = 2;
+}
+
+message BattleClientReady
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_CLIENT_READY_CS];
+}
+
+message BattleAllReady
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_ALL_READY_S];
+	required uint32				random_seed	= 2; //战斗中客户端需要统一：的随机种子
+	optional uint32 			frame_sec	= 3; //一秒的逻辑帧
+}
+
+message BattleCountdown
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_COUNTDOWN_S];
+    optional int32              index       = 2; // 战斗开始倒计时3,2,1
+    optional uint64             svrtime     = 3; // 服务器时间
+}

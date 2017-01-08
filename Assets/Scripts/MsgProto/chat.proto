@@ -1,0 +1,47 @@
+package Cmd;
+
+import "prototype.proto";
+
+/// 客户端发起私聊
+message ChatPrivateReq
+{
+	optional EMessageID	id			=	1		[default = CHAT_PRIVATE_CS];
+	required uint64		uid		    =	2;		// 私聊对象
+	required bytes		text		=	3;		// 私聊内容
+}
+
+/// 客户端发起世界聊
+message ChatWorldReq
+{
+	optional EMessageID	id			=	1		[default = CHAT_WORLD_CS];
+	required bytes		text		=	4;		// 私聊内容
+}
+
+/// 转发世界聊
+message ChatWorldRet
+{
+	optional EMessageID	id			=	1		[default = CHAT_WORLD_CS];
+	required uint64		uid		    =	2;		// 私聊发起者id
+	required uint32		viplv		=	3;		// vip等级
+	required bytes		username	=	4;		// 私聊发起者的名字
+	required bytes		text		=	5;		// 私聊内容
+}
+
+/// 客户端发起公会聊
+message ChatUnionReq
+{
+	optional EMessageID	id			=	1		[default = CHAT_UNION_CS];
+	required uint32		viplv		=	2;		// vip等级,只用于显示
+	required bytes		username	=	3;		// 公会聊发起者的名字
+	required bytes		text		=	4;		// 公会聊内容
+}
+
+/// 转发公会聊
+message ChatUnionRet
+{
+	optional EMessageID	id			=	1		[default = CHAT_UNION_SC];
+	required uint64		uid		    =	2;		// 公会聊发起者id
+	required uint32		viplv		=	3;		// vip等级
+	required bytes		username	=	4;		// 公会聊发起者的名字
+	required bytes		text		=	5;		// 公会聊内容
+}

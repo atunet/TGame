@@ -1,0 +1,23 @@
+package Cmd;
+
+import "prototype.proto";
+import "utilstype.proto";
+
+/// 客户端请求服务器时间
+message ServerTimeReq
+{
+	optional EMessageID	id		=	1		[default = SERVER_TIME_CS];
+}
+
+/// 服务器返回系统时间
+message ServerTimeRet
+{
+	optional EMessageID	id			=	1		[default = SERVER_TIME_SC];
+	required uint32		servertime	=	2;		// 服务器系统时间,单位:秒
+}
+
+/// 回显协议,服务器收到后原样返回给客户端
+message UtilsEcho
+{
+	optional EMessageID	id		=	1		[default = UTILS_ECHO];
+}

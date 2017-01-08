@@ -1,0 +1,179 @@
+package Cmd;
+
+import "prototype.proto";
+
+message UserBase
+{
+	required uint64 userid		=	1;
+    required bytes	username	=	2;
+    required uint32	type		=	3;
+	required uint32 level		=	4;
+	required Avatar avat 		= 	5;
+	optional uint32 dressid 	=  	6; //未用
+	optional uint32 dresslv 	= 	7; //未用
+	optional uint32 bp			=   8;
+	optional uint32 viplv		=	9; //未用
+	optional uint32 bladeid		=   10;//第一把刀
+    optional uint32 lockstage   =   11;// 锁结
+    optional uint32 totallike   =   12;// 总赞数
+    optional uint32 title		=   13;// 称号
+    optional uint32 unionid     =   14;// 公会id
+    optional bytes unionname    =   15;// 公会名字
+}
+
+message Avatar
+{
+    required uint32 eye     = 1;        /**< 眼睛 */
+    required uint32 nose    = 2;        /**< 鼻子 */
+    required uint32 mouth   = 3;        /**< 嘴巴 */
+    required uint32 hair    = 4;        /**< 发色 */
+}
+
+message UserInfo
+{
+    required uint64	userid			=	1;		//*< 角色id 
+    required bytes username			=	2;		//*< 角色名称 
+    required uint32	type			=	3;		//*< 职业类型 
+    required uint64	accid			=	4;		//*< 玩家帐号
+    required uint32	mapid			=	5;		//*< 所在地图
+    required uint64	gold			=	6;		//*< 金币币
+    required uint32	cash			=	7;		//*< 人民币
+    required uint64	exp	            =	8;		//*< 经验
+    required uint32	strength        =	11;     //*< 体力
+    required uint32	vipexp          =	12;     //*< vip经验
+    required uint32	totalpay		=	13;     //*< 充值总额
+    required uint32	totalconsume    =	14;     //*< 总消费额
+    required uint64	moduleflag      =	15;		//*< 功能模块开放标志位
+    required uint32 strengthtime    =   17;     //*< 上次体力恢复时间
+	optional uint32 buyEnergyCount  =   19;     //*< 购买体力次数
+    optional uint32 guide           =   21;     //*< 新手引导步骤 
+    required uint32	vipLevel        =	23;     //*< vip等级
+    required uint32	copyStars       =	24;     //*< 副本星数
+    required uint32	banChat			=	26;     //*< 禁言时间
+	required uint32 firstRecharge   =   28;     //*< 首次充值标识
+	required uint32 vipFlag		    =   29;     //*< vip奖励标志
+    required uint64	keyid           =	37;		//*< keyid
+}
+
+
+enum UserAttr
+{
+    eUserAttr_Gold  					= 12800001;	// 金币
+    eUserAttr_Cash						= 12800002;	// 元宝
+    eUserAttr_Exp						= 12800003;	// 经验
+    eUserAttr_SkillPoint                = 12800004; // 灵子
+    eUserAttr_Strength					= 12800005;	// 体力
+    eUserAttr_VipExp					= 12800006;	// VIP经验
+    eUserAttr_ReviveCoin				= 12800009; // 等级
+    eUserAttr_CreditCoin 				= 12800010; // 荣誉币
+	eUserAttr_SoulDust					= 12800012; // 灵魂之尘
+	eUserAttr_StrengthTime              = 12800211; // 更新体力时间(应姜波要求)
+
+    eUserAttr_Totalpay					= 12800308;	// 总充值
+    eUserAttr_TotalGet                  = 12800309; // 总获得
+    eUserAttr_TotalConsume              = 12800310; // 总消费魂钻
+
+    eUserAttr_CopyStars                 = 12801000; // 总的
+	eUserAttr_BSCOIN 					= 12800011;	// 演武场币
+	eUserAttr_UNIONSPOINT				= 12800015;	// 公会贡献点
+}
+
+message UserAttrPair
+{
+    required UserAttr 	key				=	1;
+    required uint64		value			=	2;
+}
+
+message BuffUnit
+{
+    required uint32     buffid          =	1;
+    required uint64     acttime         =	2;
+}
+
+message DressRetUnit
+{
+    required uint32     dressid         =   1;
+    required uint32     lv              =   2;
+    required uint32     exp             =   3;
+    required bool       isequip         =   4;
+}
+
+message BladeUnit
+{
+	optional uint32 	bladeid 		= 1;
+	optional uint32 	star 			= 2;
+    optional uint32     quality         = 3;
+    optional uint32     strengthlv      = 4;
+    optional uint32     equipindex      = 5;
+    optional uint64     liberationnode  = 6;
+	optional uint32 	skillid1 		= 7;
+	optional uint32 	level1 			= 8;
+	optional uint32 	skillid2 		= 9;
+	optional uint32 	level2 			= 10;
+	optional uint32  	skillid3 		= 11;
+	optional uint32 	level3 			= 12;
+}
+
+message SoulCoreUnit
+{
+	optional int32 	maxhp 		= 1;
+	optional int32 	patt 		= 2;
+	optional int32 	pdef 		= 3;
+	optional int32  catt 		= 4;
+	optional int32 	cdef 		= 5;
+	optional int32 	cpstren 	= 6;
+}
+
+message SoulUnit
+{
+	optional uint32 	soulid 			= 1;
+	optional uint32 	star 			= 2;
+    optional uint32     lv              = 3;
+    optional uint32     grade           = 4;
+}
+
+message ActionUnit
+{
+    optional uint32         actionid    = 1;
+    optional uint32         condid      = 2;
+    optional uint32         count       = 3;
+    optional bool           issubmit    = 4;
+}
+
+message ArenaUserBPInfo
+{
+	optional uint64 userid	=	1;		// 角色id
+	required uint32 bp		=	2;		// 战斗力
+}
+
+message ActionRankUnit
+{
+    optional uint32         rank        = 1;
+    optional uint64         uid         = 2;
+    optional uint32         score       = 3;
+    optional string         name        = 4;
+}
+
+//测试回馈2奖励
+message TestFeedBack2Unit
+{
+	optional uint32		itemid		=	1; //物品id
+	optional uint32		count		=	2; //数量
+	optional uint32		flag		=	3; //0-未领取 1-已领取
+}
+
+message MsgUserUnitInfo
+{
+    optional uint64     userid      = 1; // 角色id
+    optional string     name        = 2; // 名字
+    optional uint32     bp          = 3; // 战力
+    optional uint32     point       = 4; // 贡献度
+    optional uint32     lastlogin   = 5; // 上次上线时间
+}
+
+message TitleUnit
+{
+	optional uint32		titleid		= 1; // 称号id
+	optional uint32		cond		= 2; // 条件参数或者完成次数
+	optional uint32		flag		= 3; // 激活标志 1-已激活 0-未激活
+}
