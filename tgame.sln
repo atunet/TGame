@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{6ED26AA3-0DF1-508B-1ABD-1688C10E49DF}") = "tgame", "Assembly-CSharp.csproj", "{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}"
+EndProject
+Project("{6ED26AA3-0DF1-508B-1ABD-1688C10E49DF}") = "tgame", "Assembly-CSharp-Editor.csproj", "{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

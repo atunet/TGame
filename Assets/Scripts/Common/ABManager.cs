@@ -12,7 +12,7 @@ public sealed class ABManager
         AssetBundle ab = null;
         if (s_abMaps.TryGetValue(abName_, out ab)) return ab;
 
-        AssetBundle depAB = null;
+    /*    AssetBundle depAB = null;
         string depABName = "sprite_logo";
         if (!s_abMaps.TryGetValue(depABName, out depAB))
         {
@@ -27,10 +27,10 @@ public sealed class ABManager
 			else 
 				Utility.LogError("ABManager: load dep ab file failed:" + depABName + AppConst.AB_EXT_NAME);
         }
-
+*/
         ab = AssetBundle.LoadFromFile(AppConst.PERSISTENT_PATH + "/" + abName_ + AppConst.AB_EXT_NAME);
-		if (null == depAB) 
-			depAB = AssetBundle.LoadFromFile(AppConst.STREAMING_PATH + "/" + abName_ + AppConst.AB_EXT_NAME);
+        if (null == ab) 
+            ab = AssetBundle.LoadFromFile(AppConst.STREAMING_PATH + "/" + abName_ + AppConst.AB_EXT_NAME);
 		
         if (null != ab)
         {           
