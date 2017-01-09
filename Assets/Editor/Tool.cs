@@ -71,7 +71,7 @@ public class Tool : MonoBehaviour
         }
 
 		s_abMaps.Clear();
-		PreprocessLuaFiles();
+		//PreprocessLuaFiles();
 		PreprocessArtFiles();
         PreprocessModelFiles();
 
@@ -178,7 +178,9 @@ public class Tool : MonoBehaviour
             int realLength = 0; // 过滤xxx.meta之后的文件数量
             for(int j = 0; j < fileList.Length; ++j)
             {
-                if (fileList[j].EndsWith(".meta") || fileList[j].Contains("ds_store")) continue;
+                if (fileList[j].EndsWith(".meta") || 
+					fileList[j].Contains("ds_store") ||
+					fileList[j].Contains(".DS_Store")) continue;
                 realLength++;
             }
             if (0 == realLength) continue;
@@ -190,7 +192,9 @@ public class Tool : MonoBehaviour
             int index = 0;
             for (int k = 0; k < fileList.Length; ++k)
             {             
-                if (fileList[k].EndsWith(".meta") || fileList[k].Contains("ds_store")) continue;
+                if (fileList[k].EndsWith(".meta") || 
+					fileList[k].Contains("ds_store") ||
+					fileList[k].Contains(".DS_Store")) continue;
                              
                 string relativeFilePath = fileList[k].Replace("\\", "/").Substring(AppConst.PROJECT_PATH_LEN+1);
                 build.assetNames[index++] = relativeFilePath;
@@ -234,8 +238,9 @@ public class Tool : MonoBehaviour
                 int realLength = 0; // 过滤xxx.meta之后的文件数量
                 for (int j = 0; j < fileList.Length; ++j)
                 {
-                    if (fileList[j].EndsWith(".meta") || fileList[j].Contains("ds_store"))
-                        continue;
+                    if (fileList[j].EndsWith(".meta") || 
+						fileList[j].Contains("ds_store") ||
+						fileList[j].Contains(".DS_Store")) continue;
                     realLength++;
                 }
                 if (0 == realLength) continue;
@@ -247,8 +252,9 @@ public class Tool : MonoBehaviour
                 int index = 0;
                 for (int k = 0; k < fileList.Length; ++k)
                 {             
-                    if (fileList[k].EndsWith(".meta") || fileList[k].Contains("ds_store"))
-                        continue;
+                    if (fileList[k].EndsWith(".meta") || 
+						fileList[k].Contains("ds_store") ||
+						fileList[k].Contains(".DS_Store")) continue;
 
                     string relativeFilePath = fileList[k].Replace("\\", "/").Substring(AppConst.PROJECT_PATH_LEN + 1);
                     build.assetNames[index++] = relativeFilePath;

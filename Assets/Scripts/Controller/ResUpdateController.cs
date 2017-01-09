@@ -50,7 +50,7 @@ public class ResUpdateController : MonoBehaviour
             AssetBundle remoteAB = manifestWWW.assetBundle;
             AssetBundleManifest remoteManifest = remoteAB.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
             ParseManifestFile(remoteManifest, m_remoteDict);
-            Debug.Log("Download remote version file done: " + AppConst.REMOTE_VERSION_FILE_URL + ",total count:" + remoteManifest.GetAllAssetBundles().Length);
+			Utility.Log("Download remote version file done: " + AppConst.REMOTE_VERSION_FILE_URL + ",total count:" + remoteManifest.GetAllAssetBundles().Length);
 
             remoteManifest = null;
             remoteAB.Unload(false);
@@ -67,11 +67,15 @@ public class ResUpdateController : MonoBehaviour
             {               
                 AssetBundleManifest persistentManifest = persistentAB.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
                 ParseManifestFile(persistentManifest, m_localDict);
-                Debug.Log("Load local version file done: " + AppConst.PERSISTENT_VERSION_FILE_PATH + ",total count:" + persistentManifest.GetAllAssetBundles().Length);
+
+				Utility.Log("Load local version file done: " + AppConst.PERSISTENT_VERSION_FILE_PATH + ",total count:" + persistentManifest.GetAllAssetBundles().Length);
 
                 persistentManifest = null;
                 persistentAB.Unload(false);           
             }
+			else
+				Utility.Log("Local version file not exist: " + AppConst.PERSISTENT_VERSION_FILE_PATH);
+			
 
             CompareManifestFile();
             if (m_downloadList.Count > 0)
