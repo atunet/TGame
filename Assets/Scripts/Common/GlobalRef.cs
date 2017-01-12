@@ -18,16 +18,28 @@ public static class GlobalRef
         set { s_sceneRoot = value; }
     }
 
+
+	private static ABManager s_abMgr = null;
+	public static ABManager ABMgr 
+	{
+		get { return s_abMgr; }
+	}
+
+
 	public static bool Init()
 	{
-		UIRoot = GameObject.Find("UIRoot/UICanvas").transform;
-		if (null == UIRoot)
+		s_uiRoot = GameObject.Find("UIRoot/UICanvas").transform;
+		if (null == s_uiRoot)
 			return false;
 		
-		SceneRoot = GameObject.Find("SceneRoot/SceneCanvas").transform;
-		if(null == SceneRoot)
+		s_sceneRoot = GameObject.Find("SceneRoot/SceneCanvas").transform;
+		if(null == s_sceneRoot)
 			return false;
 
+		s_abMgr = GameObject.Find ("ABManager").gameObject.GetComponent<ABManager> ();
+		if (null == s_abMgr)
+			return false;
+		
 		return true;
 	}
 

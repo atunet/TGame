@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 public static class Utility
 {
@@ -16,4 +17,14 @@ public static class Utility
     {
         UnityEngine.Debug.LogError(DateTime.Now.ToString() + " : " + text_);
     }
+
+	public static string GetResourcePath(string fileName_)
+	{
+		string filePath = AppConst.PERSISTENT_PATH + "/" + fileName_ + AppConst.AB_EXT_NAME;
+		if (!File.Exists (filePath)) 
+		{
+			filePath = AppConst.STREAMING_PATH + "/" + fileName_ + AppConst.AB_EXT_NAME;
+		}
+		return filePath;
+	}
 }
