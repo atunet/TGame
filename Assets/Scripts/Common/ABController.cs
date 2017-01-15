@@ -1,35 +1,35 @@
 ﻿
 using UnityEngine;
 using System.IO;
+using System.Collections;
 using System.Collections.Generic;
-using System;
 
-public class ABManager : MonoBehaviour
+public class ABController : MonoBehaviour
 {
     private Dictionary<string, AssetBundle> s_abMaps = new Dictionary<string, AssetBundle>();
 
-	public IEnumerator get(string abName_, Action<AssetBundle> cb_)
+	public IEnumerator GetAB(string abName_, System.Action<AssetBundle> cb_)
     {
         AssetBundle ab = null;
 		if (!s_abMaps.TryGetValue (abName_, out ab)) 
 		{
-			WWW loadWWW = new WWW (Utility.GetResourcePath (abName_));
-			yield return loadWWW;
-			if (string.IsNullOrEmpty (loadWWW.error))
-			{
-				Utility.Log ("abmanager: www load ok" + abName_);
+			AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath (abName_));
+			yield return request;
 
-				ab = loadWWW.assetBundle;
+			ab = request.assetBundle;
+			if (null != ab) 
+			{
+				Utility.Log ("ABManager load ab file ok:" + abName_);
 				s_abMaps [abName_] = ab;
 			}
 			else
 			{
-				Utility.LogError ("abmanager: www load failed" + abName_ + ",error:" + loadWWW.error);
-				yield return 0;
+				Utility.LogError ("ABManager load ab file failed:" + abName_);
+				yield break;
 			}
 		}
 
-		cb_ (ab);
+		if(null != cb_) cb_ (ab);
     }
 
     public void UnloadAB(string abName_)
@@ -37,7 +37,7 @@ public class ABManager : MonoBehaviour
         AssetBundle ab = null;
         if (s_abMaps.TryGetValue(abName_, out ab))
         {
-            Resource.UnloadAsset(ab);
+			Resources.UnloadAsset(ab);
             Resources.UnloadUnusedAssets();
 
             s_abMaps.Remove(abName_);
@@ -49,7 +49,7 @@ public class ABManager : MonoBehaviour
 		foreach(KeyValuePair<string, AssetBundle> kv in s_abMaps)
 		{
 			Resources.UnloadAsset(kv.Value);
-			Utility.Log("ABManager: unload all ab resources:" + kv.Key);
+			Utility.Log("ABManager unload all ab resources:" + kv.Key);
 		}
 
 		s_abMaps.Clear();

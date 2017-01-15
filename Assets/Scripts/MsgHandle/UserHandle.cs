@@ -35,7 +35,7 @@ public static class UserHandle
             Serializer.Serialize<Cmd.CreateUserReq>(ms2, req);
             NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
 
-            Utility.Log("Create user:" + req.username + ",type:" + req.usertype);
+            Utility.Log("Create user:" + Encoding.UTF8.GetString(req.username) + ",type:" + req.usertype);
         }
 
         return true;
@@ -61,7 +61,7 @@ public static class UserHandle
         MemoryStream ms = new MemoryStream(msg_, 0, msgLen_);
         Cmd.SendUserBaseData rcv = Serializer.Deserialize<Cmd.SendUserBaseData>(ms);
 
-        Utility.Log("recv user base data,user:" + rcv.info.userid + ",name:" + rcv.info.username);
+        Utility.Log("recv user base data,user:" + rcv.info.userid + ",name:" + Encoding.UTF8.GetString(rcv.info.username));
         return true;
     }
 

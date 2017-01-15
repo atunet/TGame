@@ -6,9 +6,10 @@ using System.IO;
 public class InitAppController : MonoBehaviour 
 {
 	private static bool s_updateChecked = false;
-	public  static void setResChecked(bool checked_) { s_updateChecked = checked_; }
-
-	private InputField m_accountField = null;
+	public  static void setResChecked(bool checked_) 
+    { 
+        s_updateChecked = checked_; 
+    }
 
 	void Start () 
 	{
@@ -20,59 +21,47 @@ public class InitAppController : MonoBehaviour
 			return;
 		}
 
-		StartCoroutine (LoadLoginAB ());
+		StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_LOGIN, CheckUpdate));
 	}
 
 
-	public IEnumerator LoadLoginAB()
+	public void CheckUpdate(AssetBundle ab_)
 	{
-		WWW loginWWW = new WWW(Utility.GetResourcePath (AppConst.AB_LOGIN));
-		yield return loginWWW;
+		GameObject loginPrefab = ab_.LoadAsset ("panel_login") as GameObject;
+		if (null == loginPrefab) 
+        {
+			Debug.LogError ("loginprefab not found");
+			return;
+		}			
+		GameObject loginRootGo = GameObject.Instantiate (loginPrefab);
+		loginRootGo.transform.SetParent (GlobalRef.UIRoot, false);
+		loginRootGo.name = "panel_login";
 
-		if (string.IsNullOrEmpty (loginWWW.error)) 
+		if (s_updateChecked) 
 		{
-			AssetBundle loginAB = loginWWW.assetBundle;
+			loginRootGo.transform.FindChild ("ResUpdate").gameObject.SetActive (false);
+            loginRootGo.transform.FindChild ("IptAccount").gameObject.SetActive(true);
 
-			GameObject loginPrefab = loginAB.LoadAsset ("panel_login") as GameObject;
-			if (null == loginPrefab) {
-				Debug.LogError ("loginprefab not found");
-				return;
-			}			
-			GameObject loginRootGo = GameObject.Instantiate (loginPrefab);
-			loginRootGo.transform.SetParent (GlobalRef.UIRoot, false);
-			loginRootGo.name = "panel_login";
-
-			if (s_updateChecked) {
-				loginRootGo.transform.FindChild ("ResUpdate").gameObject.SetActive (false);
-
-				GameObject accountInputGo = loginRootGo.transform.FindChild ("IptAccount").gameObject;
-				m_accountField = accountInputGo.GetComponent<InputField> ();
-				accountInputGo.SetActive (true);
-
-				GameObject loginBtnGo = loginRootGo.transform.FindChild ("BtnLogin").gameObject;
-				Button loginBtn = loginBtnGo.GetComponent<Button> ();
-				loginBtn.onClick.AddListener (OnLoginClick);
-				loginBtnGo.SetActive (true);
-			} else {
-				GameObject resUpdateGo = new GameObject ("ResUpdate");
-				resUpdateGo.transform.SetParent (GlobalRef.UIRoot, false);
-				resUpdateGo.AddComponent<ResUpdateController> ().m_slider = null;
-			}
+			GameObject loginBtnGo = loginRootGo.transform.FindChild ("BtnLogin").gameObject;
+			Button loginBtn = loginBtnGo.GetComponent<Button> ();
+			loginBtn.onClick.AddListener (OnLoginClick);
+			loginBtnGo.SetActive (true);
 		} 
-		else 
-		{
-		}
 	}
 
 	public void OnLoginClick()
 	{
-		ulong accountId = ulong.Parse(m_accountField.text);
-		Utility.Log ("login btn clicked:" + accountId);
+        GameObject inputGo = GlobalRef.UIRoot.FindChild("panel_login/IptAccount/Text").gameObject;
+        Text accountText = inputGo.GetComponent<Text> ();
+        Debug.Log("account:" + accountText.text);
+       
+        ulong accountId = ulong.Parse(accountText.text);
+		//Utility.Log ("login btn clicked:" + accountId);
 
 		if (NetController.Instance.Init())
 		{
 			HandleMgr.Init();
-			NetController.Instance.LoginToLoginServer("121.199.48.63", 8888, accountId);
+            NetController.Instance.LoginToLoginServer("121.199.48.63", 8888, accountId);
 			//NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accoundId);
 		}
 	}

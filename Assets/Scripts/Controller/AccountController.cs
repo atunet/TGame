@@ -20,7 +20,7 @@ public class AccountController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
 		// after account login, load the zone list UI ...
-        AssetBundle loginAB = ABManager.get(AppConst.AB_LOGIN);
+		AssetBundle loginAB = null; //ABManager.get(AppConst.AB_LOGIN);
         if (null != loginAB)
         {
             GameObject zongListPrefab = loginAB.LoadAsset("zone_list") as GameObject;

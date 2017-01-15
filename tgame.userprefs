@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Common/ABManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controller/InitMainController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controller/InitAppController.cs" Line="27" Column="32" />
-      <File FileName="Assets/Scripts/Common/ABManager.cs" Line="47" Column="11" />
+      <File FileName="Assets/Scripts/Common/GlobalRef.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controller/InitAppController.cs" Line="54" Column="81" />
       <File FileName="Assets/Scripts/Controller/ResUpdateController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/Utility.cs" Line="24" Column="32" />
-      <File FileName="Assets/Scripts/Common/GlobalRef.cs" Line="42" Column="3" />
+      <File FileName="Assets/Scripts/MsgHandle/UserHandle.cs" Line="64" Column="122" />
+      <File FileName="Assets/Scripts/Controller/NetController.cs" Line="70" Column="10" />
+      <File FileName="Assets/Scripts/Controller/InitMainController.cs" Line="14" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
