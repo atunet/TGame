@@ -8,9 +8,17 @@ import "pvptype.proto";
  */
 
 
+enum eBattleType
+{
+eBattleType_PVP 			= 1; 	// pvp
+eBattleType_GVE 			= 2; 	// gve
+}
+
 message PvpMatchReq
 {
     optional EMessageID 		id 			= 1 [default = PVP_MATCH_CS];
+	optional uint32 			heroid 		= 2;
+	optional eBattleType 		battle_type = 3[default = eBattleType_PVP];
 }
 
 message PvpMatchCancel
@@ -30,6 +38,7 @@ message BattleInfoSync
 {
     optional EMessageID 		id 		    = 1 [default = BATTLE_INFO_S];
     repeated FighterInfo        fighters    = 2;
+	optional eBattleType 		battle_type = 3;
 }
 
 message BattleClientReady

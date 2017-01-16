@@ -25,9 +25,9 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _clientversion;
+    private uint _clientversion;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"clientversion", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public ulong clientversion
+    public uint clientversion
     {
       get { return _clientversion; }
       set { _clientversion = value; }
@@ -50,12 +50,12 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _accountid;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public ulong accountid
+    private byte[] _account;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] account
     {
-      get { return _accountid; }
-      set { _accountid = value; }
+      get { return _account; }
+      set { _account = value; }
     }
     private uint _zoneid;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"zoneid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -82,21 +82,21 @@ namespace Cmd
   {
     public LoginRet() {}
     
-    private uint _id = (uint)259;
+    private Cmd.EMessageID _id = Cmd.EMessageID.LOGIN_LOGIN_SC;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue((uint)259)]
-    public uint id
+    [global::System.ComponentModel.DefaultValue(Cmd.EMessageID.LOGIN_LOGIN_SC)]
+    public Cmd.EMessageID id
     {
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _accountid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong accountid
+    private byte[] _account = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] account
     {
-      get { return _accountid; }
-      set { _accountid = value; }
+      get { return _account; }
+      set { _account = value; }
     }
     private uint _tempid = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"tempid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -140,12 +140,12 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _accountid;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"accountid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public ulong accountid
+    private byte[] _account;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] account
     {
-      get { return _accountid; }
-      set { _accountid = value; }
+      get { return _account; }
+      set { _account = value; }
     }
     private uint _tempid;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"tempid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -207,7 +207,7 @@ namespace Cmd
       set { _id = value; }
     }
     private ulong _userid;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"userid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"userid", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public ulong userid
     {
       get { return _userid; }

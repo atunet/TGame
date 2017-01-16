@@ -25,6 +25,22 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
+    {
+      get { return _heroid; }
+      set { _heroid = value; }
+    }
+    private Cmd.eBattleType _battle_type = Cmd.eBattleType.eBattleType_PVP;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"battle_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.eBattleType.eBattleType_PVP)]
+    public Cmd.eBattleType battle_type
+    {
+      get { return _battle_type; }
+      set { _battle_type = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -110,6 +126,14 @@ namespace Cmd
       get { return _fighters; }
     }
   
+    private Cmd.eBattleType _battle_type = Cmd.eBattleType.eBattleType_PVP;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"battle_type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.eBattleType.eBattleType_PVP)]
+    public Cmd.eBattleType battle_type
+    {
+      get { return _battle_type; }
+      set { _battle_type = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -199,5 +223,16 @@ namespace Cmd
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"eBattleType")]
+    public enum eBattleType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"eBattleType_PVP", Value=1)]
+      eBattleType_PVP = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"eBattleType_GVE", Value=2)]
+      eBattleType_GVE = 2
+    }
   
 }

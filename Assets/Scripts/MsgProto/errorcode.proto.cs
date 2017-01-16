@@ -49,146 +49,164 @@ namespace Cmd
       [global::ProtoBuf.ProtoEnum(Name=@"DB_ERROR", Value=400949249)]
       DB_ERROR = 400949249,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"VERSION_ERROR", Value=400949287)]
-      VERSION_ERROR = 400949287,
+      [global::ProtoBuf.ProtoEnum(Name=@"VERSION_ERROR", Value=400949250)]
+      VERSION_ERROR = 400949250,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PROTO_PARSE_ERROR", Value=400949268)]
-      PROTO_PARSE_ERROR = 400949268,
+      [global::ProtoBuf.ProtoEnum(Name=@"PROTO_PARSE_ERROR", Value=400949251)]
+      PROTO_PARSE_ERROR = 400949251,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SEQUENCE_ERROR", Value=400949290)]
-      SEQUENCE_ERROR = 400949290,
+      [global::ProtoBuf.ProtoEnum(Name=@"SEQUENCE_ERROR", Value=400949252)]
+      SEQUENCE_ERROR = 400949252,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SERVER_IS_BUSY", Value=400949256)]
-      SERVER_IS_BUSY = 400949256,
+      [global::ProtoBuf.ProtoEnum(Name=@"SERVER_IS_BUSY", Value=400949253)]
+      SERVER_IS_BUSY = 400949253,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SESSION_OVERDUE", Value=400949255)]
-      SESSION_OVERDUE = 400949255,
+      [global::ProtoBuf.ProtoEnum(Name=@"SESSION_OVERDUE", Value=400949254)]
+      SESSION_OVERDUE = 400949254,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CROSS_SVR_NOT_FOUND", Value=400949305)]
-      CROSS_SVR_NOT_FOUND = 400949305,
+      [global::ProtoBuf.ProtoEnum(Name=@"CROSS_SVR_NOT_FOUND", Value=400949255)]
+      CROSS_SVR_NOT_FOUND = 400949255,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SDK_OPT_ERROR", Value=400949257)]
-      SDK_OPT_ERROR = 400949257,
+      [global::ProtoBuf.ProtoEnum(Name=@"SDK_OPT_ERROR", Value=400949505)]
+      SDK_OPT_ERROR = 400949505,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOKEN_ERROR", Value=400949274)]
-      TOKEN_ERROR = 400949274,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOKEN_ERROR", Value=400949506)]
+      TOKEN_ERROR = 400949506,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TOKEN_NOT_FOUND", Value=400949273)]
-      TOKEN_NOT_FOUND = 400949273,
+      [global::ProtoBuf.ProtoEnum(Name=@"TOKEN_NOT_FOUND", Value=400949507)]
+      TOKEN_NOT_FOUND = 400949507,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BANK_OPEN_FAILED", Value=400949271)]
-      BANK_OPEN_FAILED = 400949271,
+      [global::ProtoBuf.ProtoEnum(Name=@"BANK_OPEN_FAILED", Value=400949508)]
+      BANK_OPEN_FAILED = 400949508,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BANK_CLOSED_FAILED", Value=400949272)]
-      BANK_CLOSED_FAILED = 400949272,
+      [global::ProtoBuf.ProtoEnum(Name=@"BANK_CLOSED_FAILED", Value=400949509)]
+      BANK_CLOSED_FAILED = 400949509,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"USER_ID_ERROR", Value=400949505)]
-      USER_ID_ERROR = 400949505,
+      [global::ProtoBuf.ProtoEnum(Name=@"USER_ID_ERROR", Value=400949761)]
+      USER_ID_ERROR = 400949761,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_TOO_OFTEN", Value=400949506)]
-      LOGIN_TOO_OFTEN = 400949506,
+      [global::ProtoBuf.ProtoEnum(Name=@"LOGIN_TOO_OFTEN", Value=400949762)]
+      LOGIN_TOO_OFTEN = 400949762,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"USER_RE_LOGIN", Value=400949507)]
-      USER_RE_LOGIN = 400949507,
+      [global::ProtoBuf.ProtoEnum(Name=@"USER_RE_LOGIN", Value=400949763)]
+      USER_RE_LOGIN = 400949763,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GATEWAY_NOT_FOUND", Value=400949508)]
-      GATEWAY_NOT_FOUND = 400949508,
+      [global::ProtoBuf.ProtoEnum(Name=@"GATEWAY_NOT_FOUND", Value=400949764)]
+      GATEWAY_NOT_FOUND = 400949764,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SYSTEM_KICK_OFF", Value=400949509)]
-      SYSTEM_KICK_OFF = 400949509,
+      [global::ProtoBuf.ProtoEnum(Name=@"SYSTEM_KICK_OFF", Value=400949765)]
+      SYSTEM_KICK_OFF = 400949765,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CONF_ERROR", Value=400949250)]
-      CONF_ERROR = 400949250,
+      [global::ProtoBuf.ProtoEnum(Name=@"CONF_ERROR", Value=400950017)]
+      CONF_ERROR = 400950017,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NAME_EXISTED", Value=400949251)]
-      NAME_EXISTED = 400949251,
+      [global::ProtoBuf.ProtoEnum(Name=@"NAME_EXISTED", Value=400950018)]
+      NAME_EXISTED = 400950018,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_ITEM_NUM", Value=400949252)]
-      MAX_ITEM_NUM = 400949252,
+      [global::ProtoBuf.ProtoEnum(Name=@"USER_LV_LIMIT", Value=400950019)]
+      USER_LV_LIMIT = 400950019,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"USER_LV_LIMIT", Value=400949253)]
-      USER_LV_LIMIT = 400949253,
+      [global::ProtoBuf.ProtoEnum(Name=@"LV_NOT_ENOUGH", Value=400950020)]
+      LV_NOT_ENOUGH = 400950020,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LV_NOT_ENOUGH", Value=400949254)]
-      LV_NOT_ENOUGH = 400949254,
+      [global::ProtoBuf.ProtoEnum(Name=@"VIPLV_NOT_ENOUGH", Value=400950021)]
+      VIPLV_NOT_ENOUGH = 400950021,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"VIPLV_NOT_ENOUGH", Value=400949270)]
-      VIPLV_NOT_ENOUGH = 400949270,
+      [global::ProtoBuf.ProtoEnum(Name=@"CASH_NOT_ENOUGH", Value=400950022)]
+      CASH_NOT_ENOUGH = 400950022,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CASH_NOT_ENOUGH", Value=400949264)]
-      CASH_NOT_ENOUGH = 400949264,
+      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=400950023)]
+      GOLD_NOT_ENOUGH = 400950023,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"GOLD_NOT_ENOUGH", Value=400949265)]
-      GOLD_NOT_ENOUGH = 400949265,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=400950024)]
+      ITEM_NOT_ENOUGH = 400950024,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_ENOUGH", Value=400949302)]
-      ITEM_NOT_ENOUGH = 400949302,
+      [global::ProtoBuf.ProtoEnum(Name=@"NAME_LEN_INVALID", Value=400950025)]
+      NAME_LEN_INVALID = 400950025,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"NAME_LEN_INVALID", Value=400949266)]
-      NAME_LEN_INVALID = 400949266,
+      [global::ProtoBuf.ProtoEnum(Name=@"CONTENT_HAVE_DIRTY", Value=400950026)]
+      CONTENT_HAVE_DIRTY = 400950026,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CONTENT_HAVE_DIRTY", Value=400949267)]
-      CONTENT_HAVE_DIRTY = 400949267,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_TIMES_LIMIT", Value=400950027)]
+      MAX_TIMES_LIMIT = 400950027,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=400949269)]
-      ITEM_NOT_FOUND = 400949269,
+      [global::ProtoBuf.ProtoEnum(Name=@"DAILY_TIMES_LIMIT", Value=400950028)]
+      DAILY_TIMES_LIMIT = 400950028,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_TIMES_LIMIT", Value=400949285)]
-      MAX_TIMES_LIMIT = 400949285,
+      [global::ProtoBuf.ProtoEnum(Name=@"IN_FORBID_TIME", Value=400950029)]
+      IN_FORBID_TIME = 400950029,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"DAILY_TIMES_LIMIT", Value=400949276)]
-      DAILY_TIMES_LIMIT = 400949276,
+      [global::ProtoBuf.ProtoEnum(Name=@"FULL_OF_USER", Value=400950030)]
+      FULL_OF_USER = 400950030,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IN_FORBID_TIME", Value=400949277)]
-      IN_FORBID_TIME = 400949277,
+      [global::ProtoBuf.ProtoEnum(Name=@"REWARD_HAVE_GOT", Value=400950031)]
+      REWARD_HAVE_GOT = 400950031,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FULL_OF_USER", Value=400949278)]
-      FULL_OF_USER = 400949278,
+      [global::ProtoBuf.ProtoEnum(Name=@"ON_CREATING_USER", Value=400950032)]
+      ON_CREATING_USER = 400950032,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"REWARD_HAVE_GOT", Value=400949279)]
-      REWARD_HAVE_GOT = 400949279,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_USER_NUM_LIMIT", Value=400950033)]
+      MAX_USER_NUM_LIMIT = 400950033,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ON_CREATING_USER", Value=400949282)]
-      ON_CREATING_USER = 400949282,
+      [global::ProtoBuf.ProtoEnum(Name=@"CREATE_SAME_USER_FORBID", Value=400950034)]
+      CREATE_SAME_USER_FORBID = 400950034,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_USER_NUM_LIMIT", Value=400949283)]
-      MAX_USER_NUM_LIMIT = 400949283,
+      [global::ProtoBuf.ProtoEnum(Name=@"MODULE_NOT_OPEN", Value=400950035)]
+      MODULE_NOT_OPEN = 400950035,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"CREATE_SAME_USER_FORBID", Value=400949284)]
-      CREATE_SAME_USER_FORBID = 400949284,
+      [global::ProtoBuf.ProtoEnum(Name=@"FREETIMES_NOT_ENOUGH", Value=400950036)]
+      FREETIMES_NOT_ENOUGH = 400950036,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MODULE_NOT_OPEN", Value=400949286)]
-      MODULE_NOT_OPEN = 400949286,
+      [global::ProtoBuf.ProtoEnum(Name=@"PAYTIMES_NOT_ENOUGH", Value=400950037)]
+      PAYTIMES_NOT_ENOUGH = 400950037,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"FREETIMES_NOT_ENOUGH", Value=400949291)]
-      FREETIMES_NOT_ENOUGH = 400949291,
+      [global::ProtoBuf.ProtoEnum(Name=@"MODULE_NOT_INIT", Value=400950038)]
+      MODULE_NOT_INIT = 400950038,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PAYTIMES_NOT_ENOUGH", Value=400949292)]
-      PAYTIMES_NOT_ENOUGH = 400949292,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_LV_LIMIT", Value=400950535)]
+      MAX_LV_LIMIT = 400950535,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MODULE_NOT_INIT", Value=400949293)]
-      MODULE_NOT_INIT = 400949293,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_NOT_FOUND", Value=400950273)]
+      ITEM_NOT_FOUND = 400950273,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"HERO_NOT_FOUND", Value=400949294)]
-      HERO_NOT_FOUND = 400949294,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_ITEM_NUM", Value=400950274)]
+      MAX_ITEM_NUM = 400950274,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_FORBID", Value=400950529)]
-      ITEM_SELL_FORBID = 400950529,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_FORBID", Value=400950275)]
+      ITEM_SELL_FORBID = 400950275,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NUM_ERR", Value=400950531)]
-      ITEM_SELL_NUM_ERR = 400950531,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_SELL_NUM_ERR", Value=400950276)]
+      ITEM_SELL_NUM_ERR = 400950276,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_STAGE_LIMIT", Value=400950785)]
-      MAX_STAGE_LIMIT = 400950785,
+      [global::ProtoBuf.ProtoEnum(Name=@"ITEM_TYPE_ERROR", Value=400950277)]
+      ITEM_TYPE_ERROR = 400950277,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"HERO_STAGE_FIRST", Value=400950786)]
-      HERO_STAGE_FIRST = 400950786,
+      [global::ProtoBuf.ProtoEnum(Name=@"HERO_NOT_FOUND", Value=400950529)]
+      HERO_NOT_FOUND = 400950529,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_QUALITY_LIMIT", Value=400950787)]
-      MAX_QUALITY_LIMIT = 400950787,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_STAGE_LIMIT", Value=400950530)]
+      MAX_STAGE_LIMIT = 400950530,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"MAX_STAR_LIMIT", Value=400950788)]
-      MAX_STAR_LIMIT = 400950788,
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_QUALITY_LIMIT", Value=400950531)]
+      MAX_QUALITY_LIMIT = 400950531,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MAX_STAR_LIMIT", Value=400950532)]
+      MAX_STAR_LIMIT = 400950532,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HERO_STAGE_FIRST", Value=400950533)]
+      HERO_STAGE_FIRST = 400950533,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HERO_LV_LIMIT", Value=400950534)]
+      HERO_LV_LIMIT = 400950534,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_NOT_FOUND", Value=400950785)]
+      SHIP_NOT_FOUND = 400950785,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CAPTAIN_NOT_FOUND", Value=400950786)]
+      CAPTAIN_NOT_FOUND = 400950786,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_ALREADY_EXIST", Value=400950787)]
+      SHIP_ALREADY_EXIST = 400950787,
             
       [global::ProtoBuf.ProtoEnum(Name=@"QUEST_INVALID", Value=400951041)]
       QUEST_INVALID = 400951041,

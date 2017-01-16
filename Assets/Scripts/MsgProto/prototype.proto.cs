@@ -140,6 +140,36 @@ namespace Cmd
       [global::ProtoBuf.ProtoEnum(Name=@"HERO_STAR_UP_SC", Value=1035)]
       HERO_STAR_UP_SC = 1035,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_CMD", Value=1280)]
+      SHIP_CMD = 1280,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_LIST_S", Value=1281)]
+      SHIP_LIST_S = 1281,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_UNLOCK_CS", Value=1282)]
+      SHIP_UNLOCK_CS = 1282,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_UNLOCK_SC", Value=1283)]
+      SHIP_UNLOCK_SC = 1283,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_LEVEL_UP_CS", Value=1284)]
+      SHIP_LEVEL_UP_CS = 1284,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_LEVEL_UP_SC", Value=1285)]
+      SHIP_LEVEL_UP_SC = 1285,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_BATTLE_START_CS", Value=1286)]
+      SHIP_BATTLE_START_CS = 1286,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_BATTLE_START_SC", Value=1287)]
+      SHIP_BATTLE_START_SC = 1287,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_BATTLE_RESULT_CS", Value=1288)]
+      SHIP_BATTLE_RESULT_CS = 1288,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SHIP_BATTLE_RESULT_SC", Value=1289)]
+      SHIP_BATTLE_RESULT_SC = 1289,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"CHAT_CMD", Value=4352)]
       CHAT_CMD = 4352,
             
@@ -213,7 +243,13 @@ namespace Cmd
       BATTLE_ALL_READY_S = 7174,
             
       [global::ProtoBuf.ProtoEnum(Name=@"BATTLE_COUNTDOWN_S", Value=7175)]
-      BATTLE_COUNTDOWN_S = 7175
+      BATTLE_COUNTDOWN_S = 7175,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TEST_SC", Value=7176)]
+      TEST_SC = 7176,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TEST_CS", Value=7177)]
+      TEST_CS = 7177
     }
   
 }

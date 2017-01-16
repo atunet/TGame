@@ -16,7 +16,7 @@ namespace Cmd
     public ItemInfo() {}
     
     private ulong _thisid;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public ulong thisid
     {
       get { return _thisid; }
@@ -30,7 +30,7 @@ namespace Cmd
       set { _itemid = value; }
     }
     private ulong _uid;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"uid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"uid", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public ulong uid
     {
       get { return _uid; }

@@ -1,0 +1,8 @@
+package Cmd;
+
+message ShipInfo
+{
+	required fixed64 thisid			=	1;		// 战船实例id
+	required uint32 shipid			=	2;		// 战船类型id
+	required uint32 level           =	3;		// 战船等级
+}

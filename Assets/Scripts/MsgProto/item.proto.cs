@@ -76,7 +76,7 @@ namespace Cmd
       set { _id = value; }
     }
     private readonly global::System.Collections.Generic.List<ulong> _list = new global::System.Collections.Generic.List<ulong>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"list", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(2, Name=@"list", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public global::System.Collections.Generic.List<ulong> list
     {
       get { return _list; }

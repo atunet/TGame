@@ -55,14 +55,11 @@ public class InitAppController : MonoBehaviour
         Text accountText = inputGo.GetComponent<Text> ();
         Debug.Log("account:" + accountText.text);
        
-        ulong accountId = ulong.Parse(accountText.text);
-		//Utility.Log ("login btn clicked:" + accountId);
-
 		if (NetController.Instance.Init())
 		{
 			HandleMgr.Init();
-            NetController.Instance.LoginToLoginServer("121.199.48.63", 8888, accountId);
-			//NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accoundId);
+            //NetController.Instance.LoginToLoginServer("121.199.48.63", 8888, accountText.text);
+            NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accountText.text);
 		}
 	}
 

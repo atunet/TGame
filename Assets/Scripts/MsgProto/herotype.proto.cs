@@ -16,7 +16,7 @@ namespace Cmd
     public HeroInfo() {}
     
     private ulong _thisid;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public ulong thisid
     {
       get { return _thisid; }

@@ -426,13 +426,13 @@ public class Tool : MonoBehaviour
 	/****************************************************************/
     /************* upload assetbundle files to web server ***********/
     /****************************************************************/
-
+    /*
     [MenuItem("Tool/Upload Resource/Upload Windows", false, 200)]
     public static void UploadWinResource()
     {
         UploadResource(BuildTarget.StandaloneWindows);
     }
-        
+      */  
     [MenuItem("Tool/Upload Resource/Upload Android", false, 201)]
     public static void UploadAndroidResource()
     {

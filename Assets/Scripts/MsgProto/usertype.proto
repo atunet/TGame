@@ -33,8 +33,8 @@ message UserInfo
 {
     required uint64	userid			=	1;		//*< 角色id 
     required bytes username			=	2;		//*< 角色名称 
-    required uint32	type			=	3;		//*< 职业类型 
-    required uint64	accid			=	4;		//*< 玩家帐号
+    required bytes account			=	3;		//*< 玩家帐号
+    required uint32	type			=	4;		//*< 职业类型 
     required uint32	mapid			=	5;		//*< 所在地图
     required uint64	gold			=	6;		//*< 金币币
     required uint32	cash			=	7;		//*< 人民币

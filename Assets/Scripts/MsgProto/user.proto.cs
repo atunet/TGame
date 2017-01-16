@@ -51,7 +51,7 @@ namespace Cmd
       set { _id = value; }
     }
     private ulong _userid;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"userid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"userid", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     public ulong userid
     {
       get { return _userid; }

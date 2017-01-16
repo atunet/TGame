@@ -173,4 +173,56 @@ namespace Cmd
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TestReq")]
+  public partial class TestReq : global::ProtoBuf.IExtensible
+  {
+    public TestReq() {}
+    
+    private Cmd.EMessageID _id = Cmd.EMessageID.TEST_CS;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.EMessageID.TEST_CS)]
+    public Cmd.EMessageID id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private ulong _seqid = default(ulong);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"seqid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    public ulong seqid
+    {
+      get { return _seqid; }
+      set { _seqid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TestRet")]
+  public partial class TestRet : global::ProtoBuf.IExtensible
+  {
+    public TestRet() {}
+    
+    private Cmd.EMessageID _id = Cmd.EMessageID.TEST_SC;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.EMessageID.TEST_SC)]
+    public Cmd.EMessageID id
+    {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private ulong _seqid = default(ulong);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"seqid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    public ulong seqid
+    {
+      get { return _seqid; }
+      set { _seqid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

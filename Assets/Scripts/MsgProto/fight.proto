@@ -436,3 +436,14 @@ message PvpResult
 	optional uint32				win 		= 2; //1,胜利，2失败
 
 }
+message TestReq
+{
+    optional EMessageID 		id 		    = 1 [default = TEST_CS];
+	optional uint64 seqid					= 2;
+}
+
+message TestRet
+{
+    optional EMessageID 		id 		    = 1 [default = TEST_SC];
+	optional uint64 seqid					= 2;
+}

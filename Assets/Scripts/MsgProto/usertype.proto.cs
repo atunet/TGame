@@ -193,19 +193,19 @@ namespace Cmd
       get { return _username; }
       set { _username = value; }
     }
+    private byte[] _account;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] account
+    {
+      get { return _account; }
+      set { _account = value; }
+    }
     private uint _type;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public uint type
     {
       get { return _type; }
       set { _type = value; }
-    }
-    private ulong _accid;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"accid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public ulong accid
-    {
-      get { return _accid; }
-      set { _accid = value; }
     }
     private uint _mapid;
     [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"mapid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

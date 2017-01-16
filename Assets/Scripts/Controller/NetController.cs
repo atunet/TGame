@@ -30,7 +30,7 @@ public class NetController : MonoBehaviour
 
     private string m_gateIP;
     private int m_gatePort;
-    private UInt64 m_accId;
+    private string m_account;
     private UInt32 m_tempId;
     private DateTime m_lastSendGateTime = DateTime.Now;
 
@@ -57,7 +57,7 @@ public class NetController : MonoBehaviour
         m_crossIP = "127.0.0.1";
         m_crossPort = 8999;
 
-        m_accId = 0;
+        m_account = "";
         m_tempId = 0;
     }
 
@@ -82,13 +82,13 @@ public class NetController : MonoBehaviour
         return true;
     }
         
-	public void LoginToLoginServer(string ip_, int port_, UInt64 accId_)
+    public void LoginToLoginServer(string ip_, int port_, string account_)
     {
         if (m_thread.InitLoginClient(ip_, port_))
         {
             m_loginIP = ip_;
             m_loginPort = port_;
-			m_accId = accId_;
+            m_account = account_;
 
             Cmd.VerifyVersion verify = new Cmd.VerifyVersion();
             verify.clientversion = 2017;
@@ -96,7 +96,7 @@ public class NetController : MonoBehaviour
             SendMsgToLogin(verify.id, m_pbStream.ToArray());
 
             Cmd.LoginReq login = new Cmd.LoginReq();
-			login.accountid = m_accId;
+            login.account = Encoding.UTF8.GetBytes(m_account);
             login.verifier = "this is verifier code";
             Serializer.Serialize<Cmd.LoginReq>(m_pbStream, login);
             SendMsgToLogin(login.id, m_pbStream.ToArray());
@@ -105,17 +105,17 @@ public class NetController : MonoBehaviour
             Debug.LogError("login to login server failed (ip:" + ip_ + ":" + port_ + ")");
     }
 
-    public void LoginToGateServer(string ip_, int port_, UInt64 accId_, UInt32 tempId_)
+    public void LoginToGateServer(string ip_, int port_, string account_, UInt32 tempId_)
     {      
         if (m_thread.InitGateClient(ip_, port_))
         {
             m_gateIP = ip_;
             m_gatePort = port_;
-            m_accId = accId_;
+            m_account = account_;
             m_tempId = tempId_;
 
             Cmd.LoginGatewayReq login = new Cmd.LoginGatewayReq();
-            login.accountid = m_accId;
+            login.account = Encoding.UTF8.GetBytes(m_account);
             login.tempid = m_tempId;
             Serializer.Serialize<Cmd.LoginGatewayReq>(m_pbStream, login);
             SendMsgToGate(login.id, m_pbStream.ToArray());          
@@ -236,7 +236,7 @@ public class NetController : MonoBehaviour
                 Debug.LogWarning("tcp gate client is disconnected!!!");
                 m_reconnectingPanel.SetActive(true);
                 m_thread.DestroyGateClient();
-                LoginToGateServer(m_gateIP, m_gatePort, m_accId, m_tempId);
+                LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
             }
             else
             {
@@ -281,7 +281,7 @@ public class NetController : MonoBehaviour
                 Debug.LogWarning("tcp gate client is disconnected!!!");
                 m_reconnectingPanel.SetActive(true);
                 m_thread.DestroyGateClient();
-                LoginToGateServer(m_gateIP, m_gatePort, m_accId, m_tempId);
+                LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
             }
         }
     }

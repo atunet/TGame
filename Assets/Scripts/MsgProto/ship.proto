@@ -1,0 +1,65 @@
+
+//
+// 海战相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+import "shiptype.proto";
+
+/// 发送角色战船数据给玩家
+message SendShipList
+{
+	optional EMessageID	id		=	1		    [default = SHIP_LIST_S];
+	repeated ShipInfo	list	=	2;		    // 已解锁的战船列表
+}
+
+message ShipUnlockReq
+{
+	optional EMessageID	id		    =	1		[default = SHIP_UNLOCK_CS];
+	optional uint32     shipid      =	2;		// 战船类型id
+}
+
+message ShipUnlockRet
+{
+	optional EMessageID	id		    =	1		[default = SHIP_UNLOCK_SC];
+	optional uint32     shipid      =	2;		// 战船类型id
+}
+
+message ShipLevelUpReq
+{
+	optional EMessageID	id		    =	1		[default = SHIP_LEVEL_UP_CS];
+	optional uint32     shipid      =	2;		// 战船类型id
+}
+
+message ShipLevelUpRet
+{
+	optional EMessageID	id		    =	1		[default = SHIP_LEVEL_UP_SC];
+	optional uint32     shipid      =	2;		// 战船类型id
+	optional uint32		level       =	3;		// 战船新等级
+}
+
+message ShipBattleStartReq
+{
+	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_START_CS];
+	optional uint32     levelid     =	2;		// 海战关卡id
+	repeated uint32     station     =	3;		// 海战阵形(6个格子船id)
+}
+
+message ShipBattleStartRet
+{
+	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_START_SC];
+}
+
+message ShipBattleResultReq
+{
+	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_RESULT_CS];
+	repeated uint32     station     =	2;		// 玩家操作
+}
+
+message ShipBattleResultRet
+{
+	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_RESULT_SC];
+	optional bool       win         =	2;		// 自己是否胜利
+}

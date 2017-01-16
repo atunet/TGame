@@ -75,9 +75,9 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private readonly global::System.Collections.Generic.List<ulong> _list = new global::System.Collections.Generic.List<ulong>();
+    private readonly global::System.Collections.Generic.List<uint> _list = new global::System.Collections.Generic.List<uint>();
     [global::ProtoBuf.ProtoMember(2, Name=@"list", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<ulong> list
+    public global::System.Collections.Generic.List<uint> list
     {
       get { return _list; }
     }
@@ -100,13 +100,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private uint _itemid = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"itemid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -142,13 +142,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private uint _level = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -184,13 +184,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -210,13 +210,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private uint _stage = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -244,13 +244,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -270,13 +270,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private uint _quality = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"quality", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -304,13 +304,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -330,13 +330,13 @@ namespace Cmd
       get { return _id; }
       set { _id = value; }
     }
-    private ulong _thisid = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"thisid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong thisid
+    private uint _heroid = default(uint);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"heroid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(uint))]
+    public uint heroid
     {
-      get { return _thisid; }
-      set { _thisid = value; }
+      get { return _heroid; }
+      set { _heroid = value; }
     }
     private uint _star = default(uint);
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"star", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

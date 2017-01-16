@@ -19,7 +19,7 @@ message UserList
 message SelectUserOnline
 {
 	optional EMessageID	id			=	1		[default = USER_ONLINE_CS];
-	required uint64		userid		=	2;		// 选择上线的角色id
+	required fixed64	userid		=	2;		// 选择上线的角色id
 }
 
 /// 玩家当前角色下线,客户端返回到角色列表,可重新选角登录
@@ -171,8 +171,8 @@ message VipChangeNotiRet
 
 message MessageGetUserInfoReq
 {
-	optional EMessageID 		id 			= 1 	[default = GET_USERINFO_C];
-    optional uint64         userid      = 2;
+	optional EMessageID     id 	    	= 1 	[default = GET_USERINFO_C];
+    optional fixed64        userid      = 2;
 }
 
 message MessageGetUserInfoRet
@@ -230,7 +230,7 @@ message MessageSendActionRankNotify
 
 message MessageSendRedPointNotify
 {
-    optional EMessageID       id          = 1     [default = SEND_RED_POINT_S];
+    optional EMessageID     id          = 1     [default = SEND_RED_POINT_S];
     required uint32         from_type   = 2;    //见from_type
 }
 
@@ -241,26 +241,26 @@ message UpdateBpReq
 
 message ArenaGetBPReq
 {
-    optional EMessageID       id      =   1       [default = ARENA_GET_BP_REQ];
-	repeated uint64			userId  =   2;      //角色id列表
+    optional EMessageID     id          =   1       [default = ARENA_GET_BP_REQ];
+	repeated fixed64		userId      =   2;      //角色id列表
 }
 
 message ArenaGetBPRet
 {
-    optional EMessageID       id      =   1       [default = ARENA_GET_BP_RET];
-	repeated ArenaUserBPInfo userbp	=   2;      //战斗力列表
+    optional EMessageID       id        =   1       [default = ARENA_GET_BP_RET];
+	repeated ArenaUserBPInfo userbp	    =   2;      //战斗力列表
 }
 
 message GetUserListReq
 {
-    optional EMessageID       id      =   1       [default = GET_USERLIST_C];
-	repeated uint64			userId  =   2;      //角色id列表
+    optional EMessageID     id      =   1       [default = GET_USERLIST_C];
+	repeated fixed64		userId  =   2;      //角色id列表
 	optional uint32			type	=   3;      // 1-基本 2-包含战斗力 3-所有 4-包含点赞
 }
 
 message GetUserListRet
 {
-    optional EMessageID       id      =   1       [default = GET_USERLIST_S];
+    optional EMessageID       id        =   1       [default = GET_USERLIST_S];
 	repeated UserBase		userbase    =   2;      //角色基本信息
 }
 

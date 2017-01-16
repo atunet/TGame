@@ -8,69 +8,77 @@ import "prototype.proto";
 
 enum EErrorCode
 {
-	/// 系统级别错误码
+	/// 框架级别错误码
 	FAILED						=	0x17e6ffff;			// 操作失败
 	SUCCESS						=	0x17e60000;			// 操作成功
 	DB_ERROR					=	0x17e60001;			// 数据库操作出错
-	VERSION_ERROR               =	0x17e60027;			// 客户端版本错误
-	PROTO_PARSE_ERROR           =   0x17e60014;			// 协议解析失败
-	SEQUENCE_ERROR              =	0x17e6002a;			// 序列号错误
-    SERVER_IS_BUSY				=	0x17e60008;			// 服务器忙
-    SESSION_OVERDUE				=	0x17e60007;			// 会话过期,重连失败
-    CROSS_SVR_NOT_FOUND         =	0x17e60039;			// 找不到跨服服务器
+	VERSION_ERROR               =	0x17e60002;			// 客户端版本错误
+	PROTO_PARSE_ERROR           =   0x17e60003;			// 协议解析失败
+	SEQUENCE_ERROR              =	0x17e60004;			// 序列号错误
+    SERVER_IS_BUSY				=	0x17e60005;			// 服务器忙
+    SESSION_OVERDUE				=	0x17e60006;			// 会话过期,重连失败
+    CROSS_SVR_NOT_FOUND         =	0x17e60007;			// 找不到跨服服务器
 
 	/// SDK返回码定义
-    SDK_OPT_ERROR				=	0x17e60009;			// sdk相关操作发生错误
-    TOKEN_ERROR					=	0x17e6001a;			// token错误
-    TOKEN_NOT_FOUND				=	0x17e60019;			// token找不到
-	BANK_OPEN_FAILED			=	0x17e60017;			// 打开交易失败
-	BANK_CLOSED_FAILED			=	0x17e60018;			// 关闭交易失败
+    SDK_OPT_ERROR				=	0x17e60101;			// sdk相关操作发生错误
+    TOKEN_ERROR					=	0x17e60102;			// token错误
+    TOKEN_NOT_FOUND				=	0x17e60103;			// token找不到
+	BANK_OPEN_FAILED			=	0x17e60104;			// 打开交易失败
+	BANK_CLOSED_FAILED			=	0x17e60105;			// 关闭交易失败
 
-	/// 登录返回码定义 - 老涂
-	USER_ID_ERROR				=	0x17e60101;			// 用户帐号非法
-	LOGIN_TOO_OFTEN				=	0x17e60102;			// 用户登录太频繁
-	USER_RE_LOGIN				=	0x17e60103;			// 用户重复上线
-	GATEWAY_NOT_FOUND			=	0x17e60104;			// 找不到可用的网关服务器
-	SYSTEM_KICK_OFF				=	0x17e60105;			// 系统踢下线
+	/// 登录返回码定义
+	USER_ID_ERROR				=	0x17e60201;			// 用户帐号非法
+	LOGIN_TOO_OFTEN				=	0x17e60202;			// 用户登录太频繁
+	USER_RE_LOGIN				=	0x17e60203;			// 用户重复上线
+	GATEWAY_NOT_FOUND			=	0x17e60204;			// 找不到可用的网关服务器
+	SYSTEM_KICK_OFF				=	0x17e60205;			// 系统踢下线
 
     /// 游戏逻辑通用返回码
-    CONF_ERROR					=	0x17e60002;			// 游戏配置错误
-	NAME_EXISTED				=	0x17e60003;			// 角色名已存在
-	MAX_ITEM_NUM				=	0x17e60004;			// 包裹已满
-	USER_LV_LIMIT				=	0x17e60005;			// 不允许超过角色当前等级
-    LV_NOT_ENOUGH				=	0x17e60006;			// 玩家等级不足
-	VIPLV_NOT_ENOUGH            =	0x17e60016;			// vip等级不满足
-	CASH_NOT_ENOUGH				=	0x17e60010;			// 魂钻不足
-	GOLD_NOT_ENOUGH				=	0x17e60011;			// 金币不足
-    ITEM_NOT_ENOUGH				=	0x17e60036;			// 道具不足
-	NAME_LEN_INVALID			=	0x17e60012;			// 名字长度不合法
-	CONTENT_HAVE_DIRTY			=   0x17e60013;			// 输入内容非法
-	ITEM_NOT_FOUND              =	0x17e60015;			// 没有找到对应物品
-	MAX_TIMES_LIMIT			    =	0x17e60025;			// 次数达到上限
-	DAILY_TIMES_LIMIT			=	0x17e6001c;			// 达到每日次数上限
-	IN_FORBID_TIME				=	0x17e6001d;			// 玩家处于禁言状态
-	FULL_OF_USER				=	0x17e6001e;			// 注册角色数已满
-	REWARD_HAVE_GOT				=	0x17e6001f;			// 奖励已经领取
-	ON_CREATING_USER			=	0x17e60022;			// 正在创角中,请稍候
-	MAX_USER_NUM_LIMIT			=	0x17e60023;			// 已达创角最大数量
-	CREATE_SAME_USER_FORBID		=	0x17e60024;			// 不允许重复创建相同类型的角色
-	MODULE_NOT_OPEN				=	0x17e60026;			// 游戏模块未开放
-	FREETIMES_NOT_ENOUGH		=	0x17e6002b;			// 免费次数不足
-	PAYTIMES_NOT_ENOUGH		    =	0x17e6002c;			// 付费次数不足
-	MODULE_NOT_INIT             =	0x17e6002d;			// 游戏模块未初始化
-	HERO_NOT_FOUND              =	0x17e6002e;			// 没有找到对应的英雄
+    CONF_ERROR					=	0x17e60301;			// 游戏配置错误
+	NAME_EXISTED				=	0x17e60302;			// 角色名已存在
+	USER_LV_LIMIT				=	0x17e60303;			// 不允许超过角色当前等级
+    LV_NOT_ENOUGH				=	0x17e60304;			// 玩家等级不足
+	VIPLV_NOT_ENOUGH            =	0x17e60305;			// vip等级不满足
+	CASH_NOT_ENOUGH				=	0x17e60306;			// 魂钻不足
+	GOLD_NOT_ENOUGH				=	0x17e60307;			// 金币不足
+    ITEM_NOT_ENOUGH				=	0x17e60308;			// 道具不足
+	NAME_LEN_INVALID			=	0x17e60309;			// 名字长度不合法
+	CONTENT_HAVE_DIRTY			=   0x17e6030a;			// 输入内容非法
+	MAX_TIMES_LIMIT			    =	0x17e6030b;			// 次数达到上限
+	DAILY_TIMES_LIMIT			=	0x17e6030c;			// 达到每日次数上限
+	IN_FORBID_TIME				=	0x17e6030d;			// 玩家处于禁言状态
+	FULL_OF_USER				=	0x17e6030e;			// 注册角色数已满
+	REWARD_HAVE_GOT				=	0x17e6030f;			// 奖励已经领取
+	ON_CREATING_USER			=	0x17e60310;			// 正在创角中,请稍候
+	MAX_USER_NUM_LIMIT			=	0x17e60311;			// 已达创角最大数量
+	CREATE_SAME_USER_FORBID		=	0x17e60312;			// 不允许重复创建相同类型的角色
+	MODULE_NOT_OPEN				=	0x17e60313;			// 游戏模块未开放
+	FREETIMES_NOT_ENOUGH		=	0x17e60314;			// 免费次数不足
+	PAYTIMES_NOT_ENOUGH		    =	0x17e60315;			// 付费次数不足
+	MODULE_NOT_INIT             =	0x17e60316;			// 游戏模块未初始化
+	MAX_LV_LIMIT                =	0x17e60507;			// 已达最高等级
 
-	/// 道具返回码定义 - 老涂
-	ITEM_SELL_FORBID			=	0x17e60501;			// 道具禁止出售
-	ITEM_SELL_NUM_ERR			=	0x17e60503;			// 出售道具数量错误
+	/// 道具返回码定义
+	ITEM_NOT_FOUND              =	0x17e60401;			// 没有找到对应物品
+	MAX_ITEM_NUM				=	0x17e60402;			// 包裹已满
+	ITEM_SELL_FORBID			=	0x17e60403;			// 道具禁止出售
+	ITEM_SELL_NUM_ERR			=	0x17e60404;			// 出售道具数量错误
+	ITEM_TYPE_ERROR             =	0x17e60405;			// 使用道具的类型不符
 
 	/// 伙伴系统返回码定义
-	MAX_STAGE_LIMIT             =	0x17e60601;			// 已达最高阶数
-	HERO_STAGE_FIRST            =	0x17e60602;			// 请先升级阶数
-	MAX_QUALITY_LIMIT           =	0x17e60603;			// 已达最高品质
-	MAX_STAR_LIMIT              =	0x17e60604;			// 已达最高星级
+	HERO_NOT_FOUND              =	0x17e60501;			// 没有找到对应的英雄
+	MAX_STAGE_LIMIT             =	0x17e60502;			// 已达最高阶数
+	MAX_QUALITY_LIMIT           =	0x17e60503;			// 已达最高品质
+	MAX_STAR_LIMIT              =	0x17e60504;			// 已达最高星级
+	HERO_STAGE_FIRST            =	0x17e60505;			// 请先升级阶数
+	HERO_LV_LIMIT               =	0x17e60506;			// 伙伴等级限制
 
-    /// 任务返回码定义 - 海滨
+	/// 海战系统返回码定义
+	SHIP_NOT_FOUND              =	0x17e60601;			// 找不到指定的战船
+	CAPTAIN_NOT_FOUND           =	0x17e60602;			// 找不到船长
+	SHIP_ALREADY_EXIST          =	0x17e60603;			// 战船已存在,不允许重复生成
+
+    /// 任务返回码定义
     QUEST_INVALID               =   0x17e60701;         // 非法任务
     QUEST_STARTNPC_ERROR        =   0x17e60702;         // 接受任务npc不在本场景 - 断线（常常）/配置不对
     QUEST_ISDOING               =   0x17e60703;         // 该任务已经正在做 -bug，前端重复发送接受任务
@@ -86,18 +94,18 @@ enum EErrorCode
     QUEST_DAILYREWDROP_ERROR    =   0x17e6070d;         // 日常任务奖励掉落包错误
 
 
-    /// 邮件返回码 - 侯斌
+    /// 邮件返回码
     MAIL_ALREADY_ACCEPTED		=   0x17e60801;         // 邮件已被领取过 -bug，前端过滤
 	MAIL_NOT_FOUND				=	0x17e60802;			// 邮件没有找到 -bug
 	MAIL_HAVE_EXPIRED		    =	0x17e60803;			// 邮件已经过期 -正常，描述
 
-	/// 扭蛋系统 - 侯斌
+	/// 扭蛋系统
 	GACHA_REQ_INVALID			=	0x17e61301;			// 非法的gacha请求
 	GACHA_GOLD_NOT_ENOUGH       =	0x17e61302;			// 金币不足
 	GACHA_CASH_NOT_ENOUGH		=	0x17e61303;			// 魂钻不足
 	GACHA_CONF_INVALID			=	0x17e61304;			// 配置出错 - 掉落包解析错误
 
-	//浦原商店 - 侯斌
+	//浦原商店
 	SHOP_REQ_INVALID			=   0x17e61401;			// 浦原商店请求非法 - 刷新失败
 	GOODS_HAVE_BUY				=   0x17e61402;			// 已经购买过该商品 - 前后端数据不统一
 }

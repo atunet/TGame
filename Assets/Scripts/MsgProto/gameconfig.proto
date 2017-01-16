@@ -39,6 +39,17 @@ message Area
 	optional float DamageAreaY			= 6;
 }
 
+message AttackRegion
+{
+	optional string ID			= 1;
+	optional int32 ColliderType			= 2;
+	optional int32 RegionIndex			= 3;
+	repeated float Position			= 4;
+	repeated float Rotation			= 5;
+	repeated float Center			= 6;
+	repeated float Size			= 7;
+}
+
 message DamageSer
 {
 	optional string ID			= 1;
@@ -125,20 +136,13 @@ message OPAnimationState
 	optional string Name			= 6;
 	optional float OverwhelmingDuration			= 7;
 	optional float EndureDuration			= 8;
-	optional float MultiVx			= 9;
-	optional float MultiVy			= 10;
-	optional float AddVx			= 11;
-	optional float AddVy			= 12;
-	optional int32 IkMode			= 13;
-	optional bool IkRotation			= 14;
-	optional string IkAreaId			= 15;
-	optional bool GoThrough			= 16;
-	optional int32 WrapMode			= 17;
-	optional float LoopDuration			= 18;
-	repeated int32 ChangeType			= 19;
-	optional float PlaySpeed			= 20;
-	optional bool Kinematic			= 21;
-	optional bool AllowRotate			= 22;
+	optional bool GoThrough			= 9;
+	optional int32 WrapMode			= 10;
+	optional float LoopDuration			= 11;
+	repeated int32 ChangeType			= 12;
+	optional float PlaySpeed			= 13;
+	optional bool Kinematic			= 14;
+	optional bool AllowRotate			= 15;
 }
 
 message OPAttackNPC
@@ -155,7 +159,7 @@ message OPAttackNPC
 	optional string ModelId			= 10;
 	optional int32 EXP			= 11;
 	optional int32 endure			= 12;
-	optional string PID			= 13;
+	optional int32 PID			= 13;
 	optional float Stock			= 14;
 	optional string NPCConfigID			= 15;
 	optional string DropGroudID			= 16;
@@ -173,17 +177,6 @@ message OPAttackNPC
 	optional int32 SkillAdjust			= 28;
 	optional string InitialBuff			= 29;
 	optional int32 InitialBuffRandomCount			= 30;
-}
-
-message OPAttackRegion
-{
-	optional string ID			= 1;
-	optional string Remark			= 2;
-	optional int32 EffectiveAttack			= 3;
-	repeated float Position			= 4;
-	repeated float Rotation			= 5;
-	repeated float Center			= 6;
-	repeated float Size			= 7;
 }
 
 message OPAudio
@@ -336,6 +329,9 @@ message OPCharacter
 	optional float IntervalDistance			= 50;
 	optional string LastEffect			= 51;
 	optional float DamageNumOffset			= 52;
+	optional string HurtRegionDefaultID			= 53;
+	repeated int32 AttackRegionIndex			= 54;
+	repeated string AttackRegionPath			= 55;
 }
 
 message OPConst
@@ -373,7 +369,7 @@ message OPDamage
 	optional int32 KatasType			= 3;
 	optional int32 DamageType			= 4;
 	optional int32 SkillConfigId			= 5;
-	optional string EffectiveAttack			= 6;
+	optional string AttackRegionIndex			= 6;
 	optional int32 GenXp			= 7;
 	optional bool IsModelExplode			= 8;
 	optional int32 MovementDamage			= 9;
@@ -443,6 +439,12 @@ message OPEnemyBorn
 	optional float Rotation			= 6;
 	optional string modelPath			= 7;
 	optional float intervalDistance			= 8;
+}
+
+message OPGameOption
+{
+	optional int32 ID			= 1;
+	repeated int32 ShipStation			= 2;
 }
 
 message OPGameParam
@@ -573,12 +575,15 @@ message OPHero
 	optional int32 VoiceComing			= 27;
 	repeated int32 KatasType			= 28;
 	optional int32 Gender			= 31;
-	repeated int32 AccessWay			= 32;
+	optional string AccessWay			= 32;
 	optional int32 HeroScore			= 33;
 	optional int32 DamageType			= 34;
 	repeated float CapsuleCenter			= 35;
 	optional float CapsuleRadius			= 36;
 	optional float CapsuleHeight			= 37;
+	optional string HurtRegionDefaultID			= 38;
+	repeated int32 AttackRegionIndex			= 39;
+	repeated string AttackRegionPath			= 40;
 }
 
 message OPHeroLevel
@@ -586,10 +591,9 @@ message OPHeroLevel
 	optional int32 ID			= 1;
 	optional int32 Level			= 2;
 	optional int32 LevelUpEXP			= 3;
-	optional int32 Stage			= 4;
-	optional int32 MaxHp			= 5;
-	optional int32 Atk_Value			= 6;
-	optional int32 Def_Value			= 7;
+	optional int32 MaxHp			= 4;
+	optional int32 Atk_Value			= 5;
+	optional int32 Def_Value			= 6;
 }
 
 message OPHeroSkill
@@ -617,11 +621,12 @@ message OPHeroStage
 {
 	optional int32 ID			= 1;
 	optional int32 HeroStage			= 2;
-	repeated int32 ItemID			= 3;
-	repeated int32 ItemCount			= 4;
-	optional int32 MaxHp			= 5;
-	optional int32 Atk_Value			= 6;
-	optional int32 Def_Value			= 7;
+	optional int32 MaxLevel			= 3;
+	optional int32 ItemID			= 4;
+	optional int32 ItemCount			= 5;
+	optional int32 MaxHp			= 6;
+	optional int32 Atk_Value			= 7;
+	optional int32 Def_Value			= 8;
 }
 
 message OPHeroStar
@@ -870,63 +875,63 @@ message OPScene
 	optional int32 PlaySfx			= 6;
 	optional bool IsShowBossComing			= 7;
 	optional int32 IsFirstCloneScene			= 8;
-	optional int32 BornPoint			= 9;
-	optional string Icon			= 10;
-	optional string PathIcon			= 11;
-	optional int32 CanClone			= 12;
-	optional int32 Activity			= 13;
-	optional int32 SceneBattleType			= 14;
-	optional int32 isThreeP			= 15;
-	optional string introIcon			= 16;
-	optional string SceneTypeDetail			= 17;
-	optional int32 Chapter			= 18;
-	optional string ChapterTitle			= 19;
-	optional string SceneShowName			= 20;
-	optional string SceneDes			= 21;
-	optional string UnitySceneName			= 22;
-	optional string BGM			= 23;
-	optional string BossBGM			= 24;
-	optional int32 ConsumeVP			= 25;
-	optional int32 WinConsumeVP			= 26;
-	optional int32 SceneLevelLimit			= 27;
-	optional string NextSceneID			= 28;
-	optional string LastSceneID			= 29;
-	optional int32 NeedStar			= 30;
-	optional int32 ReportType			= 31;
-	optional int32 TroopType			= 32;
-	optional int32 SceneTimeValue			= 33;
-	optional int32 TimesLimit			= 34;
-	optional int32 SameSceneID			= 35;
-	optional int32 MaxBatch			= 36;
-	optional string SceneAward			= 37;
-	optional string FirstPassSceneAward			= 38;
-	optional string ActivityAward			= 39;
-	optional int32 HeroAward			= 40;
-	optional int32 FirstPassHeroAward			= 41;
-	optional string PassAward			= 42;
-	optional string FirstPassAward			= 43;
-	optional string WipeAward			= 44;
-	optional string WipeItem			= 45;
-	optional int32 WipeItemCount			= 46;
-	optional int32 WipeCost			= 47;
-	optional string FilePath			= 48;
-	optional string FirstShowItem			= 49;
-	optional string ShowItem			= 50;
-	optional string Mobs			= 51;
-	optional string BigBoss			= 52;
-	optional string BattleMonster			= 53;
-	optional int32 RecommendBattlePoint			= 54;
-	optional int32 SuppressType			= 55;
-	optional string Loot			= 56;
-	optional int32 MinFightValue			= 57;
-	optional int32 MinPassTime			= 58;
-	optional string MonsterRef			= 59;
-	optional string StarTargetType			= 60;
-	optional int32 FuncUnlockID			= 61;
-	optional string ChapterDes			= 62;
-	optional string ChapterBossPrefab			= 63;
-	optional string BattleDiscription			= 64;
-	optional string ReviveID			= 65;
+	repeated int32 BornPoint			= 9;
+	optional string Icon			= 11;
+	optional string PathIcon			= 12;
+	optional int32 CanClone			= 13;
+	optional int32 Activity			= 14;
+	optional int32 SceneBattleType			= 15;
+	optional int32 isThreeP			= 16;
+	optional string introIcon			= 17;
+	optional string SceneTypeDetail			= 18;
+	optional int32 Chapter			= 19;
+	optional string ChapterTitle			= 20;
+	optional string SceneShowName			= 21;
+	optional string SceneDes			= 22;
+	optional string UnitySceneName			= 23;
+	optional string BGM			= 24;
+	optional string BossBGM			= 25;
+	optional int32 ConsumeVP			= 26;
+	optional int32 WinConsumeVP			= 27;
+	optional int32 SceneLevelLimit			= 28;
+	optional string NextSceneID			= 29;
+	optional string LastSceneID			= 30;
+	optional int32 NeedStar			= 31;
+	optional int32 ReportType			= 32;
+	optional int32 TroopType			= 33;
+	optional int32 SceneTimeValue			= 34;
+	optional int32 TimesLimit			= 35;
+	optional int32 SameSceneID			= 36;
+	optional int32 MaxBatch			= 37;
+	optional string SceneAward			= 38;
+	optional string FirstPassSceneAward			= 39;
+	optional string ActivityAward			= 40;
+	optional int32 HeroAward			= 41;
+	optional int32 FirstPassHeroAward			= 42;
+	optional string PassAward			= 43;
+	optional string FirstPassAward			= 44;
+	optional string WipeAward			= 45;
+	optional string WipeItem			= 46;
+	optional int32 WipeItemCount			= 47;
+	optional int32 WipeCost			= 48;
+	optional string FilePath			= 49;
+	optional string FirstShowItem			= 50;
+	optional string ShowItem			= 51;
+	optional string Mobs			= 52;
+	optional string BigBoss			= 53;
+	optional string BattleMonster			= 54;
+	optional int32 RecommendBattlePoint			= 55;
+	optional int32 SuppressType			= 56;
+	optional string Loot			= 57;
+	optional int32 MinFightValue			= 58;
+	optional int32 MinPassTime			= 59;
+	optional string MonsterRef			= 60;
+	optional string StarTargetType			= 61;
+	optional int32 FuncUnlockID			= 62;
+	optional string ChapterDes			= 63;
+	optional string ChapterBossPrefab			= 64;
+	optional string BattleDiscription			= 65;
+	optional string ReviveID			= 66;
 }
 
 message OPSfx
@@ -969,6 +974,30 @@ message OPShip
 	optional string SoundAppear			= 18;
 }
 
+message OPShipBase
+{
+	optional int32 ID			= 1;
+	optional int32 ShipType			= 2;
+	optional int32 Captain			= 9;
+	optional int32 CaptainSkill			= 10;
+	optional float FightPercent			= 11;
+	optional int32 Sailor			= 12;
+	optional int32 PassiveSkill			= 13;
+	optional int32 InitLevel			= 14;
+	optional int32 UserLevel			= 15;
+	optional int32 ItemID			= 16;
+	optional int32 ItemCount			= 17;
+	optional int32 Bullet			= 18;
+	optional int32 HP			= 19;
+	optional int32 ATK			= 20;
+	optional int32 DEF			= 21;
+}
+
+message OPShipBuff
+{
+	optional int32 ID			= 1;
+}
+
 message OPShipBullet
 {
 	optional int32 ID			= 1;
@@ -978,6 +1007,28 @@ message OPShipBullet
 	optional string Boom			= 5;
 	optional float Gravity			= 6;
 	optional float Speed			= 7;
+}
+
+message OPShipBullet1
+{
+	optional int32 ID			= 1;
+	optional string NameCehua			= 2;
+	optional string Flame			= 3;
+	optional string Boom			= 4;
+	optional float Gravity			= 5;
+	optional float Speed			= 6;
+}
+
+message OPShipLevel
+{
+	optional int32 ID			= 1;
+	optional int32 ShipType			= 2;
+	optional int32 ShipLevel			= 3;
+	optional float Hp_Percent			= 4;
+	optional float Atk_Percent			= 5;
+	optional float Def_Percent			= 6;
+	repeated int32 ItemID			= 7;
+	repeated int32 ItemCost			= 8;
 }
 
 message OPShipModel
@@ -1003,6 +1054,20 @@ message OPShipNpc
 	optional int32 StopTime			= 4;
 	repeated float Init			= 5;
 	repeated float Destination			= 6;
+}
+
+message OPShipSkill
+{
+	optional int32 ID			= 1;
+	optional int32 SkillType			= 2;
+	optional string NameCehua			= 3;
+	optional int32 Power			= 4;
+	optional int32 PowerCost			= 5;
+	optional int32 AttackTarget			= 6;
+	optional int32 AttackArea			= 7;
+	optional int32 AttackNum			= 8;
+	optional int32 SkillBuffID			= 9;
+	repeated int32 Damage			= 10;
 }
 
 message OPSkillCondition

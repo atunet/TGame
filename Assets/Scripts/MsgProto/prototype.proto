@@ -58,6 +58,18 @@ enum EMessageID
 	HERO_STAR_UP_CS	        =	0x040a;			// 伙伴升星
 	HERO_STAR_UP_SC	        =	0x040b;			// 伙伴升星
 
+	// 海战相关
+	SHIP_CMD				    =	0x0500;			// 海战协议ID
+	SHIP_LIST_S                 =	0x0501;			// 海战数据
+	SHIP_UNLOCK_CS              =	0x0502;			// 战船解锁
+	SHIP_UNLOCK_SC              =	0x0503;			// 战船解锁
+	SHIP_LEVEL_UP_CS            =	0x0504;			// 战船升级
+	SHIP_LEVEL_UP_SC            =	0x0505;			// 战船升级
+	SHIP_BATTLE_START_CS        =	0x0506;			// 海战开启
+	SHIP_BATTLE_START_SC        =	0x0507;			// 海战开启
+	SHIP_BATTLE_RESULT_CS       =	0x0508;			// 海战结算
+	SHIP_BATTLE_RESULT_SC       =	0x0509;			// 海战结果
+
     /*
     // 任务相关
     QUEST_CMD               =   0x0400;         // 任务协议ID
@@ -174,5 +186,8 @@ enum EMessageID
 	BATTLE_CLIENT_READY_CS      =   0x1c05; 		// 客户端通知服务器准备好了
 	BATTLE_ALL_READY_S          =   0x1c06; 		// 服务器通知所有客户端都准备好了
 	BATTLE_COUNTDOWN_S          =   0x1c07; 		// 服务器战斗开始倒计时
+
+	TEST_SC						=	0x1c08;			//测试
+	TEST_CS						=	0x1c09;
 }
 

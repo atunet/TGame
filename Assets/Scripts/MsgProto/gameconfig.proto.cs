@@ -204,6 +204,68 @@ namespace Config
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AttackRegion")]
+  public partial class AttackRegion : global::ProtoBuf.IExtensible
+  {
+    public AttackRegion() {}
+    
+    private string _ID = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private int _ColliderType = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ColliderType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ColliderType
+    {
+      get { return _ColliderType; }
+      set { _ColliderType = value; }
+    }
+    private int _RegionIndex = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RegionIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int RegionIndex
+    {
+      get { return _RegionIndex; }
+      set { _RegionIndex = value; }
+    }
+    private readonly global::System.Collections.Generic.List<float> _Position = new global::System.Collections.Generic.List<float>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Position", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public global::System.Collections.Generic.List<float> Position
+    {
+      get { return _Position; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<float> _Rotation = new global::System.Collections.Generic.List<float>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"Rotation", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public global::System.Collections.Generic.List<float> Rotation
+    {
+      get { return _Rotation; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<float> _Center = new global::System.Collections.Generic.List<float>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"Center", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public global::System.Collections.Generic.List<float> Center
+    {
+      get { return _Center; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<float> _Size = new global::System.Collections.Generic.List<float>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"Size", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public global::System.Collections.Generic.List<float> Size
+    {
+      get { return _Size; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DamageSer")]
   public partial class DamageSer : global::ProtoBuf.IExtensible
   {
@@ -696,64 +758,8 @@ namespace Config
       get { return _EndureDuration; }
       set { _EndureDuration = value; }
     }
-    private float _MultiVx = default(float);
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"MultiVx", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue(default(float))]
-    public float MultiVx
-    {
-      get { return _MultiVx; }
-      set { _MultiVx = value; }
-    }
-    private float _MultiVy = default(float);
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"MultiVy", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue(default(float))]
-    public float MultiVy
-    {
-      get { return _MultiVy; }
-      set { _MultiVy = value; }
-    }
-    private float _AddVx = default(float);
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"AddVx", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue(default(float))]
-    public float AddVx
-    {
-      get { return _AddVx; }
-      set { _AddVx = value; }
-    }
-    private float _AddVy = default(float);
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"AddVy", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue(default(float))]
-    public float AddVy
-    {
-      get { return _AddVy; }
-      set { _AddVy = value; }
-    }
-    private int _IkMode = default(int);
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"IkMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int IkMode
-    {
-      get { return _IkMode; }
-      set { _IkMode = value; }
-    }
-    private bool _IkRotation = default(bool);
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"IkRotation", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(default(bool))]
-    public bool IkRotation
-    {
-      get { return _IkRotation; }
-      set { _IkRotation = value; }
-    }
-    private string _IkAreaId = "";
-    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"IkAreaId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string IkAreaId
-    {
-      get { return _IkAreaId; }
-      set { _IkAreaId = value; }
-    }
     private bool _GoThrough = default(bool);
-    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"GoThrough", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"GoThrough", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
     public bool GoThrough
     {
@@ -761,7 +767,7 @@ namespace Config
       set { _GoThrough = value; }
     }
     private int _WrapMode = default(int);
-    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"WrapMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"WrapMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int WrapMode
     {
@@ -769,7 +775,7 @@ namespace Config
       set { _WrapMode = value; }
     }
     private float _LoopDuration = default(float);
-    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"LoopDuration", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"LoopDuration", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue(default(float))]
     public float LoopDuration
     {
@@ -777,14 +783,14 @@ namespace Config
       set { _LoopDuration = value; }
     }
     private readonly global::System.Collections.Generic.List<int> _ChangeType = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(19, Name=@"ChangeType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, Name=@"ChangeType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public global::System.Collections.Generic.List<int> ChangeType
     {
       get { return _ChangeType; }
     }
   
     private float _PlaySpeed = default(float);
-    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"PlaySpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"PlaySpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue(default(float))]
     public float PlaySpeed
     {
@@ -792,7 +798,7 @@ namespace Config
       set { _PlaySpeed = value; }
     }
     private bool _Kinematic = default(bool);
-    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"Kinematic", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"Kinematic", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
     public bool Kinematic
     {
@@ -800,7 +806,7 @@ namespace Config
       set { _Kinematic = value; }
     }
     private bool _AllowRotate = default(bool);
-    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"AllowRotate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"AllowRotate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(default(bool))]
     public bool AllowRotate
     {
@@ -913,10 +919,10 @@ namespace Config
       get { return _endure; }
       set { _endure = value; }
     }
-    private string _PID = "";
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"PID", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string PID
+    private int _PID = default(int);
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"PID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int PID
     {
       get { return _PID; }
       set { _PID = value; }
@@ -1057,68 +1063,6 @@ namespace Config
       get { return _InitialBuffRandomCount; }
       set { _InitialBuffRandomCount = value; }
     }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPAttackRegion")]
-  public partial class OPAttackRegion : global::ProtoBuf.IExtensible
-  {
-    public OPAttackRegion() {}
-    
-    private string _ID = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string ID
-    {
-      get { return _ID; }
-      set { _ID = value; }
-    }
-    private string _Remark = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Remark", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Remark
-    {
-      get { return _Remark; }
-      set { _Remark = value; }
-    }
-    private int _EffectiveAttack = default(int);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"EffectiveAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int EffectiveAttack
-    {
-      get { return _EffectiveAttack; }
-      set { _EffectiveAttack = value; }
-    }
-    private readonly global::System.Collections.Generic.List<float> _Position = new global::System.Collections.Generic.List<float>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"Position", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    public global::System.Collections.Generic.List<float> Position
-    {
-      get { return _Position; }
-    }
-  
-    private readonly global::System.Collections.Generic.List<float> _Rotation = new global::System.Collections.Generic.List<float>();
-    [global::ProtoBuf.ProtoMember(5, Name=@"Rotation", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    public global::System.Collections.Generic.List<float> Rotation
-    {
-      get { return _Rotation; }
-    }
-  
-    private readonly global::System.Collections.Generic.List<float> _Center = new global::System.Collections.Generic.List<float>();
-    [global::ProtoBuf.ProtoMember(6, Name=@"Center", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    public global::System.Collections.Generic.List<float> Center
-    {
-      get { return _Center; }
-    }
-  
-    private readonly global::System.Collections.Generic.List<float> _Size = new global::System.Collections.Generic.List<float>();
-    [global::ProtoBuf.ProtoMember(7, Name=@"Size", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    public global::System.Collections.Generic.List<float> Size
-    {
-      get { return _Size; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2178,6 +2122,28 @@ namespace Config
       get { return _DamageNumOffset; }
       set { _DamageNumOffset = value; }
     }
+    private string _HurtRegionDefaultID = "";
+    [global::ProtoBuf.ProtoMember(53, IsRequired = false, Name=@"HurtRegionDefaultID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string HurtRegionDefaultID
+    {
+      get { return _HurtRegionDefaultID; }
+      set { _HurtRegionDefaultID = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _AttackRegionIndex = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(54, Name=@"AttackRegionIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> AttackRegionIndex
+    {
+      get { return _AttackRegionIndex; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<string> _AttackRegionPath = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(55, Name=@"AttackRegionPath", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> AttackRegionPath
+    {
+      get { return _AttackRegionPath; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2407,13 +2373,13 @@ namespace Config
       get { return _SkillConfigId; }
       set { _SkillConfigId = value; }
     }
-    private string _EffectiveAttack = "";
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"EffectiveAttack", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _AttackRegionIndex = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AttackRegionIndex", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string EffectiveAttack
+    public string AttackRegionIndex
     {
-      get { return _EffectiveAttack; }
-      set { _EffectiveAttack = value; }
+      get { return _AttackRegionIndex; }
+      set { _AttackRegionIndex = value; }
     }
     private int _GenXp = default(int);
     [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"GenXp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -2895,6 +2861,31 @@ namespace Config
       get { return _intervalDistance; }
       set { _intervalDistance = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPGameOption")]
+  public partial class OPGameOption : global::ProtoBuf.IExtensible
+  {
+    public OPGameOption() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _ShipStation = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"ShipStation", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> ShipStation
+    {
+      get { return _ShipStation; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -3890,13 +3881,14 @@ namespace Config
       get { return _Gender; }
       set { _Gender = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _AccessWay = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(32, Name=@"AccessWay", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> AccessWay
+    private string _AccessWay = "";
+    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"AccessWay", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AccessWay
     {
       get { return _AccessWay; }
+      set { _AccessWay = value; }
     }
-  
     private int _HeroScore = default(int);
     [global::ProtoBuf.ProtoMember(33, IsRequired = false, Name=@"HeroScore", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
@@ -3936,6 +3928,28 @@ namespace Config
       get { return _CapsuleHeight; }
       set { _CapsuleHeight = value; }
     }
+    private string _HurtRegionDefaultID = "";
+    [global::ProtoBuf.ProtoMember(38, IsRequired = false, Name=@"HurtRegionDefaultID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string HurtRegionDefaultID
+    {
+      get { return _HurtRegionDefaultID; }
+      set { _HurtRegionDefaultID = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _AttackRegionIndex = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(39, Name=@"AttackRegionIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> AttackRegionIndex
+    {
+      get { return _AttackRegionIndex; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<string> _AttackRegionPath = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(40, Name=@"AttackRegionPath", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> AttackRegionPath
+    {
+      get { return _AttackRegionPath; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -3970,16 +3984,8 @@ namespace Config
       get { return _LevelUpEXP; }
       set { _LevelUpEXP = value; }
     }
-    private int _Stage = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Stage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int Stage
-    {
-      get { return _Stage; }
-      set { _Stage = value; }
-    }
     private int _MaxHp = default(int);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int MaxHp
     {
@@ -3987,7 +3993,7 @@ namespace Config
       set { _MaxHp = value; }
     }
     private int _Atk_Value = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Atk_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Atk_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Atk_Value
     {
@@ -3995,7 +4001,7 @@ namespace Config
       set { _Atk_Value = value; }
     }
     private int _Def_Value = default(int);
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Def_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Def_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Def_Value
     {
@@ -4171,22 +4177,32 @@ namespace Config
       get { return _HeroStage; }
       set { _HeroStage = value; }
     }
-    private readonly global::System.Collections.Generic.List<int> _ItemID = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"ItemID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> ItemID
+    private int _MaxLevel = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MaxLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int MaxLevel
+    {
+      get { return _MaxLevel; }
+      set { _MaxLevel = value; }
+    }
+    private int _ItemID = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ItemID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ItemID
     {
       get { return _ItemID; }
+      set { _ItemID = value; }
     }
-  
-    private readonly global::System.Collections.Generic.List<int> _ItemCount = new global::System.Collections.Generic.List<int>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"ItemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public global::System.Collections.Generic.List<int> ItemCount
+    private int _ItemCount = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ItemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ItemCount
     {
       get { return _ItemCount; }
+      set { _ItemCount = value; }
     }
-  
     private int _MaxHp = default(int);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int MaxHp
     {
@@ -4194,7 +4210,7 @@ namespace Config
       set { _MaxHp = value; }
     }
     private int _Atk_Value = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Atk_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Atk_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Atk_Value
     {
@@ -4202,7 +4218,7 @@ namespace Config
       set { _Atk_Value = value; }
     }
     private int _Def_Value = default(int);
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Def_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Def_Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Def_Value
     {
@@ -5725,16 +5741,15 @@ namespace Config
       get { return _IsFirstCloneScene; }
       set { _IsFirstCloneScene = value; }
     }
-    private int _BornPoint = default(int);
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"BornPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int BornPoint
+    private readonly global::System.Collections.Generic.List<int> _BornPoint = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"BornPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> BornPoint
     {
       get { return _BornPoint; }
-      set { _BornPoint = value; }
     }
+  
     private string _Icon = "";
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"Icon", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"Icon", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Icon
     {
@@ -5742,7 +5757,7 @@ namespace Config
       set { _Icon = value; }
     }
     private string _PathIcon = "";
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"PathIcon", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"PathIcon", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string PathIcon
     {
@@ -5750,7 +5765,7 @@ namespace Config
       set { _PathIcon = value; }
     }
     private int _CanClone = default(int);
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"CanClone", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"CanClone", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int CanClone
     {
@@ -5758,7 +5773,7 @@ namespace Config
       set { _CanClone = value; }
     }
     private int _Activity = default(int);
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"Activity", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"Activity", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Activity
     {
@@ -5766,7 +5781,7 @@ namespace Config
       set { _Activity = value; }
     }
     private int _SceneBattleType = default(int);
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"SceneBattleType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"SceneBattleType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int SceneBattleType
     {
@@ -5774,7 +5789,7 @@ namespace Config
       set { _SceneBattleType = value; }
     }
     private int _isThreeP = default(int);
-    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"isThreeP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"isThreeP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int isThreeP
     {
@@ -5782,7 +5797,7 @@ namespace Config
       set { _isThreeP = value; }
     }
     private string _introIcon = "";
-    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"introIcon", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"introIcon", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string introIcon
     {
@@ -5790,7 +5805,7 @@ namespace Config
       set { _introIcon = value; }
     }
     private string _SceneTypeDetail = "";
-    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"SceneTypeDetail", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"SceneTypeDetail", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string SceneTypeDetail
     {
@@ -5798,7 +5813,7 @@ namespace Config
       set { _SceneTypeDetail = value; }
     }
     private int _Chapter = default(int);
-    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"Chapter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"Chapter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int Chapter
     {
@@ -5806,7 +5821,7 @@ namespace Config
       set { _Chapter = value; }
     }
     private string _ChapterTitle = "";
-    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"ChapterTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"ChapterTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ChapterTitle
     {
@@ -5814,7 +5829,7 @@ namespace Config
       set { _ChapterTitle = value; }
     }
     private string _SceneShowName = "";
-    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"SceneShowName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"SceneShowName", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string SceneShowName
     {
@@ -5822,7 +5837,7 @@ namespace Config
       set { _SceneShowName = value; }
     }
     private string _SceneDes = "";
-    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"SceneDes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"SceneDes", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string SceneDes
     {
@@ -5830,7 +5845,7 @@ namespace Config
       set { _SceneDes = value; }
     }
     private string _UnitySceneName = "";
-    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"UnitySceneName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"UnitySceneName", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string UnitySceneName
     {
@@ -5838,7 +5853,7 @@ namespace Config
       set { _UnitySceneName = value; }
     }
     private string _BGM = "";
-    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"BGM", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"BGM", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BGM
     {
@@ -5846,7 +5861,7 @@ namespace Config
       set { _BGM = value; }
     }
     private string _BossBGM = "";
-    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"BossBGM", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(25, IsRequired = false, Name=@"BossBGM", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BossBGM
     {
@@ -5854,7 +5869,7 @@ namespace Config
       set { _BossBGM = value; }
     }
     private int _ConsumeVP = default(int);
-    [global::ProtoBuf.ProtoMember(25, IsRequired = false, Name=@"ConsumeVP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(26, IsRequired = false, Name=@"ConsumeVP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int ConsumeVP
     {
@@ -5862,7 +5877,7 @@ namespace Config
       set { _ConsumeVP = value; }
     }
     private int _WinConsumeVP = default(int);
-    [global::ProtoBuf.ProtoMember(26, IsRequired = false, Name=@"WinConsumeVP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(27, IsRequired = false, Name=@"WinConsumeVP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int WinConsumeVP
     {
@@ -5870,7 +5885,7 @@ namespace Config
       set { _WinConsumeVP = value; }
     }
     private int _SceneLevelLimit = default(int);
-    [global::ProtoBuf.ProtoMember(27, IsRequired = false, Name=@"SceneLevelLimit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(28, IsRequired = false, Name=@"SceneLevelLimit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int SceneLevelLimit
     {
@@ -5878,7 +5893,7 @@ namespace Config
       set { _SceneLevelLimit = value; }
     }
     private string _NextSceneID = "";
-    [global::ProtoBuf.ProtoMember(28, IsRequired = false, Name=@"NextSceneID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"NextSceneID", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string NextSceneID
     {
@@ -5886,7 +5901,7 @@ namespace Config
       set { _NextSceneID = value; }
     }
     private string _LastSceneID = "";
-    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"LastSceneID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(30, IsRequired = false, Name=@"LastSceneID", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string LastSceneID
     {
@@ -5894,7 +5909,7 @@ namespace Config
       set { _LastSceneID = value; }
     }
     private int _NeedStar = default(int);
-    [global::ProtoBuf.ProtoMember(30, IsRequired = false, Name=@"NeedStar", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(31, IsRequired = false, Name=@"NeedStar", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int NeedStar
     {
@@ -5902,7 +5917,7 @@ namespace Config
       set { _NeedStar = value; }
     }
     private int _ReportType = default(int);
-    [global::ProtoBuf.ProtoMember(31, IsRequired = false, Name=@"ReportType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"ReportType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int ReportType
     {
@@ -5910,7 +5925,7 @@ namespace Config
       set { _ReportType = value; }
     }
     private int _TroopType = default(int);
-    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"TroopType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(33, IsRequired = false, Name=@"TroopType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int TroopType
     {
@@ -5918,7 +5933,7 @@ namespace Config
       set { _TroopType = value; }
     }
     private int _SceneTimeValue = default(int);
-    [global::ProtoBuf.ProtoMember(33, IsRequired = false, Name=@"SceneTimeValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(34, IsRequired = false, Name=@"SceneTimeValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int SceneTimeValue
     {
@@ -5926,7 +5941,7 @@ namespace Config
       set { _SceneTimeValue = value; }
     }
     private int _TimesLimit = default(int);
-    [global::ProtoBuf.ProtoMember(34, IsRequired = false, Name=@"TimesLimit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(35, IsRequired = false, Name=@"TimesLimit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int TimesLimit
     {
@@ -5934,7 +5949,7 @@ namespace Config
       set { _TimesLimit = value; }
     }
     private int _SameSceneID = default(int);
-    [global::ProtoBuf.ProtoMember(35, IsRequired = false, Name=@"SameSceneID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(36, IsRequired = false, Name=@"SameSceneID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int SameSceneID
     {
@@ -5942,7 +5957,7 @@ namespace Config
       set { _SameSceneID = value; }
     }
     private int _MaxBatch = default(int);
-    [global::ProtoBuf.ProtoMember(36, IsRequired = false, Name=@"MaxBatch", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(37, IsRequired = false, Name=@"MaxBatch", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int MaxBatch
     {
@@ -5950,7 +5965,7 @@ namespace Config
       set { _MaxBatch = value; }
     }
     private string _SceneAward = "";
-    [global::ProtoBuf.ProtoMember(37, IsRequired = false, Name=@"SceneAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(38, IsRequired = false, Name=@"SceneAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string SceneAward
     {
@@ -5958,7 +5973,7 @@ namespace Config
       set { _SceneAward = value; }
     }
     private string _FirstPassSceneAward = "";
-    [global::ProtoBuf.ProtoMember(38, IsRequired = false, Name=@"FirstPassSceneAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(39, IsRequired = false, Name=@"FirstPassSceneAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FirstPassSceneAward
     {
@@ -5966,7 +5981,7 @@ namespace Config
       set { _FirstPassSceneAward = value; }
     }
     private string _ActivityAward = "";
-    [global::ProtoBuf.ProtoMember(39, IsRequired = false, Name=@"ActivityAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(40, IsRequired = false, Name=@"ActivityAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ActivityAward
     {
@@ -5974,7 +5989,7 @@ namespace Config
       set { _ActivityAward = value; }
     }
     private int _HeroAward = default(int);
-    [global::ProtoBuf.ProtoMember(40, IsRequired = false, Name=@"HeroAward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(41, IsRequired = false, Name=@"HeroAward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int HeroAward
     {
@@ -5982,7 +5997,7 @@ namespace Config
       set { _HeroAward = value; }
     }
     private int _FirstPassHeroAward = default(int);
-    [global::ProtoBuf.ProtoMember(41, IsRequired = false, Name=@"FirstPassHeroAward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(42, IsRequired = false, Name=@"FirstPassHeroAward", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int FirstPassHeroAward
     {
@@ -5990,7 +6005,7 @@ namespace Config
       set { _FirstPassHeroAward = value; }
     }
     private string _PassAward = "";
-    [global::ProtoBuf.ProtoMember(42, IsRequired = false, Name=@"PassAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(43, IsRequired = false, Name=@"PassAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string PassAward
     {
@@ -5998,7 +6013,7 @@ namespace Config
       set { _PassAward = value; }
     }
     private string _FirstPassAward = "";
-    [global::ProtoBuf.ProtoMember(43, IsRequired = false, Name=@"FirstPassAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(44, IsRequired = false, Name=@"FirstPassAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FirstPassAward
     {
@@ -6006,7 +6021,7 @@ namespace Config
       set { _FirstPassAward = value; }
     }
     private string _WipeAward = "";
-    [global::ProtoBuf.ProtoMember(44, IsRequired = false, Name=@"WipeAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(45, IsRequired = false, Name=@"WipeAward", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string WipeAward
     {
@@ -6014,7 +6029,7 @@ namespace Config
       set { _WipeAward = value; }
     }
     private string _WipeItem = "";
-    [global::ProtoBuf.ProtoMember(45, IsRequired = false, Name=@"WipeItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(46, IsRequired = false, Name=@"WipeItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string WipeItem
     {
@@ -6022,7 +6037,7 @@ namespace Config
       set { _WipeItem = value; }
     }
     private int _WipeItemCount = default(int);
-    [global::ProtoBuf.ProtoMember(46, IsRequired = false, Name=@"WipeItemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(47, IsRequired = false, Name=@"WipeItemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int WipeItemCount
     {
@@ -6030,7 +6045,7 @@ namespace Config
       set { _WipeItemCount = value; }
     }
     private int _WipeCost = default(int);
-    [global::ProtoBuf.ProtoMember(47, IsRequired = false, Name=@"WipeCost", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(48, IsRequired = false, Name=@"WipeCost", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int WipeCost
     {
@@ -6038,7 +6053,7 @@ namespace Config
       set { _WipeCost = value; }
     }
     private string _FilePath = "";
-    [global::ProtoBuf.ProtoMember(48, IsRequired = false, Name=@"FilePath", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(49, IsRequired = false, Name=@"FilePath", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FilePath
     {
@@ -6046,7 +6061,7 @@ namespace Config
       set { _FilePath = value; }
     }
     private string _FirstShowItem = "";
-    [global::ProtoBuf.ProtoMember(49, IsRequired = false, Name=@"FirstShowItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(50, IsRequired = false, Name=@"FirstShowItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FirstShowItem
     {
@@ -6054,7 +6069,7 @@ namespace Config
       set { _FirstShowItem = value; }
     }
     private string _ShowItem = "";
-    [global::ProtoBuf.ProtoMember(50, IsRequired = false, Name=@"ShowItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(51, IsRequired = false, Name=@"ShowItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ShowItem
     {
@@ -6062,7 +6077,7 @@ namespace Config
       set { _ShowItem = value; }
     }
     private string _Mobs = "";
-    [global::ProtoBuf.ProtoMember(51, IsRequired = false, Name=@"Mobs", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(52, IsRequired = false, Name=@"Mobs", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Mobs
     {
@@ -6070,7 +6085,7 @@ namespace Config
       set { _Mobs = value; }
     }
     private string _BigBoss = "";
-    [global::ProtoBuf.ProtoMember(52, IsRequired = false, Name=@"BigBoss", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(53, IsRequired = false, Name=@"BigBoss", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BigBoss
     {
@@ -6078,7 +6093,7 @@ namespace Config
       set { _BigBoss = value; }
     }
     private string _BattleMonster = "";
-    [global::ProtoBuf.ProtoMember(53, IsRequired = false, Name=@"BattleMonster", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(54, IsRequired = false, Name=@"BattleMonster", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BattleMonster
     {
@@ -6086,7 +6101,7 @@ namespace Config
       set { _BattleMonster = value; }
     }
     private int _RecommendBattlePoint = default(int);
-    [global::ProtoBuf.ProtoMember(54, IsRequired = false, Name=@"RecommendBattlePoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(55, IsRequired = false, Name=@"RecommendBattlePoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int RecommendBattlePoint
     {
@@ -6094,7 +6109,7 @@ namespace Config
       set { _RecommendBattlePoint = value; }
     }
     private int _SuppressType = default(int);
-    [global::ProtoBuf.ProtoMember(55, IsRequired = false, Name=@"SuppressType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(56, IsRequired = false, Name=@"SuppressType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int SuppressType
     {
@@ -6102,7 +6117,7 @@ namespace Config
       set { _SuppressType = value; }
     }
     private string _Loot = "";
-    [global::ProtoBuf.ProtoMember(56, IsRequired = false, Name=@"Loot", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(57, IsRequired = false, Name=@"Loot", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Loot
     {
@@ -6110,7 +6125,7 @@ namespace Config
       set { _Loot = value; }
     }
     private int _MinFightValue = default(int);
-    [global::ProtoBuf.ProtoMember(57, IsRequired = false, Name=@"MinFightValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(58, IsRequired = false, Name=@"MinFightValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int MinFightValue
     {
@@ -6118,7 +6133,7 @@ namespace Config
       set { _MinFightValue = value; }
     }
     private int _MinPassTime = default(int);
-    [global::ProtoBuf.ProtoMember(58, IsRequired = false, Name=@"MinPassTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(59, IsRequired = false, Name=@"MinPassTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int MinPassTime
     {
@@ -6126,7 +6141,7 @@ namespace Config
       set { _MinPassTime = value; }
     }
     private string _MonsterRef = "";
-    [global::ProtoBuf.ProtoMember(59, IsRequired = false, Name=@"MonsterRef", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(60, IsRequired = false, Name=@"MonsterRef", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string MonsterRef
     {
@@ -6134,7 +6149,7 @@ namespace Config
       set { _MonsterRef = value; }
     }
     private string _StarTargetType = "";
-    [global::ProtoBuf.ProtoMember(60, IsRequired = false, Name=@"StarTargetType", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(61, IsRequired = false, Name=@"StarTargetType", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string StarTargetType
     {
@@ -6142,7 +6157,7 @@ namespace Config
       set { _StarTargetType = value; }
     }
     private int _FuncUnlockID = default(int);
-    [global::ProtoBuf.ProtoMember(61, IsRequired = false, Name=@"FuncUnlockID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(62, IsRequired = false, Name=@"FuncUnlockID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(int))]
     public int FuncUnlockID
     {
@@ -6150,7 +6165,7 @@ namespace Config
       set { _FuncUnlockID = value; }
     }
     private string _ChapterDes = "";
-    [global::ProtoBuf.ProtoMember(62, IsRequired = false, Name=@"ChapterDes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(63, IsRequired = false, Name=@"ChapterDes", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ChapterDes
     {
@@ -6158,7 +6173,7 @@ namespace Config
       set { _ChapterDes = value; }
     }
     private string _ChapterBossPrefab = "";
-    [global::ProtoBuf.ProtoMember(63, IsRequired = false, Name=@"ChapterBossPrefab", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(64, IsRequired = false, Name=@"ChapterBossPrefab", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ChapterBossPrefab
     {
@@ -6166,7 +6181,7 @@ namespace Config
       set { _ChapterBossPrefab = value; }
     }
     private string _BattleDiscription = "";
-    [global::ProtoBuf.ProtoMember(64, IsRequired = false, Name=@"BattleDiscription", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(65, IsRequired = false, Name=@"BattleDiscription", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BattleDiscription
     {
@@ -6174,7 +6189,7 @@ namespace Config
       set { _BattleDiscription = value; }
     }
     private string _ReviveID = "";
-    [global::ProtoBuf.ProtoMember(65, IsRequired = false, Name=@"ReviveID", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(66, IsRequired = false, Name=@"ReviveID", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ReviveID
     {
@@ -6461,6 +6476,154 @@ namespace Config
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipBase")]
+  public partial class OPShipBase : global::ProtoBuf.IExtensible
+  {
+    public OPShipBase() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private int _ShipType = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ShipType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ShipType
+    {
+      get { return _ShipType; }
+      set { _ShipType = value; }
+    }
+    private int _Captain = default(int);
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Captain", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int Captain
+    {
+      get { return _Captain; }
+      set { _Captain = value; }
+    }
+    private int _CaptainSkill = default(int);
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"CaptainSkill", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int CaptainSkill
+    {
+      get { return _CaptainSkill; }
+      set { _CaptainSkill = value; }
+    }
+    private float _FightPercent = default(float);
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"FightPercent", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float FightPercent
+    {
+      get { return _FightPercent; }
+      set { _FightPercent = value; }
+    }
+    private int _Sailor = default(int);
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"Sailor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int Sailor
+    {
+      get { return _Sailor; }
+      set { _Sailor = value; }
+    }
+    private int _PassiveSkill = default(int);
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"PassiveSkill", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int PassiveSkill
+    {
+      get { return _PassiveSkill; }
+      set { _PassiveSkill = value; }
+    }
+    private int _InitLevel = default(int);
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"InitLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int InitLevel
+    {
+      get { return _InitLevel; }
+      set { _InitLevel = value; }
+    }
+    private int _UserLevel = default(int);
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"UserLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int UserLevel
+    {
+      get { return _UserLevel; }
+      set { _UserLevel = value; }
+    }
+    private int _ItemID = default(int);
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"ItemID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ItemID
+    {
+      get { return _ItemID; }
+      set { _ItemID = value; }
+    }
+    private int _ItemCount = default(int);
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"ItemCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ItemCount
+    {
+      get { return _ItemCount; }
+      set { _ItemCount = value; }
+    }
+    private int _Bullet = default(int);
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"Bullet", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int Bullet
+    {
+      get { return _Bullet; }
+      set { _Bullet = value; }
+    }
+    private int _HP = default(int);
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"HP", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int HP
+    {
+      get { return _HP; }
+      set { _HP = value; }
+    }
+    private int _ATK = default(int);
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"ATK", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ATK
+    {
+      get { return _ATK; }
+      set { _ATK = value; }
+    }
+    private int _DEF = default(int);
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"DEF", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int DEF
+    {
+      get { return _DEF; }
+      set { _DEF = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipBuff")]
+  public partial class OPShipBuff : global::ProtoBuf.IExtensible
+  {
+    public OPShipBuff() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipBullet")]
   public partial class OPShipBullet : global::ProtoBuf.IExtensible
   {
@@ -6522,6 +6685,136 @@ namespace Config
       get { return _Speed; }
       set { _Speed = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipBullet1")]
+  public partial class OPShipBullet1 : global::ProtoBuf.IExtensible
+  {
+    public OPShipBullet1() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private string _NameCehua = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"NameCehua", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string NameCehua
+    {
+      get { return _NameCehua; }
+      set { _NameCehua = value; }
+    }
+    private string _Flame = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Flame", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Flame
+    {
+      get { return _Flame; }
+      set { _Flame = value; }
+    }
+    private string _Boom = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Boom", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Boom
+    {
+      get { return _Boom; }
+      set { _Boom = value; }
+    }
+    private float _Gravity = default(float);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Gravity", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float Gravity
+    {
+      get { return _Gravity; }
+      set { _Gravity = value; }
+    }
+    private float _Speed = default(float);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float Speed
+    {
+      get { return _Speed; }
+      set { _Speed = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipLevel")]
+  public partial class OPShipLevel : global::ProtoBuf.IExtensible
+  {
+    public OPShipLevel() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private int _ShipType = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ShipType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ShipType
+    {
+      get { return _ShipType; }
+      set { _ShipType = value; }
+    }
+    private int _ShipLevel = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ShipLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ShipLevel
+    {
+      get { return _ShipLevel; }
+      set { _ShipLevel = value; }
+    }
+    private float _Hp_Percent = default(float);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Hp_Percent", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float Hp_Percent
+    {
+      get { return _Hp_Percent; }
+      set { _Hp_Percent = value; }
+    }
+    private float _Atk_Percent = default(float);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Atk_Percent", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float Atk_Percent
+    {
+      get { return _Atk_Percent; }
+      set { _Atk_Percent = value; }
+    }
+    private float _Def_Percent = default(float);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Def_Percent", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(float))]
+    public float Def_Percent
+    {
+      get { return _Def_Percent; }
+      set { _Def_Percent = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _ItemID = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"ItemID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> ItemID
+    {
+      get { return _ItemID; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<int> _ItemCost = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"ItemCost", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> ItemCost
+    {
+      get { return _ItemCost; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -6672,6 +6965,95 @@ namespace Config
     public global::System.Collections.Generic.List<float> Destination
     {
       get { return _Destination; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OPShipSkill")]
+  public partial class OPShipSkill : global::ProtoBuf.IExtensible
+  {
+    public OPShipSkill() {}
+    
+    private int _ID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int ID
+    {
+      get { return _ID; }
+      set { _ID = value; }
+    }
+    private int _SkillType = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int SkillType
+    {
+      get { return _SkillType; }
+      set { _SkillType = value; }
+    }
+    private string _NameCehua = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"NameCehua", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string NameCehua
+    {
+      get { return _NameCehua; }
+      set { _NameCehua = value; }
+    }
+    private int _Power = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Power", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int Power
+    {
+      get { return _Power; }
+      set { _Power = value; }
+    }
+    private int _PowerCost = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"PowerCost", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int PowerCost
+    {
+      get { return _PowerCost; }
+      set { _PowerCost = value; }
+    }
+    private int _AttackTarget = default(int);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AttackTarget", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int AttackTarget
+    {
+      get { return _AttackTarget; }
+      set { _AttackTarget = value; }
+    }
+    private int _AttackArea = default(int);
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"AttackArea", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int AttackArea
+    {
+      get { return _AttackArea; }
+      set { _AttackArea = value; }
+    }
+    private int _AttackNum = default(int);
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"AttackNum", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int AttackNum
+    {
+      get { return _AttackNum; }
+      set { _AttackNum = value; }
+    }
+    private int _SkillBuffID = default(int);
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"SkillBuffID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int SkillBuffID
+    {
+      get { return _SkillBuffID; }
+      set { _SkillBuffID = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _Damage = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(10, Name=@"Damage", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> Damage
+    {
+      get { return _Damage; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

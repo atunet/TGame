@@ -27,7 +27,7 @@ message UpdateItemList
 message RemoveItemList
 {
 	optional EMessageID	id		=	1		[default = REMOVE_ITEM_LIST_S];
-	repeated uint64		list	=	2;		// 道具实例id列表
+	repeated fixed64	list	=	2;		// 道具实例id列表
 }
 
 /// 玩家请求出售道具

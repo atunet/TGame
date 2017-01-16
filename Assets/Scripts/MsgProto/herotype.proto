@@ -2,7 +2,7 @@ package Cmd;
 
 message HeroInfo
 {
-	required uint64 thisid			=	1;		// 伙伴实例id
+	required fixed64 thisid			=	1;		// 伙伴实例id
 	required uint32 heroid			=	2;		// 伙伴类型id
 	required uint32 level           =	4;		// 伙伴等级
 	required uint32 exp             =	8;		// 伙伴经验

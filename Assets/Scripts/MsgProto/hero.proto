@@ -12,28 +12,28 @@ import "herotype.proto";
 /// 发送角色伙伴数据给玩家
 message SendHeroList
 {
-	optional EMessageID	id		=	1		[default = HERO_LIST_S];
-	repeated HeroInfo	list	=	2;		// 伙伴列表
+	optional EMessageID	id		    =	1		[default = HERO_LIST_S];
+	repeated HeroInfo	list	    =	2;		// 伙伴列表
 }
 
 /// 伙伴更新通知玩家(包括新增)
 message UpdateHeroList
 {
-	optional EMessageID	id		=	1		[default = UPDATE_HERO_LIST_S];
-	repeated HeroInfo	list	=	2;		// 更新伙伴列表
+	optional EMessageID	id		    =	1		[default = UPDATE_HERO_LIST_S];
+	repeated HeroInfo	list	    =	2;		// 更新伙伴列表
 }
 
 /// 删除伙伴通知玩家
 message RemoveHeroList
 {
-	optional EMessageID	id		=	1		[default = REMOVE_HERO_LIST_S];
-	repeated uint64		list	=	2;		// 伙伴实例id列表
+	optional EMessageID	id		    =	1		[default = REMOVE_HERO_LIST_S];
+	repeated uint32     list	    =	2;		// 伙伴类型id列表
 }
 
 message Item2HeroExpReq
 {
 	optional EMessageID	id		    =	1		[default = HERO_ITEM_2_EXP_CS];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32     heroid      =	2;		// 伙伴类型id
 	optional uint32		itemid      =	3;		// 道具id
 	optional uint32		itemnum     =	4;		// 道具数量
 }
@@ -41,7 +41,7 @@ message Item2HeroExpReq
 message Item2HeroExpRet
 {
 	optional EMessageID	id		    =	1		[default = HERO_ITEM_2_EXP_SC];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32     heroid      =	2;		// 伙伴类型id
 	optional uint32		level       =	3;		// 伙伴当前等级
 	optional uint32		exp         =	4;		// 伙伴当前经验
 }
@@ -49,38 +49,38 @@ message Item2HeroExpRet
 message HeroStageUpReq
 {
 	optional EMessageID	id		    =	1		[default = HERO_STAGE_UP_CS];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 }
 
 message HeroStageUpRet
 {
 	optional EMessageID	id		    =	1		[default = HERO_STAGE_UP_SC];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 	optional uint32		stage       =	3;		// 伙伴当前阶数
 }
 
 message HeroQualityUpReq
 {
 	optional EMessageID	id		    =	1		[default = HERO_QUALITY_UP_CS];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 }
 
 message HeroQualityUpRet
 {
 	optional EMessageID	id		    =	1		[default = HERO_QUALITY_UP_SC];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 	optional uint32		quality     =	3;		// 伙伴当前品质
 }
 
 message HeroStarUpReq
 {
 	optional EMessageID	id		    =	1		[default = HERO_STAR_UP_CS];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 }
 
 message HeroStarUpRet
 {
 	optional EMessageID	id		    =	1		[default = HERO_STAR_UP_SC];
-	optional uint64		thisid      =	2;		// 伙伴实例id
+	optional uint32	    heroid      =	2;		// 伙伴类型id
 	optional uint32		star        =	3;		// 伙伴当前星级
 }

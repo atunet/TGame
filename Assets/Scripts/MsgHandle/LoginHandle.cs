@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using System.Collections.Generic;
 using ProtoBuf;
 
@@ -10,7 +11,7 @@ public static class LoginHandle
         Cmd.LoginRet rcv = Serializer.Deserialize<Cmd.LoginRet>(ms);
         Utility.Log("Recv gateway server addr:[" + rcv.gatewayip + ":" + rcv.gatewayport + "]"); 
 
-        NetController.Instance.LoginToGateServer(rcv.gatewayip, (int)rcv.gatewayport, rcv.accountid, rcv.tempid);
+        NetController.Instance.LoginToGateServer(rcv.gatewayip, (int)rcv.gatewayport,  Encoding.UTF8.GetString(rcv.account), rcv.tempid);
         NetController.Instance.DestroyLoginClient();
         return true;
     }

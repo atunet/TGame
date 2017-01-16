@@ -2,10 +2,10 @@ package Cmd;
 
 message ItemInfo
 {
-	required uint64 thisid			=	1;		// 道具实例id
-	required uint32 itemid			=	2;		// 道具类型id
-	required uint64 uid			    =	3;		// 角色id 
-	required uint32 num				=	4;		// 叠加数量
+	required fixed64    thisid		=	1;		// 道具实例id
+	required uint32     itemid		=	2;		// 道具类型id
+	required fixed64    uid			=	3;		// 角色id 
+	required uint32     num			=	4;		// 叠加数量
 }
 
 message ItemNotiType
