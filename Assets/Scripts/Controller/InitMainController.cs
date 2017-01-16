@@ -5,17 +5,30 @@ public class InitMainController : MonoBehaviour
 {
 	void Start () 
     {
-		GlobalRef.UIRoot = GameObject.Find("UIRoot/UICanvas").transform;
-		GlobalRef.SceneRoot = GameObject.Find("SceneRoot/SceneCanvas").transform;
-		if (null == GlobalRef.UIRoot || null == GlobalRef.SceneRoot)
+        if (!GlobalRef.Init())
+            return;
+
+        StartCoroutine(GlobalRef.ABController.GetAB(AppConst.AB_COMMON, CreateReconnecting));
+	}
+
+    public void CreateReconnecting(AssetBundle ab_)
+    {
+        GameObject reconnectPrefab = ab_.LoadAsset("panel_reconnecting") as GameObject;
+        if (null == reconnectPrefab)
         {
-            Debug.LogError("uiRoot or sceneRoot not found!!!");
+            Debug.LogError("reconnectprefab not found");
             return;
         }
+        GameObject reconnectGo = GameObject.Instantiate(reconnectPrefab);
+        reconnectGo.transform.SetParent(GlobalRef.UIRoot, false);
+        reconnectGo.name = "panel_reconnecting";
+        reconnectGo.SetActive(false);
 
-        NetController.Instance.ReconnectingUI = GameObject.Find("UIRoot/UICanvas/panel_reconnecting").gameObject;
+        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
+    }
 
-        //LuaBehaviour.LuaFileName = "InitMainBehaviour";
-        //gameObject.AddComponent<LuaBehaviour>();
-	}
+    public void CreateMainUI(AssetBundle ab_)
+    {
+    }
+
 }

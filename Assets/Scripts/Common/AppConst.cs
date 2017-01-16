@@ -64,6 +64,8 @@ public static class AppConst
 
     // 所有assetbundle的名字统一定义列表
     public static string AB_VERSION = "versionfile";
+    public static string AB_COMMON = "prefab_common";
     public static string AB_LOGIN = "prefab_login";
     public static string AB_CREATE_ROLE = "create_role";
+    public static string AB_MAIN = "prefab_mainui";
 }

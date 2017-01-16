@@ -6,12 +6,14 @@ using System.Collections.Generic;
 
 public class ABController : MonoBehaviour
 {
-    private Dictionary<string, AssetBundle> s_abMaps = new Dictionary<string, AssetBundle>();
+    private Dictionary<string, AssetBundle> m_abMaps = new Dictionary<string, AssetBundle>();
+    private ArrayList m_abNameList;
+
 
 	public IEnumerator GetAB(string abName_, System.Action<AssetBundle> cb_)
     {
         AssetBundle ab = null;
-		if (!s_abMaps.TryGetValue (abName_, out ab)) 
+		if (!m_abMaps.TryGetValue (abName_, out ab)) 
 		{
 			AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath (abName_));
 			yield return request;
@@ -20,7 +22,7 @@ public class ABController : MonoBehaviour
 			if (null != ab) 
 			{
 				Utility.Log ("ABManager load ab file ok:" + abName_);
-				s_abMaps [abName_] = ab;
+				m_abMaps [abName_] = ab;
 			}
 			else
 			{
@@ -32,27 +34,56 @@ public class ABController : MonoBehaviour
 		if(null != cb_) cb_ (ab);
     }
 
+    public IEnumerator GetABList(string[] abList_, System.Action<AssetBundle> cb_)
+    {
+        AssetBundle ab = null;
+
+        for(int i = 0; i < abList_.Length; ++i)
+        {
+            string abName = abList_[0];
+            if (!m_abMaps.TryGetValue(abName, out ab))
+            {
+                AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath (abName));
+                yield return request;
+
+                ab = request.assetBundle;
+                if (null != ab)
+                {
+                    Utility.Log("ABManager load ab file ok:" + abName);
+                    m_abMaps[abName] = ab;
+                }
+                else
+                {
+                    Utility.LogError("ABManager load ab file failed:" + abName);
+                    yield break;
+                }
+            }
+        }
+
+        if(null != cb_) cb_ (ab);
+    }
+
     public void UnloadAB(string abName_)
     {
         AssetBundle ab = null;
-        if (s_abMaps.TryGetValue(abName_, out ab))
+        if (m_abMaps.TryGetValue(abName_, out ab))
         {
 			Resources.UnloadAsset(ab);
             Resources.UnloadUnusedAssets();
 
-            s_abMaps.Remove(abName_);
+            m_abMaps.Remove(abName_);
         }
     }
 
     public void UnloadAll()
     {
-		foreach(KeyValuePair<string, AssetBundle> kv in s_abMaps)
+		foreach(KeyValuePair<string, AssetBundle> kv in m_abMaps)
 		{
 			Resources.UnloadAsset(kv.Value);
 			Utility.Log("ABManager unload all ab resources:" + kv.Key);
 		}
 
-		s_abMaps.Clear();
+		m_abMaps.Clear();
 		Resources.UnloadUnusedAssets();
 	}
 }

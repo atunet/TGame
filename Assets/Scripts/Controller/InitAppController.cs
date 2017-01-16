@@ -21,9 +21,24 @@ public class InitAppController : MonoBehaviour
 			return;
 		}
 
-		StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_LOGIN, CheckUpdate));
+        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_COMMON, CreateReconnecting));
 	}
 
+    public void CreateReconnecting(AssetBundle ab_)
+    {
+        GameObject reconnectPrefab = ab_.LoadAsset("panel_reconnecting") as GameObject;
+        if (null == reconnectPrefab)
+        {
+            Debug.LogError("reconnectprefab not found");
+            return;
+        }
+        GameObject reconnectGo = GameObject.Instantiate(reconnectPrefab);
+        reconnectGo.transform.SetParent(GlobalRef.UIRoot, false);
+        reconnectGo.name = "panel_reconnecting";
+        reconnectGo.SetActive(false);
+
+        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_LOGIN, CheckUpdate));
+    }
 
 	public void CheckUpdate(AssetBundle ab_)
 	{
@@ -39,7 +54,7 @@ public class InitAppController : MonoBehaviour
 
 		if (s_updateChecked) 
 		{
-			loginRootGo.transform.FindChild ("ResUpdate").gameObject.SetActive (false);
+			loginRootGo.transform.FindChild ("ResUpdate").gameObject.SetActive(false);
             loginRootGo.transform.FindChild ("IptAccount").gameObject.SetActive(true);
 
 			GameObject loginBtnGo = loginRootGo.transform.FindChild ("BtnLogin").gameObject;
