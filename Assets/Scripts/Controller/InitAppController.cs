@@ -73,8 +73,8 @@ public class InitAppController : MonoBehaviour
 		if (NetController.Instance.Init())
 		{
 			HandleMgr.Init();
-            //NetController.Instance.LoginToLoginServer("121.199.48.63", 8888, accountText.text);
-            NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accountText.text);
+            NetController.Instance.LoginToLoginServer("121.199.48.63", 4444, accountText.text);
+            //NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accountText.text);
 		}
 	}
 

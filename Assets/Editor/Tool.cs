@@ -539,7 +539,7 @@ public class Tool : MonoBehaviour
            	ProcessStartInfo processInfo = new ProcessStartInfo();  
 	        processInfo.WindowStyle = ProcessWindowStyle.Hidden;
 	        processInfo.ErrorDialog = true;
-	        if (Application.platform == RuntimePlatform.WindowsEditor) 
+	      /*  if (Application.platform == RuntimePlatform.WindowsEditor) 
 	        {
                 processInfo.FileName = AppConst.PROJECT_PATH + "/putty/pscp.exe";
 	            processInfo.Arguments = "-pw sunrise -r " + fileList[i] + " " + "   tfx@" + AppConst.RES_SERVER_IP + ":" + remotePath;
@@ -554,7 +554,8 @@ public class Tool : MonoBehaviour
 				//Directory.SetCurrentDirectory(currDir);
 	        }
 	        else if (Application.platform == RuntimePlatform.OSXEditor) 
-	        {
+	        */
+            {
 	            processInfo.FileName = "scp";
                 processInfo.Arguments = "-r " + fileList[i].Replace("\\", "/") + "   tfx@" + AppConst.RES_SERVER_IP + ":" + remotePath;
 	            processInfo.UseShellExecute = false;
