@@ -6,9 +6,9 @@ using System.Collections;
 public class InitLoadingController : MonoBehaviour 
 {
     public static string s_sceneName;
-    public static void setNextScene(string name)
+    public static void setNextScene(string name_)
     {
-        s_sceneName = name;
+        s_sceneName = name_;
     }
 
     private Slider m_slider;

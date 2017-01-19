@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Editor\Tool.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controller/InitAppController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controller\InitMainController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Controller\InitAppController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Editor\Tool.cs" Line="558" Column="13" />
+      <File FileName="Assets/Scripts/Controller/InitAppController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controller/InitMainController.cs" Line="32" Column="61" />
+      <File FileName="Assets/Scripts/MsgHandle/UserHandle.cs" Line="72" Column="25" />
+      <File FileName="Assets/Scripts/Common/Utility.cs" Line="35" Column="124" />
+      <File FileName="Assets/Scripts/Controller/InitBattleController.cs" Line="9" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

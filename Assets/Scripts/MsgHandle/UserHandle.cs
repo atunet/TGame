@@ -69,7 +69,7 @@ public static class UserHandle
     {
         Utility.Log("user online load data ok");
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        Utility.LoadingScene("MainScene");
 
         return true;
     }

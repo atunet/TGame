@@ -84,12 +84,12 @@ public class NetController : MonoBehaviour
         
     public void LoginToLoginServer(string ip_, int port_, string account_)
     {
-        if (m_thread.InitLoginClient(ip_, port_))
-        {
-            m_loginIP = ip_;
-            m_loginPort = port_;
-            m_account = account_;
+        m_loginIP = ip_;
+        m_loginPort = port_;
+        m_account = account_;
 
+        if (m_thread.InitLoginClient(ip_, port_))
+        {           
             Cmd.VerifyVersion verify = new Cmd.VerifyVersion();
             verify.clientversion = 2017;
             Serializer.Serialize<Cmd.VerifyVersion>(m_pbStream, verify);
@@ -98,6 +98,7 @@ public class NetController : MonoBehaviour
             Cmd.LoginReq login = new Cmd.LoginReq();
             login.account = Encoding.UTF8.GetBytes(m_account);
             login.verifier = "this is verifier code";
+            login.zoneid = 3999;
             Serializer.Serialize<Cmd.LoginReq>(m_pbStream, login);
             SendMsgToLogin(login.id, m_pbStream.ToArray());
         }

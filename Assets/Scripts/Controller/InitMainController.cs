@@ -29,6 +29,18 @@ public class InitMainController : MonoBehaviour
 
     public void CreateMainUI(AssetBundle ab_)
     {
+        GameObject mainuiPrefab = ab_.LoadAsset("panel_main_ui") as GameObject;
+        if (null == mainuiPrefab)
+        {
+            Debug.LogError("mainuiprefab not found");
+            return;
+        }
+        GameObject reconnectGo = GameObject.Instantiate(mainuiPrefab);
+        reconnectGo.transform.SetParent(GlobalRef.UIRoot, false);
+        reconnectGo.name = "panel_mainui";
+        reconnectGo.SetActive(true);
+
+        //StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
     }
 
 }

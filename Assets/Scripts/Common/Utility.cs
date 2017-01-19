@@ -27,4 +27,11 @@ public static class Utility
 		}
 		return filePath;
 	}
+
+    public static void LoadingScene(string name_)
+    {
+        InitLoadingController.setNextScene(name_);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
 }
