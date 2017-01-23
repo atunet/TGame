@@ -8,10 +8,10 @@ public class InitMainController : MonoBehaviour
         if (!GlobalRef.Init())
             return;
 
-        StartCoroutine(GlobalRef.ABController.GetAB(AppConst.AB_COMMON, CreateReconnecting));
+        StartCoroutine(GlobalRef.ABController.GetAB(AppConst.AB_COMMON, CreateCommonUI));
 	}
 
-    public void CreateReconnecting(AssetBundle ab_)
+    public void CreateCommonUI(AssetBundle ab_)
     {
         GameObject reconnectPrefab = ab_.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
