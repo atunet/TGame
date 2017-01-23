@@ -29,7 +29,7 @@ public class InitAppController : MonoBehaviour
         GameObject reconnectPrefab = ab_.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {
-            Debug.LogError("reconnectprefab not found");
+            Utility.LogError("reconnectprefab not found");
             return;
         }
         GameObject reconnectGo = GameObject.Instantiate(reconnectPrefab);
@@ -45,7 +45,7 @@ public class InitAppController : MonoBehaviour
 		GameObject loginPrefab = ab_.LoadAsset ("panel_login") as GameObject;
 		if (null == loginPrefab) 
         {
-			Debug.LogError ("loginprefab not found");
+            Utility.LogError ("loginprefab not found");
 			return;
 		}			
 		GameObject loginRootGo = GameObject.Instantiate (loginPrefab);
@@ -68,7 +68,7 @@ public class InitAppController : MonoBehaviour
 	{
         GameObject inputGo = GlobalRef.UIRoot.FindChild("panel_login/IptAccount/Text").gameObject;
         Text accountText = inputGo.GetComponent<Text> ();
-        Debug.Log("account:" + accountText.text);
+        Utility.Log("account:" + accountText.text);
        
 		if (NetController.Instance.Init())
 		{

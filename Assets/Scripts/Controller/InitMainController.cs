@@ -8,23 +8,24 @@ public class InitMainController : MonoBehaviour
         if (!GlobalRef.Init())
             return;
 
-        StartCoroutine(GlobalRef.ABController.GetAB(AppConst.AB_COMMON, CreateCommonUI));
+        CreateCommonUI();
+
+        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
 	}
 
-    public void CreateCommonUI(AssetBundle ab_)
+    public void CreateCommonUI()
     {
-        GameObject reconnectPrefab = ab_.LoadAsset("panel_reconnecting") as GameObject;
+        AssetBundle commonAB = GlobalRef.ABController.GetAB(AppConst.AB_COMMON);
+        GameObject reconnectPrefab = commonAB.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {
-            Debug.LogError("reconnectprefab not found");
+            Utility.LogError("reconnectprefab not found");
             return;
         }
         GameObject reconnectGo = GameObject.Instantiate(reconnectPrefab);
         reconnectGo.transform.SetParent(GlobalRef.UIRoot, false);
         reconnectGo.name = "panel_reconnecting";
         reconnectGo.SetActive(false);
-
-        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
     }
 
     public void CreateMainUI(AssetBundle ab_)
@@ -32,7 +33,7 @@ public class InitMainController : MonoBehaviour
         GameObject mainuiPrefab = ab_.LoadAsset("panel_main_ui") as GameObject;
         if (null == mainuiPrefab)
         {
-            Debug.LogError("mainuiprefab not found");
+            Utility.LogError("mainuiprefab not found");
             return;
         }
         GameObject reconnectGo = GameObject.Instantiate(mainuiPrefab);

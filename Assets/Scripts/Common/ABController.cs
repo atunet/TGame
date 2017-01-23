@@ -9,6 +9,12 @@ public class ABController : MonoBehaviour
     private Dictionary<string, AssetBundle> m_abMaps = new Dictionary<string, AssetBundle>();
     private ArrayList m_abNameList;
 
+    public AssetBundle GetAB(string abName_)
+    {
+        AssetBundle ab = null;
+        m_abMaps.TryGetValue(abName_, out ab); 
+        return ab;
+    }
 
 	public IEnumerator GetAB(string abName_, System.Action<AssetBundle> cb_)
     {
