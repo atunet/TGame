@@ -167,8 +167,9 @@ internal class NetThread
 	{
         while(!m_terminate)
 		{	
-			Thread.Sleep(10);
-			
+			Thread.Sleep(10); 
+            Utility.Log("thread state trace:" + m_thread.ThreadState);
+
             if (null != m_loginClient)
             {
                 TCPClient.EReceiveCode retCode = m_loginClient.Receive();

@@ -31,6 +31,7 @@ public class NetController : MonoBehaviour
     private string m_gateIP;
     private int m_gatePort;
     private string m_account;
+    private uint m_zoneId;
     private UInt32 m_tempId;
     private DateTime m_lastSendGateTime = DateTime.Now;
 
@@ -50,14 +51,15 @@ public class NetController : MonoBehaviour
 
     private NetController()
     {
-        m_loginIP = "127.0.0.1";
-        m_loginPort = 4444;
-        m_gateIP = "127.0.0.1";
-        m_gatePort = 4021;
-        m_crossIP = "127.0.0.1";
-        m_crossPort = 8999;
+        m_loginIP = "";
+        m_loginPort = 0;
+        m_gateIP = "";
+        m_gatePort = 0;
+        m_crossIP = "";
+        m_crossPort = 0;
 
         m_account = "";
+        m_zoneId = 0;
         m_tempId = 0;
     }
 
@@ -65,7 +67,7 @@ public class NetController : MonoBehaviour
     {
         if (null != m_thread)
         {
-            Debug.LogWarning("NetController already inited,repeated init ignored!!!");
+            Utility.LogWarning("NetController already inited,repeated init ignored!!!");
             return false;
         }
 
@@ -75,18 +77,19 @@ public class NetController : MonoBehaviour
 		m_reconnectingPanel = GlobalRef.UIRoot.FindChild("panel_reconnecting").gameObject;
         if (null == m_reconnectingPanel)
         {
-            Debug.Log("NetController init,reconnectingpanel not found");
+            Utility.Log("NetController init,reconnectingpanel not found");
         }
 
-        Debug.Log("NetController init ok,netthread start working!!!");
+        Utility.Log("NetController init ok,netthread start working!!!");
         return true;
     }
         
-    public void LoginToLoginServer(string ip_, int port_, string account_)
+    public void LoginToLoginServer(string ip_, int port_, string account_, uint zoneId_)
     {
         m_loginIP = ip_;
         m_loginPort = port_;
         m_account = account_;
+        m_zoneId = zoneId_;
 
         if (m_thread.InitLoginClient(ip_, port_))
         {           
@@ -98,23 +101,23 @@ public class NetController : MonoBehaviour
             Cmd.LoginReq login = new Cmd.LoginReq();
             login.account = Encoding.UTF8.GetBytes(m_account);
             login.verifier = "this is verifier code";
-            login.zoneid = 3999;
+            login.zoneid = m_zoneId;
             Serializer.Serialize<Cmd.LoginReq>(m_pbStream, login);
             SendMsgToLogin(login.id, m_pbStream.ToArray());
         }
         else
-            Debug.LogError("login to login server failed (ip:" + ip_ + ":" + port_ + ")");
+            Utility.LogError("login to login server failed (ip:" + ip_ + ":" + port_ + ")");
     }
 
     public void LoginToGateServer(string ip_, int port_, string account_, UInt32 tempId_)
-    {      
+    { 
+        m_gateIP = ip_;
+        m_gatePort = port_;
+        m_account = account_;
+        m_tempId = tempId_;
+
         if (m_thread.InitGateClient(ip_, port_))
         {
-            m_gateIP = ip_;
-            m_gatePort = port_;
-            m_account = account_;
-            m_tempId = tempId_;
-
             Cmd.LoginGatewayReq login = new Cmd.LoginGatewayReq();
             login.account = Encoding.UTF8.GetBytes(m_account);
             login.tempid = m_tempId;
@@ -122,7 +125,7 @@ public class NetController : MonoBehaviour
             SendMsgToGate(login.id, m_pbStream.ToArray());          
         }
         else
-            Debug.LogError("login to gate server failed (ip:" + ip_ + ":" + port_ + ")");
+            Utility.LogError("login to gate server failed (ip:" + ip_ + ":" + port_ + ")");
     }
 
     public void LoginToCrossServer(string ip_, int port_, UInt64 uid_, UInt32 tempId_)
@@ -139,7 +142,7 @@ public class NetController : MonoBehaviour
             SendMsgToCross(login.id, m_pbStream.ToArray());
         }
         else
-            Debug.LogError("login to cross server failed (ip:" + ip_ + ":" + port_ + ")");
+            Utility.LogError("login to cross server failed (ip:" + ip_ + ":" + port_ + ")");
     }
 
     public void DestroyLoginClient()
@@ -187,7 +190,7 @@ public class NetController : MonoBehaviour
 
 				if (0 == msgId)
                 {
-                    Debug.Log("recv tickcmd,just send back");
+                    Utility.Log("recv tickcmd,just send back");
 					SendMsgToGate((Cmd.EMessageID)msgId, realCmd);
                 }
                 else
@@ -199,7 +202,7 @@ public class NetController : MonoBehaviour
                     }
                     else
                     {
-						Debug.LogError("recv unknown proto msg id:0x0" + msgId.ToString("X"));
+                        Utility.LogError("recv unknown proto msg id:0x0" + msgId.ToString("X"));
                     }
                 }
                     /*
@@ -213,7 +216,7 @@ public class NetController : MonoBehaviour
                 }
                 else if (Cmd.EMessageID.LOGIN_GATEW_SC == (Cmd.EMessageID)CSBridge.s_recvProtoId)
                 {
-                    Debug.Log("Login gateway server return ok!");
+                    Utility.Log("Login gateway server return ok!");
                 }
                 else if (Cmd.EMessageID.PVP_CMD == (Cmd.EMessageID)(CSBridge.s_recvProtoId | 0xff00))
                 {
@@ -232,19 +235,22 @@ public class NetController : MonoBehaviour
 
         if (DateTime.Now.Second - m_lastSendGateTime.Second > 4)
         {
-            if (!m_thread.CheckGateConnected())
+            if (m_gateIP.Length > 0)
             {
-                Debug.LogWarning("tcp gate client is disconnected!!!");
-                m_reconnectingPanel.SetActive(true);
-                m_thread.DestroyGateClient();
-                LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
-            }
-            else
-            {
-                Debug.Log("tcp gate client is connected");
-                if (m_reconnectingPanel && m_reconnectingPanel.activeSelf)
+                if (!m_thread.CheckGateConnected())
                 {
-                    m_reconnectingPanel.SetActive(false);
+                    Utility.LogWarning("tcp gate client is disconnected!!!");
+                    m_reconnectingPanel.SetActive(true);
+                    m_thread.DestroyGateClient();
+                    LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
+                }
+                else
+                {
+                    Utility.Log("tcp gate client is connected");
+                    if (m_reconnectingPanel && m_reconnectingPanel.activeSelf)
+                    {
+                        m_reconnectingPanel.SetActive(false);
+                    }
                 }
             }
             m_lastSendGateTime = DateTime.Now;
@@ -275,15 +281,20 @@ public class NetController : MonoBehaviour
     {
         if (focus_)
         {
-            Debug.Log("application get focus");
+            Utility.Log("application get focus");
 
-            if (!m_thread.CheckGateConnected())
+            if (m_gateIP.Length > 0)
             {
-                Debug.LogWarning("tcp gate client is disconnected!!!");
-                m_reconnectingPanel.SetActive(true);
-                m_thread.DestroyGateClient();
-                LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
+                if (!m_thread.CheckGateConnected())
+                {
+                    Utility.LogWarning("tcp gate client is disconnected!!!");
+                    m_reconnectingPanel.SetActive(true);
+                    m_thread.DestroyGateClient();
+                    LoginToGateServer(m_gateIP, m_gatePort, m_account, m_tempId);
+                }
             }
         }
+        else
+            Utility.Log("application get been background");
     }
 }

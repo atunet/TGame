@@ -80,7 +80,7 @@ public class ToonAI : MonoBehaviour {
                     if (theState.IsName("Idle") || theState.IsName("Walk"))
                     {
                         theAnimtor.SetTrigger("DamageDown");
-                        Debug.Log("MainCharacter was attacked:" + m_target.name);
+                        Utility.Log("MainCharacter was attacked:" + m_target.name);
                     }                
                 }
             }
@@ -102,7 +102,7 @@ public class ToonAI : MonoBehaviour {
                     if (theState.IsName("Idle") || theState.IsName("Run"))
                     {
                         theAnimtor.SetTrigger("DamageDown");
-                        Debug.Log("object attacked:" + theGo.name);
+                        Utility.Log("object attacked:" + theGo.name);
                     }                
                 }
             }

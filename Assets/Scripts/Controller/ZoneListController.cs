@@ -8,7 +8,7 @@ public class ZoneListController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        Debug.Log("zone list controller start");
+        Utility.Log("zone list controller start");
 		StartCoroutine(LoadZoneList());
 	}
 
@@ -19,7 +19,7 @@ public class ZoneListController : MonoBehaviour
 
         if(!string.IsNullOrEmpty(w.error))
         {
-            Debug.LogError("www load zone list failed:" + w.error);
+            Utility.LogError("www load zone list failed:" + w.error);
 		}
         w.Dispose();
         w = null;
@@ -39,7 +39,7 @@ public class ZoneListController : MonoBehaviour
 		GameObject loginBtnPrefab = null;// ABManager.get(AppConst.AB_LOGIN).LoadAsset ("login_btn") as GameObject;
 		if (null == loginBtnPrefab)
 		{
-            Debug.LogError("ShowLoginBtn failed,loginBtnPrefab load failed");
+            Utility.LogError("ShowLoginBtn failed,loginBtnPrefab load failed");
             return;
 		}
 
@@ -54,6 +54,6 @@ public class ZoneListController : MonoBehaviour
 
     public void OnDestroy()
     {
-        Debug.Log("zone list controller destroy");
+        Utility.Log("zone list controller destroy");
     }
 }

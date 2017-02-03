@@ -18,7 +18,7 @@ public class InitLoadingController : MonoBehaviour
 	void Start () 
     {
 	    // TODO do scene init in lua script ...
-        Debug.Log("Loading Controller started");
+        Utility.Log("Loading Controller started");
         // TODO find the slider gameobject
         m_slider = GameObject.Find("Slider").GetComponent<Slider>();
         // start coroutine to load scene

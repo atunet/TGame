@@ -9,7 +9,7 @@ public class MyScaler : MonoBehaviour
 	{
         if (null == m_camera)
         {
-            Debug.LogError("MyScaler: the camera is null");
+            Utility.LogError("MyScaler: the camera is null");
             return;
         }
 

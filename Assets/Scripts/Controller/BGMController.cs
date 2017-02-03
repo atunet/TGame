@@ -119,7 +119,7 @@ public class BGMController : MonoBehaviour
     
     public void PlaySound(ESound sound_)
     {
-        //Debug.Log("Sound volume:" + s_soundVolume);
+        //Utility.Log("Sound volume:" + s_soundVolume);
         
         if (sound_ == ESound.SOUND_OK)
         {

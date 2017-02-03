@@ -25,7 +25,7 @@ public class MyJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         m_originPosition = m_rectTrans.anchoredPosition;
         m_movementRadius = m_rectTrans.sizeDelta.x/2;
 
-        Debug.Log("start called,origin position x:" + m_originPosition.x + ",y:" + m_originPosition.y + ",radius:" + m_movementRadius);
+        Utility.Log("start called,origin position x:" + m_originPosition.x + ",y:" + m_originPosition.y + ",radius:" + m_movementRadius);
     }
 	
 
@@ -42,7 +42,7 @@ public class MyJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerDown(PointerEventData data)
     {
-        Debug.Log("OnPointerDown was called");
+        Utility.Log("OnPointerDown was called");
 
         m_state = EState.MOVING;
 
@@ -53,7 +53,7 @@ public class MyJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData data)
     {
-        Debug.Log("OnPointerUp was called");
+        Utility.Log("OnPointerUp was called");
 
         m_state = EState.IDLE;
 
@@ -62,7 +62,7 @@ public class MyJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnDrag(PointerEventData data)
     {
-        Debug.Log("OnDrag was called");
+        Utility.Log("OnDrag was called");
 
         //m_state = EState.MOVING;
 
@@ -102,6 +102,6 @@ public class MyJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         xInputManager.SetHorizontalValue(-delta.x, useJoystick);
         xInputManager.SetVerticalValue(delta.y, useJoystick);
 
-        Debug.Log("update input value:" + -delta.x + "," + delta.y);
+        Utility.Log("update input value:" + -delta.x + "," + delta.y);
     }
 }

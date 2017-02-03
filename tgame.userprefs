@@ -1,11 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controller/InitMainController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Common\Utility.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controller/InitAppController.cs" Line="32" Column="20" />
-      <File FileName="Assets/Scripts/Controller/InitMainController.cs" Line="28" Column="38" />
-      <File FileName="Assets/Scripts/MsgHandle/UserHandle.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Common/ABController.cs" Line="16" Column="19" />
+      <File FileName="Assets\Scripts\Controller\InitAppController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controller\InitMainController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controller\NetController.cs" Line="70" Column="24" />
+      <File FileName="Assets\Scripts\Common\NetThread.cs" Line="170" Column="22" />
+      <File FileName="Assets\Scripts\Common\GlobalRef.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MsgHandle\LoginHandle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Common\Utility.cs" Line="8" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

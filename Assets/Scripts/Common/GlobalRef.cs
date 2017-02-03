@@ -145,7 +145,7 @@ public static class GlobalRef
 		{
 			if(Input.GetKey(KeyCode.Escape))
 			{
-				Debug.Log("Escape key clicked, app exit!");
+				Utility.Log("Escape key clicked, app exit!");
 				Application.Quit();
 			}
 		}

@@ -18,7 +18,7 @@ public class ResUpdateController : MonoBehaviour
     
 	void Start () 
     {
-        Debug.Log("Resource update controller started --------------------------");
+        Utility.Log("Resource update controller started --------------------------");
 
         m_remoteDict = new Dictionary<string, Hash128>();
         m_localDict = new Dictionary<string, Hash128>();
@@ -87,7 +87,7 @@ public class ResUpdateController : MonoBehaviour
             StartCoroutine(DownloadAssetBundles());
         }
         else
-            Debug.LogError("download version file failed:" + AppConst.REMOTE_VERSION_FILE_URL + "," + manifestWWW.error);
+            Utility.LogError("download version file failed:" + AppConst.REMOTE_VERSION_FILE_URL + "," + manifestWWW.error);
     }
 
     private void ParseManifestFile(AssetBundleManifest abm_, Dictionary<string, Hash128> dict_)
@@ -97,7 +97,7 @@ public class ResUpdateController : MonoBehaviour
         string[] abList = abm_.GetAllAssetBundles();
         foreach(string abName in abList)
         {
-            //Debug.Log("Parse version file add ab: " + abName + " , hashcode:" + abm_.GetAssetBundleHash(abName));
+            //Utility.Log("Parse version file add ab: " + abName + " , hashcode:" + abm_.GetAssetBundleHash(abName));
             dict_.Add(abName, abm_.GetAssetBundleHash(abName));            
         }
     }
@@ -116,13 +116,13 @@ public class ResUpdateController : MonoBehaviour
                 m_downloadList.Add(abName);
                 m_totalSize += 1f;
                 
-                Debug.Log("Download list add:" + abName + ",local code:" + localHash + ",remote code:" + remoteHash);
+                Utility.Log("Download list add:" + abName + ",local code:" + localHash + ",remote code:" + remoteHash);
             }
         }
 
         if(0 == m_totalSize)
         {
-        	Debug.Log("All resource file is up to date!!!");
+        	Utility.Log("All resource file is up to date!!!");
         }
     }
 
@@ -144,20 +144,20 @@ public class ResUpdateController : MonoBehaviour
 
             if (string.IsNullOrEmpty(abWWW.error))
             {
-                Debug.Log("Download remote ab file success: " + abFileURL);
+                Utility.Log("Download remote ab file success: " + abFileURL);
                 ReplaceLocalFile(abName, abWWW.bytes);
                 m_currentSize += 1f;
 
                 StartCoroutine(DownloadAssetBundles());
             }
             else
-                Debug.LogError("download ab file failed:" + abFileURL + "," + abWWW.error);
+                Utility.LogError("download ab file failed:" + abFileURL + "," + abWWW.error);
         }
     }
     
     private void ReplaceLocalFile(string abName_, byte[] data_)
     {
-    	Debug.Log("Replace local ab file:" + AppConst.PERSISTENT_PATH + "/" + abName_);
+    	Utility.Log("Replace local ab file:" + AppConst.PERSISTENT_PATH + "/" + abName_);
 		FileStream fs = new FileStream(AppConst.PERSISTENT_PATH + "/" + abName_, FileMode.Create);
         BinaryWriter bw = new BinaryWriter(fs);
         bw.Write(data_, 0, data_.Length);
@@ -174,12 +174,12 @@ public class ResUpdateController : MonoBehaviour
         {
             m_slider.value = m_currentSize / m_totalSize;
             
-            Debug.Log("slider value:" + m_slider.value);
+            Utility.Log("slider value:" + m_slider.value);
         }
     }
 
     public void OnDestroy()
     {
-        Debug.Log("resource update controller destroy");
+        Utility.Log("resource update controller destroy");
     }
 }

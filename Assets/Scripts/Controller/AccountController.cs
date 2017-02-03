@@ -9,7 +9,7 @@ public class AccountController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-        Debug.Log("account controller start");
+        Utility.Log("account controller start");
 
 		StartCoroutine(AccountLogin());
 	}
@@ -31,12 +31,12 @@ public class AccountController : MonoBehaviour
                 Destroy(this.gameObject);   // destroy account controller instance
             }
             else
-                Debug.LogError("load asset from login ab failed: zone_list");
+                Utility.LogError("load asset from login ab failed: zone_list");
         }
 	}
 
     public void OnDestroy()
     {
-        Debug.Log("account controller destroy");
+        Utility.Log("account controller destroy");
     }
 }

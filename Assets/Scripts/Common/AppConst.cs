@@ -45,21 +45,21 @@ public static class AppConst
     }
 	public static void PrintPath()
 	{
-   		Debug.Log("PLATFROM:" + PLATFORM);
-        //Debug.Log("VERSION_FILE_NAME:" + VERSION_FILE_NAME);
+   		Utility.Log("[AppConst]PLATFROM:" + PLATFORM);
+        //Utility.Log("VERSION_FILE_NAME:" + VERSION_FILE_NAME);
 
-		//Debug.Log("STREAMING_PATH:" + STREAMING_PATH);
-		Debug.Log("STREAMING_VERSION_FILE:" + STREAMING_VERSION_FILE_PATH);
+		//Utility.Log("STREAMING_PATH:" + STREAMING_PATH);
+		Utility.Log("[AppConst]STREAMING_VERSION_FILE:" + STREAMING_VERSION_FILE_PATH);
 
-		//Debug.Log("PERSISTENT_PATH:" + PERSISTENT_PATH);
-        Debug.Log("PERSISTENT_VERSION_FILE:" + PERSISTENT_VERSION_FILE_PATH);
+		//Utility.Log("PERSISTENT_PATH:" + PERSISTENT_PATH);
+        Utility.Log("[AppConst]PERSISTENT_VERSION_FILE:" + PERSISTENT_VERSION_FILE_PATH);
 
-		//Debug.Log("REMOTE_URL:" + REMOTE_URL);
-		//Debug.Log("REMOTE_ASSET_URL:" + REMOTE_ASSET_URL);
-        Debug.Log("REMOTE_VERSION_FILE_URL:" + REMOTE_VERSION_FILE_URL);
+		//Utility.Log("REMOTE_URL:" + REMOTE_URL);
+		//Utility.Log("REMOTE_ASSET_URL:" + REMOTE_ASSET_URL);
+        Utility.Log("[AppConst]REMOTE_VERSION_FILE_URL:" + REMOTE_VERSION_FILE_URL);
 
-		//Debug.Log("UPLOAD_URL:" + UPLOAD_URL);
-		//Debug.Log("UPLOAD_ASSET_URL:" + UPLOAD_ASSET_URL);
+		//Utility.Log("UPLOAD_URL:" + UPLOAD_URL);
+		//Utility.Log("UPLOAD_ASSET_URL:" + UPLOAD_ASSET_URL);
     }	 
 
     // 所有assetbundle的名字统一定义列表

@@ -20,7 +20,7 @@ public class BattleController : MonoBehaviour
 
     public void OnAttackClick()
     {
-        Debug.Log("OnAttackClick called");
+        Utility.Log("OnAttackClick called");
         if (Time.time - m_lastAttackTime > 1)
         {
             m_lastAttackTime = Time.time;
@@ -30,7 +30,7 @@ public class BattleController : MonoBehaviour
 
     public void OnSkill1Click()
     {
-        //Debug.Log("OnSkill1Click called");
+        //Utility.Log("OnSkill1Click called");
         if (Time.time - m_lastSkill1Time > 2)
         {
             m_lastSkill1Time = Time.time;
@@ -40,7 +40,7 @@ public class BattleController : MonoBehaviour
 
     public void OnSkill2Click()
     {
-        Debug.Log("OnSkill2Click called");
+        Utility.Log("OnSkill2Click called");
         if (Time.time - m_lastSkill2Time > 2)
         {
             m_lastSkill2Time = Time.time;
@@ -51,7 +51,7 @@ public class BattleController : MonoBehaviour
 
     public void OnSkill3Click()
     {        
-        Debug.Log("OnSkill3Click called");
+        Utility.Log("OnSkill3Click called");
         if (Time.time - m_lastSkill3Time > 2)
         {           
             m_lastSkill3Time = Time.time;  
@@ -61,11 +61,11 @@ public class BattleController : MonoBehaviour
 
     public void OnPauseClick()
     {
-        Debug.Log("OnPauseClick called");
+        Utility.Log("OnPauseClick called");
     }
 
     public void OnExitClick()
     {
-        Debug.Log("OnExitClick called");
+        Utility.Log("OnExitClick called");
     }
 }

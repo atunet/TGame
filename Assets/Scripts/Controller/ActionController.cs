@@ -39,7 +39,7 @@ public class ActionController : MonoBehaviour
                 {
                     m_moving = true;
                     m_cornerIndex = -1;
-                    Debug.Log("auto pathing begin,dest x:" + destPoint.x + ",z:" + destPoint.z);
+                    Utility.Log("auto pathing begin,dest x:" + destPoint.x + ",z:" + destPoint.z);
                 }
             }
         }
@@ -60,7 +60,7 @@ public class ActionController : MonoBehaviour
                 {
                     m_moving = false;
                     m_navPath.ClearCorners();
-                    Debug.Log("auto pathing end,current pos,x:" + transform.position.x + ",z:" + transform.position.z);
+                    Utility.Log("auto pathing end,current pos,x:" + transform.position.x + ",z:" + transform.position.z);
                 }
                 else
                 {
@@ -74,7 +74,7 @@ public class ActionController : MonoBehaviour
                     m_navPath.corners[m_cornerIndex].x - transform.position.x,
                     m_navPath.corners[m_cornerIndex].z - transform.position.z);
 
-                Debug.Log("next nav corner:" + m_navPath.corners[m_cornerIndex].x + "," + m_navPath.corners[m_cornerIndex].z);
+                Utility.Log("next nav corner:" + m_navPath.corners[m_cornerIndex].x + "," + m_navPath.corners[m_cornerIndex].z);
             }
         }
                   
@@ -121,30 +121,30 @@ public class ActionController : MonoBehaviour
                 {
                     if (deltaPos.y > 0f && deltaPos.y > deltaPos.x)
                     {
-                        Debug.Log("touch slide to up");
+                        Utility.Log("touch slide to up");
                     }
                     else if (deltaPos.y < 0f && Mathf.Abs(deltaPos.y) > deltaPos.x)
                     {
-                        Debug.Log("touch slide bottom");
+                        Utility.Log("touch slide bottom");
                     }
                     else
                     {
-                        Debug.Log("touch slide right");
+                        Utility.Log("touch slide right");
                     }
                 }
                 else if (deltaPos.x < 0f)
                 {
                     if (deltaPos.y > 0f && deltaPos.y > Mathf.Abs(deltaPos.x))
                     {
-                        Debug.Log("touch slide to up");
+                        Utility.Log("touch slide to up");
                     }
                     else if (deltaPos.y < 0f && Mathf.Abs(deltaPos.y) >  Mathf.Abs(deltaPos.x))
                     {
-                        Debug.Log("touch slide bottom");
+                        Utility.Log("touch slide bottom");
                     }
                     else
                     {
-                        Debug.Log("touch slide left");
+                        Utility.Log("touch slide left");
                     }
                 }
 
@@ -171,7 +171,7 @@ public class ActionController : MonoBehaviour
                         if (theState.IsName("Idle") || theState.IsName("Walk"))
                         {
                             theAnimtor.SetBool("Fall", true);
-                            Debug.Log("Monster was attacked:" + monsterAnim.name);
+                            Utility.Log("Monster was attacked:" + monsterAnim.name);
                         }                
                     }
                 }
@@ -192,7 +192,7 @@ public class ActionController : MonoBehaviour
                     if (theState.IsName("Idle") || theState.IsName("Walk"))
                     {
                         theAnimtor.SetBool("Fall", true);
-                        Debug.Log("object attacked:" + theGo.name);
+                        Utility.Log("object attacked:" + theGo.name);
                     }                
                 }
             }
