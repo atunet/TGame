@@ -35,6 +35,8 @@ internal class NetThread
 
     public void Terminate()
     { 
+        Utility.Log("NetThread terminated");
+
         if (!m_terminate)
         {
             m_terminate = true; 
@@ -168,7 +170,7 @@ internal class NetThread
         while(!m_terminate)
 		{	
 			Thread.Sleep(10); 
-            Utility.Log("thread state trace:" + m_thread.ThreadState);
+            //Utility.Log("thread state trace:" + m_thread.ThreadState);
 
             if (null != m_loginClient)
             {

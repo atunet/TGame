@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class InitMainController : MonoBehaviour 
@@ -36,12 +37,31 @@ public class InitMainController : MonoBehaviour
             Utility.LogError("mainuiprefab not found");
             return;
         }
-        GameObject reconnectGo = GameObject.Instantiate(mainuiPrefab);
-        reconnectGo.transform.SetParent(GlobalRef.UIRoot, false);
-        reconnectGo.name = "panel_mainui";
-        reconnectGo.SetActive(true);
+        GameObject mainuiGo = GameObject.Instantiate(mainuiPrefab);
+        mainuiGo.transform.SetParent(GlobalRef.UIRoot, false);
+        mainuiGo.name = "panel_mainui";
+        //mainuiGo.SetActive(true);
+
+        GameObject pveBtnGo = mainuiGo.transform.FindChild ("btn_pve").gameObject;
+        Button pveBtn = pveBtnGo.GetComponent<Button> ();
+        pveBtn.onClick.AddListener (OnPveClick);
+
+        GameObject pvpBtnGo = mainuiGo.transform.FindChild ("btn_pvp").gameObject;
+        Button pvpBtn = pvpBtnGo.GetComponent<Button> ();
+        pvpBtn.onClick.AddListener (OnPvpClick);
 
         //StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
     }
 
+    public void OnPveClick()
+    {
+        Utility.Log("OnPveClicked");
+        Utility.LoadingScene("BattleScene");
+    }
+
+    public void OnPvpClick()
+    {
+        Utility.Log("OnPvpClicked");
+        Utility.LoadingScene("BattleScene");
+    }
 }

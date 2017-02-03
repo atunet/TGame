@@ -265,6 +265,7 @@ public class NetController : MonoBehaviour
             m_thread.Terminate();
             m_thread = null;
         }
+        Utility.Log("DestroyThread called");
     }
 
 	void OnDestroy()
