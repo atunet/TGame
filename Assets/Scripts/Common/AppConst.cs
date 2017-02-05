@@ -68,4 +68,5 @@ public static class AppConst
     public static string AB_LOGIN = "prefab_login";
     public static string AB_CREATE_ROLE = "create_role";
     public static string AB_MAIN = "prefab_mainui";
+    public static string AB_BATTLE = "prefab_battleui";
 }
