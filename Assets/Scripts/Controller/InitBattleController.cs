@@ -11,7 +11,8 @@ public class InitBattleController : MonoBehaviour
 
         CreateCommonUI();
 
-        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_BATTLE, CreateBattleUI));
+        string[] abList = new string[]{"sprite_battle", AppConst.AB_BATTLE };
+        StartCoroutine (GlobalRef.ABController.GetABList (abList, CreateBattleUI));
     }
 
     public void CreateCommonUI()
