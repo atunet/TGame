@@ -46,7 +46,7 @@ public class ABController : MonoBehaviour
 
         for(int i = 0; i < abList_.Length; ++i)
         {
-            string abName = abList_[0];
+            string abName = abList_[i];
             if (!m_abMaps.TryGetValue(abName, out ab))
             {
                 AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath (abName));
