@@ -62,8 +62,10 @@ public class ZombieAI : MonoBehaviour
         AnimatorStateInfo stateInfo = m_animator.GetCurrentAnimatorStateInfo(0);
         if (stateInfo.IsName("Walk"))
         {
-            //transform.Translate(Vector3.forward*Time.deltaTime, Space.Self);
-            m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
+            Vector3 moveDirection = transform.forward * m_moveSpeed * 0.1f;
+            moveDirection.y -= 20f * Time.deltaTime;
+            m_character.Move(moveDirection * Time.deltaTime);
+            //m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
 
         }
 	}

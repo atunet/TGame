@@ -95,7 +95,11 @@ public class ActionController : MonoBehaviour
 
         if (m_moving)
         {
-            m_character.SimpleMove(transform.forward * m_moveSpeed);
+            Vector3 moveDirection = transform.forward * m_moveSpeed;
+            moveDirection.y -= 20f * Time.deltaTime;
+            m_character.Move(moveDirection * Time.deltaTime);
+
+            //m_character.SimpleMove(transform.forward * m_moveSpeed);
             //m_animator.SetFloat("Forward", 1f);
             m_animator.SetBool("Run", true);
         }
