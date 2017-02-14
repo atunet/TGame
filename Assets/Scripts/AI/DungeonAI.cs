@@ -52,10 +52,9 @@ public class DungeonAI : MonoBehaviour
         {
             Vector3 moveDirection = transform.forward * m_moveSpeed * 0.1f;
             moveDirection.y -= 20f * Time.deltaTime;
-            m_character.Move(moveDirection * Time.deltaTime);
+            //m_character.Move(moveDirection * Time.deltaTime);
 
-            //transform.Translate(Vector3.forward*Time.deltaTime, Space.Self);
-            //m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
+            m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
         }
 	}
 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3e4fcc84a0ac95b429c56452575f6021
-timeCreated: 1487080688
+guid: 01250c2cfebcd466fade0d919bacbee5
+timeCreated: 1487080662
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
@@ -58,27 +58,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
-  spritePackingTag: Sprite_inventory
+  spritePackingTag: Sprite_Battle
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -64,8 +64,9 @@ public class ZombieAI : MonoBehaviour
         {
             Vector3 moveDirection = transform.forward * m_moveSpeed * 0.1f;
             moveDirection.y -= 20f * Time.deltaTime;
-            m_character.Move(moveDirection * Time.deltaTime);
-            //m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
+            //m_character.Move(moveDirection * Time.deltaTime);
+
+            m_character.SimpleMove(transform.forward * m_moveSpeed * Time.deltaTime);
 
         }
 	}
