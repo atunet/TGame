@@ -68,7 +68,11 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length
+      in copied configuration does not match position in animation file\nDS_onehand_idle_A\nClip
+      'Take 001' has import animation warnings that might lower retargeting quality:\n\t'Bip001
+      L Clavicle' has translation animation that will be discarded.\n\t'Bip001 R Clavicle'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -91,10 +95,10 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
