@@ -161,13 +161,13 @@ public class Tool : MonoBehaviour
 	/// </summary>
 	static void PreprocessArtFiles() 
 	{
-        string resPath = Application.dataPath + "/TempRes";
+        string resPath = Application.dataPath + "/SrcRes";
         SetSpriteTag(resPath);
 
         string[] dirList = Directory.GetDirectories(resPath, "*", SearchOption.AllDirectories);
         for (int i = 0; i < dirList.Length; ++i)
         {
-            if (dirList[i].Contains("TempRes") && dirList[i].Contains("Model"))
+            if (dirList[i].Contains("SrcRes") && dirList[i].Contains("Model"))
                 continue;
 
             string relativeDir = dirList[i].Substring(resPath.Length+1);
@@ -222,7 +222,7 @@ public class Tool : MonoBehaviour
 
     static void PreprocessModelFiles()
     {
-        string modelPath = Application.dataPath + "/TempRes/Model";
+        string modelPath = Application.dataPath + "/SrcRes/Model";
         string[] subPathList = Directory.GetDirectories(modelPath, "*", SearchOption.TopDirectoryOnly);
 
         for (int n = 0; n < subPathList.Length; ++n)
