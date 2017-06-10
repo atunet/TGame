@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{6ED26AA3-0DF1-508B-1ABD-1688C10E49DF}") = "tgame", "Assembly-CSharp.csproj", "{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgame", "Assembly-CSharp.csproj", "{C3A4A9DA-1847-0266-7375-B2C48B5FEC37}"
 EndProject
-Project("{6ED26AA3-0DF1-508B-1ABD-1688C10E49DF}") = "tgame", "Assembly-CSharp-Editor.csproj", "{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tgame", "Assembly-CSharp-Editor.csproj", "{6ABE9FE4-A0DC-65C9-1996-C348404DFFF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
