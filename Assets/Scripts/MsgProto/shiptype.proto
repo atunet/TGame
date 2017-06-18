@@ -2,7 +2,56 @@ package Cmd;
 
 message ShipInfo
 {
-	required fixed64 thisid			=	1;		// 战船实例id
-	required uint32 shipid			=	2;		// 战船类型id
-	required uint32 level           =	3;		// 战船等级
+	required uint32 shipid			=	1;		// 战船类型id
+	required uint32 level           =	2;		// 战船等级
+	required uint32 pos             =	3;		// 上阵位置
+}
+
+message ShipBattleAttr
+{
+	required int32 hp              =	1;		// 战船血量
+	required int32 atk             =	2;		// 战船攻击力
+	required int32 def             =	3;		// 战船防御力
+	required int32 critical        =	4;		// 战船暴击率
+	required int32 imcritical      =	5;		// 战船抗暴击率
+	required int32 hit             =	6;		// 战船命中率
+	required int32 miss            =	7;		// 战船闪避
+	required float damage          =	8;		// 战船伤害率
+	required float imdamage        =	9;		// 战船免伤率
+}
+
+message ShipHeroInfo
+{
+	required int32 heroid           =	1;		// 伙伴id
+	required int32 skillid          =	2;		// 伙伴技能
+	required int32 randstart        =	3;		// 随机起始值
+	required int32 randend          =	4;		// 随机结束值
+}
+
+message ShipBattleInfo
+{
+	required uint32 shipid			=	1;		// 战船类型id
+	required uint32 firstvalue      =	2;		// 战船先手值
+	required uint32 power           =	3;		// 战船怒气值
+	required uint32 hp              =	4;		// 战船血量
+	required uint32 randMax         =	5;		// 战船最大随机值
+	required uint32 captainskill    =	6;		// 战船队长技能
+	required ShipBattleAttr attr    =	7;		// 战船战斗属性
+    repeated ShipHeroInfo heros     =   8;      // 伙伴列表
+}
+
+message ShipHitUnit
+{
+	required uint32 dstpos          =	1;		// 受击方阵形位置
+	repeated uint32 hits            =	2;		// 多段伤害值列表
+}
+
+message ShipAttackUnit
+{
+	required uint32 sequenceid      =	1;		// 攻击序列号
+	required int32  side            =	2;		// 攻击方,1:我方;-1:对方
+	required uint32 srcpos          =	3;		// 攻击方阵形位置
+	required bool   ismanual        =	4;		// 是否是手动大招攻击
+	required uint32 skillid         =	5;		// 攻击技能id
+    repeated ShipHitUnit list       =   6;      // 受击方列表
 }

@@ -8,22 +8,17 @@ import "pvptype.proto";
  */
 
 
-enum eBattleType
+enum EBattleType
 {
-eBattleType_PVP 			= 1; 	// pvp
-eBattleType_GVE 			= 2; 	// gve
+    BATTLE_TYPE_PVP 			= 1; 	// pvp
+    BATTLE_TYPE_GVE             = 2; 	// gve
 }
 
 message PvpMatchReq
 {
     optional EMessageID 		id 			= 1 [default = PVP_MATCH_CS];
 	optional uint32 			heroid 		= 2;
-	optional eBattleType 		battle_type = 3[default = eBattleType_PVP];
-}
-
-message PvpMatchCancel
-{
-    optional EMessageID 		id 			= 1 [default = PVP_MATCH_CANCEL_CS];
+	optional EBattleType        type        = 3;
 }
 
 message PvpMatchRet
@@ -32,30 +27,15 @@ message PvpMatchRet
     optional bytes              svrip       = 2; // pvp服务器ip
     optional int32              svrport     = 3; // pvp服务器端口
     optional uint32             tempid      = 4; // 临时id
+	optional uint64 			svrtime 	= 5; // 服务器时间
 }
 
-message BattleInfoSync
+message PvpMatchCancel
 {
-    optional EMessageID 		id 		    = 1 [default = BATTLE_INFO_S];
-    repeated FighterInfo        fighters    = 2;
-	optional eBattleType 		battle_type = 3;
+    optional EMessageID 		id 			= 1 [default = PVP_MATCH_CANCEL_CS];
 }
 
-message BattleClientReady
+message PvpMatchCancelRet
 {
-    optional EMessageID 		id 		    = 1 [default = BATTLE_CLIENT_READY_CS];
-}
-
-message BattleAllReady
-{
-    optional EMessageID 		id 		    = 1 [default = BATTLE_ALL_READY_S];
-	required uint32				random_seed	= 2; //战斗中客户端需要统一：的随机种子
-	optional uint32 			frame_sec	= 3; //一秒的逻辑帧
-}
-
-message BattleCountdown
-{
-    optional EMessageID 		id 		    = 1 [default = BATTLE_COUNTDOWN_S];
-    optional int32              index       = 2; // 战斗开始倒计时3,2,1
-    optional uint64             svrtime     = 3; // 服务器时间
+    optional EMessageID 		id 			= 1 [default = PVP_MATCH_CANCEL_SC];
 }

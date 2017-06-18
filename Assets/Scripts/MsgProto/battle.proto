@@ -1,0 +1,72 @@
+//
+// 战斗相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+
+message BattleClientReady
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_CLIENT_READY_CS];
+}
+
+message BattleAllReadyNtf
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_ALL_READY_S];
+	required uint32				seed	    = 2; //战斗中客户端需要统一：的随机种子
+	optional uint32 			frame_sec	= 3; //一秒的逻辑帧
+}
+
+/*
+message BattleCountdown
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_COUNTDOWN_S];
+    optional int32              index       = 2; // 战斗开始倒计时3,2,1
+    optional uint64             svrtime     = 3; // 服务器时间
+}
+*/
+
+message BattleInitInfo
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_INIT_INFO_S];
+	//optional EBattleType        type        = 2;
+	required uint32				row         = 3; // 行数
+	required uint32				column      = 4;// 列数
+	required uint32				uid1        = 5; // 红方uid
+	required string             name1       = 6; // 红方角色名
+	required uint32				uid2        = 7; // 蓝方uid
+	required string             name2       = 8; // 蓝方角色名
+    repeated uint32             mines       = 9; // 初始雷区,0~8:周边雷数量；>10:地雷
+}
+
+message BattleOpenMineReq
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_OPEN_MINE_CS];
+    optional uint32             row         = 2; // 行
+    optional uint32             column      = 3; // 列
+}
+
+message BattleOpenMineRet
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_OPEN_MINE_SC];
+    optional uint32             row         = 2; // 行
+    optional uint32             column      = 3; // 列
+}
+
+message BattleOpenMineNtf
+{
+    optional EMessageID 		id 		    = 1 [default = BATTLE_OPEN_MINE_S];
+    optional uint32             row         = 2; // 行
+    optional uint32             column      = 3; // 列
+    optional uint64             uid         = 4; // 挖雷的玩家id
+}
+
+message BattleResult
+{
+	optional EMessageID 		id 			= 1		[default = BATTLE_RESULT_S];
+	optional uint64				winner 		= 2; // 获胜者uid
+    optional uint32             bombrow     = 3; // 炸雷行
+    optional uint32             bombcolumn  = 4; // 炸雷列
+
+}

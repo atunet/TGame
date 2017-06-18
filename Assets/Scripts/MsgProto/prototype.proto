@@ -34,41 +34,54 @@ enum EMessageID
     MODULE_DATA_CS          =   0x027b;         // 请求角色的指定模块的数据
 	MARQUEE_INFO_S		    =	0x0224;			// 跑马灯通知
 
+	// 地图场景相关(进出各类副本关卡等)
+	SCENE_CMD				=	0x0300;			// 场景协议ID
+	ENTER_SCENE_CS          =	0x0301;			// 请求进入场景地图
+	ENTER_SCENE_SC          =	0x0302;			// 进入场景地图服务器返回
+
 	// 道具相关
-	ITEM_CMD				=	0x0300;			// 道具协议ID
-	ITEM_LIST_S			    =	0x0301;			// 发送道具列表给玩家
-	UPDATE_ITEM_LIST_S		=	0x0302;			// 更新道具通知给玩家
-	REMOVE_ITEM_LIST_S		=	0x0303;			// 删除道具通知给玩家
-	SELL_ITEM_CS            =	0x0304;			// 玩家请求出售道具
-	SELL_ITEM_SC			=	0x0305;			// 出售道具服务器返回
-	USE_ITEM_CS			    =	0x0306;			// 使用消耗品请求
-	USE_ITEM_SC			    =	0x0307;			// 使用消耗品返回
+	ITEM_CMD				=	0x0400;			// 道具协议ID
+	ITEM_LIST_S			    =	0x0401;			// 发送道具列表给玩家
+	UPDATE_ITEM_LIST_S		=	0x0402;			// 更新道具通知给玩家
+	REMOVE_ITEM_LIST_S		=	0x0403;			// 删除道具通知给玩家
+	SELL_ITEM_CS            =	0x0404;			// 玩家请求出售道具
+	SELL_ITEM_SC			=	0x0405;			// 出售道具服务器返回
+	USE_ITEM_CS			    =	0x0406;			// 使用消耗品请求
+	USE_ITEM_SC			    =	0x0407;			// 使用消耗品返回
 
 	// 伙伴相关
-	HERO_CMD				=	0x0400;			// 伙伴协议ID
-	HERO_LIST_S			    =	0x0401;			// 发送伙伴列表给玩家
-	UPDATE_HERO_LIST_S		=	0x0402;			// 更新伙伴通知给玩家
-	REMOVE_HERO_LIST_S		=	0x0403;			// 删除伙伴通知给玩家
-	HERO_ITEM_2_EXP_CS	    =	0x0404;			// 道具换伙伴经验
-	HERO_ITEM_2_EXP_SC	    =	0x0405;			// 道具换伙伴经验
-	HERO_STAGE_UP_CS	    =	0x0406;			// 伙伴升阶
-	HERO_STAGE_UP_SC	    =	0x0407;			// 伙伴升阶
-	HERO_QUALITY_UP_CS	    =	0x0408;			// 伙伴升品
-	HERO_QUALITY_UP_SC	    =	0x0409;			// 伙伴升品
-	HERO_STAR_UP_CS	        =	0x040a;			// 伙伴升星
-	HERO_STAR_UP_SC	        =	0x040b;			// 伙伴升星
+	HERO_CMD				=	0x0500;			// 伙伴协议ID
+	HERO_LIST_S			    =	0x0501;			// 发送伙伴列表给玩家
+	UPDATE_HERO_LIST_S		=	0x0502;			// 更新伙伴通知给玩家
+	REMOVE_HERO_LIST_S		=	0x0503;			// 删除伙伴通知给玩家
+	HERO_ITEM_2_EXP_CS	    =	0x0504;			// 道具换伙伴经验
+	HERO_ITEM_2_EXP_SC	    =	0x0505;			// 道具换伙伴经验
+	HERO_STAGE_UP_CS	    =	0x0506;			// 伙伴升阶
+	HERO_STAGE_UP_SC	    =	0x0507;			// 伙伴升阶
+	HERO_QUALITY_UP_CS	    =	0x0508;			// 伙伴升品
+	HERO_QUALITY_UP_SC	    =	0x0509;			// 伙伴升品
+	HERO_STAR_UP_CS	        =	0x050a;			// 伙伴升星
+	HERO_STAR_UP_SC	        =	0x050b;			// 伙伴升星
+
+	// 装备相关
+	EQUIP_CMD 					=	0X0600;		//装备协议ID
+	EQUIP_LIST_S				=	0X0601;		//装备列表批量发送
+	EQUIP_LEVEL_UPGRADE_CS		=	0x0602;		//装备升级请求
+	EQUIP_LEVEL_UPGRADE_SC		=	0x0603;		//装备升级结果
+	EQUIP_QUALITY_UPGRADE_CS	=	0x0604;		//装备升品请求
+	EQUIP_QUALITY_UPGRADE_SC	=	0x0605;		//装备升品结果
 
 	// 海战相关
-	SHIP_CMD				    =	0x0500;			// 海战协议ID
-	SHIP_LIST_S                 =	0x0501;			// 海战数据
-	SHIP_UNLOCK_CS              =	0x0502;			// 战船解锁
-	SHIP_UNLOCK_SC              =	0x0503;			// 战船解锁
-	SHIP_LEVEL_UP_CS            =	0x0504;			// 战船升级
-	SHIP_LEVEL_UP_SC            =	0x0505;			// 战船升级
-	SHIP_BATTLE_START_CS        =	0x0506;			// 海战开启
-	SHIP_BATTLE_START_SC        =	0x0507;			// 海战开启
-	SHIP_BATTLE_RESULT_CS       =	0x0508;			// 海战结算
-	SHIP_BATTLE_RESULT_SC       =	0x0509;			// 海战结果
+	SHIP_CMD				    =	0x0700;			// 海战协议ID
+	SHIP_LIST_S                 =	0x0701;			// 海战数据
+	SHIP_UNLOCK_CS              =	0x0702;			// 战船解锁
+	SHIP_UNLOCK_SC              =	0x0703;			// 战船解锁
+	SHIP_LEVEL_UP_CS            =	0x0704;			// 战船升级
+	SHIP_LEVEL_UP_SC            =	0x0705;			// 战船升级
+	SHIP_BATTLE_START_CS        =	0x0706;			// 海战开启
+	SHIP_BATTLE_START_SC        =	0x0707;			// 海战开启
+	SHIP_BATTLE_RESULT_CS       =	0x0708;			// 海战结算
+	SHIP_BATTLE_RESULT_SC       =	0x0709;			// 海战结果
 
     /*
     // 任务相关
@@ -174,6 +187,7 @@ enum EMessageID
 	PVP_KEY_ACTION_SC		=	0X1033;			// 服务器发送给客户端的玩家动作及状态信息更新
 	PVP_UNIT_INFO_S			=	0x1032;			// 同步角色状态信息
 	PVP_RESULT_S			=	0x1036;			//pvp战斗结果
+	FRAME_DATA_VERIFY_CS	= 	0x1037;			// 帧同步验证
     
     // TODO
 
@@ -182,12 +196,17 @@ enum EMessageID
 	PVP_MATCH_CS                =   0x1c01; 		// 客户端请求pvp匹配
 	PVP_MATCH_SC                =   0x1c03; 		// 加入pvp匹配服务器返回
 	PVP_MATCH_CANCEL_CS         =   0x1c02; 		// 客户端请求取消pvp匹配
-	BATTLE_INFO_S               =   0x1c04; 		// 匹配成功后战斗内信息同步
+	PVP_MATCH_CANCEL_SC         =   0x1c08; 		// 取消pvp匹配返回
+	BATTLE_INIT_INFO_S          =   0x1c04; 		// 匹配成功后战斗内信息同步
 	BATTLE_CLIENT_READY_CS      =   0x1c05; 		// 客户端通知服务器准备好了
 	BATTLE_ALL_READY_S          =   0x1c06; 		// 服务器通知所有客户端都准备好了
 	BATTLE_COUNTDOWN_S          =   0x1c07; 		// 服务器战斗开始倒计时
+    BATTLE_OPEN_MINE_CS         =   0x1c09;         // 玩家请求挖雷
+    BATTLE_OPEN_MINE_SC         =   0x1c0a;         // 玩家挖雷返回
+    BATTLE_OPEN_MINE_S          =   0x1c0b;         // 玩家挖雷通知
+    BATTLE_RESULT_S             =   0x1c0c;         // 战斗结算
 
-	TEST_SC						=	0x1c08;			//测试
-	TEST_CS						=	0x1c09;
+	TEST_SC						=	0x1d09;			//测试
+	TEST_CS						=	0x1d0a;
 }
 

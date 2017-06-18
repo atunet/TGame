@@ -8,5 +8,7 @@ enum EGameModule
 	MODULE_USER             =	1;			// 角色
 	MODULE_ITEM             =	2;			// 道具
 	MODULE_HERO             =	3;			// 伙伴
+	MODULE_SHIP             =	4;			// 战船
+	MODULE_EQUIP			=	5;			// 装备
     MODULE_MAX              =   63;         // 最大标志位
 }

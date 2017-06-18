@@ -49,17 +49,22 @@ message ShipBattleStartReq
 
 message ShipBattleStartRet
 {
-	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_START_SC];
+	optional EMessageID	    id	    =	1		[default = SHIP_BATTLE_START_SC];
+	optional uint32         seed    =	2;		// 海战种子
+    repeated ShipBattleInfo myships =   3;      // 我的战船信息
+    repeated ShipBattleInfo opships =   4;      // 对手的战船信息
 }
 
 message ShipBattleResultReq
 {
-	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_RESULT_CS];
-	repeated uint32     station     =	2;		// 玩家操作
+	optional EMessageID	    id	    =	1		[default = SHIP_BATTLE_RESULT_CS];
+	optional bool           win     =	2;		// 胜负判定
+	repeated ShipAttackUnit units   =	3;		// 攻击序列
 }
 
 message ShipBattleResultRet
 {
 	optional EMessageID	id		    =	1		[default = SHIP_BATTLE_RESULT_SC];
-	optional bool       win         =	2;		// 自己是否胜利
+	optional bool       win         =	2;		// 胜负判定
+	optional bool       cheat       =	3;		// 是否作弊
 }

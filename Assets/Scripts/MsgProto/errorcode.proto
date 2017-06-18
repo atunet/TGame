@@ -32,6 +32,7 @@ enum EErrorCode
 	USER_RE_LOGIN				=	0x17e60203;			// 用户重复上线
 	GATEWAY_NOT_FOUND			=	0x17e60204;			// 找不到可用的网关服务器
 	SYSTEM_KICK_OFF				=	0x17e60205;			// 系统踢下线
+	ACCOUNT_LEN_INVALID			=	0x17e60206;			// 帐号长度不合法
 
     /// 游戏逻辑通用返回码
     CONF_ERROR					=	0x17e60301;			// 游戏配置错误
@@ -56,7 +57,8 @@ enum EErrorCode
 	FREETIMES_NOT_ENOUGH		=	0x17e60314;			// 免费次数不足
 	PAYTIMES_NOT_ENOUGH		    =	0x17e60315;			// 付费次数不足
 	MODULE_NOT_INIT             =	0x17e60316;			// 游戏模块未初始化
-	MAX_LV_LIMIT                =	0x17e60507;			// 已达最高等级
+	MAX_LV_LIMIT                =	0x17e60317;			// 已达最高等级
+	USER_STATE_ERROR            =	0x17e60318;			// 角色状态错误
 
 	/// 道具返回码定义
 	ITEM_NOT_FOUND              =	0x17e60401;			// 没有找到对应物品
@@ -77,6 +79,9 @@ enum EErrorCode
 	SHIP_NOT_FOUND              =	0x17e60601;			// 找不到指定的战船
 	CAPTAIN_NOT_FOUND           =	0x17e60602;			// 找不到船长
 	SHIP_ALREADY_EXIST          =	0x17e60603;			// 战船已存在,不允许重复生成
+
+	/// 场景相关返回码定义
+	SAME_SCENE_FORBID           =	0x17e60901;			// 不允许进入同一个场景地图
 
     /// 任务返回码定义
     QUEST_INVALID               =   0x17e60701;         // 非法任务
@@ -108,6 +113,18 @@ enum EErrorCode
 	//浦原商店
 	SHOP_REQ_INVALID			=   0x17e61401;			// 浦原商店请求非法 - 刷新失败
 	GOODS_HAVE_BUY				=   0x17e61402;			// 已经购买过该商品 - 前后端数据不统一
+
+	//装备系统
+	EQUIP_NOT_FOUND				= 	0x17e61501;			//装备未找到
+	EQUIP_QUALITY_NOT_SATISFY	= 	0x17e61502;			//装备品质不满足
+
+	//pvp
+	PVP_USER_NOT_FOUND			=	0x17e61601;			//pvp用户对象没找到
+	PVP_USER_ALREADY_ADD		=	0x17e61602;			//pvp用户对象已添加
+	BATTLE_NOT_FOUND			=	0x17e61603;			//战斗未找到
+	ERR_IN_BATTLE               =	0x17e61604;			//已经在战斗中
+	ERR_ALREADY_OPENED          =	0x17e61605;			//地雷已经被开启了
+
 }
 
 

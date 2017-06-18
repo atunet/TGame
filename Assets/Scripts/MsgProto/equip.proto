@@ -1,0 +1,45 @@
+//
+// 装备相关的协议
+//
+
+package Cmd;
+
+import "prototype.proto";
+import "equiptype.proto";
+
+
+/// 批量发送装备数据
+message SendEquipList
+{
+	optional EMessageID	id		    =	1		[default = EQUIP_LIST_S];
+	repeated EquipInfo	list	    =	2;		// 装备数据列表
+}
+
+
+// 装备升级
+message EquipLevelUpgrade
+{
+	optional EMessageID id 			=	1	[default = EQUIP_LEVEL_UPGRADE_CS];
+	required uint32 	equip_type 	=	2;
+}
+
+//装备升级结果
+message EquipLevelUpgradeRet
+{
+	optional EMessageID id 			=	1	[default = EQUIP_LEVEL_UPGRADE_SC];
+	required EquipInfo  equip 		=	2;
+}
+
+//装备升品
+message EquipQualityUpgrade
+{
+	optional EMessageID id 			=	1	[default = EQUIP_QUALITY_UPGRADE_CS];
+	required uint32 	equip_type 	=	2;
+}
+
+//装备升品结果
+message EquipQualityUpgradeRet
+{
+	optional EMessageID id 			=	1	[default = EQUIP_QUALITY_UPGRADE_SC];
+	required EquipInfo  equip 		=	2;
+}

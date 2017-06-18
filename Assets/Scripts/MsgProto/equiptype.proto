@@ -1,0 +1,13 @@
+//装备基础数据类型
+
+package Cmd;
+
+
+message EquipInfo
+{
+	required fixed64 thisid = 1; 	//实例id
+   	required uint32  type = 2; 		//装备类型
+	required uint32  level = 3; 	//装备等级
+	required uint32  quality = 4; 	//装备品质
+
+}

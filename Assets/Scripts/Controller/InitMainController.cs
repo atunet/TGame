@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.IO;
+using ProtoBuf;
 
 public class InitMainController : MonoBehaviour 
 {
@@ -56,12 +58,17 @@ public class InitMainController : MonoBehaviour
     public void OnPveClick()
     {
         Utility.Log("OnPveClicked");
-        Utility.LoadingScene("BattleScene");
+        //Utility.LoadingScene("BattleScene");
     }
 
     public void OnPvpClick()
     {
-        Utility.Log("OnPvpClicked");
-        Utility.LoadingScene("BattleScene");
+        Cmd.PvpMatchReq req = new Cmd.PvpMatchReq();
+
+        MemoryStream ms2 = new MemoryStream();
+        Serializer.Serialize<Cmd.PvpMatchReq>(ms2, req);
+        NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+
+        Utility.Log("OnPvpClicked, match req sent");
     }
 }

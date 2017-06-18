@@ -1,0 +1,22 @@
+
+//
+// 场景/副本相关的协议(进入各种副本关卡的协议,不包含战斗内逻辑)
+//
+
+package Cmd;
+
+import "prototype.proto";
+
+/// 进入指定场景地图(非副本)
+message EnterSceneReq
+{
+	optional EMessageID	id			=	1		[default = ENTER_SCENE_CS];
+	optional uint32     sceneid     =	2;
+}
+
+/// 进入指定场景地图服务器返回
+message EnterSceneRet
+{
+	optional EMessageID	id			=	1		[default = ENTER_SCENE_SC];
+	optional uint32     sceneid     =	2;
+}

@@ -15,4 +15,5 @@ message FighterInfo
 {
     optional uint64 uid             = 1;    // 角色id
     repeated PvpHeroInfo heros     = 2;    // 上阵英雄列表
+	required bytes user_name 		= 3;	//角色名字
 }

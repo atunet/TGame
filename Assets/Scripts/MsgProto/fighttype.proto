@@ -167,7 +167,38 @@ message FrameData
 	repeated FrameSkillData skills = 4;
 }
 
-//状态同步
+enum ESkillState
+{
+	SKILL_STATE_RELEASE = 1; //技能释放
+	SKILL_STATE_EFFECT = 2;   //技能生效
+}
+
+message SkillDamageUnit
+{
+	required uint64 	targetid = 1; //命中技能的角色武将id
+	required uint32 	current_hp = 2; //血量扣除后的血量
+}
+
+//验证技能
+message VerifySkillData
+{
+	required uint64 	uid = 1;	//释放技能的角色武将id
+	required uint32     skillid = 2; //释放的技能id
+	required uint32 	frame = 3; //客户端帧数
+	required ESkillState state = 4[default=SKILL_STATE_EFFECT]; //技能验证类型
+	optional uint32 	actionid = 5;	//技能动作id
+	optional uint32 	katas_step = 6; //katas step
+	repeated SkillDamageUnit damage_unit = 7;//伤害对象列表
+}
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------
+//状态同步(废弃)
+//------------------------------------------------------------------------------------------------
 message KeyAction
 {
     optional uint64             uid         = 1;
