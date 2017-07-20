@@ -58,7 +58,7 @@ public class InitMainController : MonoBehaviour
     public void OnPveClick()
     {
         Utility.Log("OnPveClicked");
-        //Utility.LoadingScene("BattleScene");
+        Utility.LoadingScene("BattleScene");
     }
 
     public void OnPvpClick()
