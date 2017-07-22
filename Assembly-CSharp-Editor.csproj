@@ -49,7 +49,7 @@
      <Compile Include="Assets\Scripts\Editor\Tool.cs" />
      <None Include="Assets\ResSet\Art\Effect\Shader\dissolution_add.shader" />
      <None Include="Assets\ResSet\Art\Actor\Charactor\FightingChan\Shader\Unitychan_chara_eye.shader" />
-     <None Include="Assets\Resources\Font\debug.fnt" />
+     <None Include="Assets\ResSet\Art\UI\UIFont\debug.fnt" />
      <None Include="Assets\ResSet\Art\Env\Chapter1\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ResSet\Art\Env\Chapter1\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\ResSet\readme.txt" />
