@@ -13,12 +13,12 @@ public class InitMainController : MonoBehaviour
 
         CreateCommonUI();
 
-        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
+        StartCoroutine (GlobalRef.AssetMgr.GetAB (AppConst.AB_MAIN, CreateMainUI));
 	}
 
     public void CreateCommonUI()
     {
-        AssetBundle commonAB = GlobalRef.ABController.GetAB(AppConst.AB_COMMON);
+        AssetBundle commonAB = GlobalRef.AssetMgr.GetAB(AppConst.AB_COMMON);
         GameObject reconnectPrefab = commonAB.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {
@@ -52,7 +52,7 @@ public class InitMainController : MonoBehaviour
         Button pvpBtn = pvpBtnGo.GetComponent<Button> ();
         pvpBtn.onClick.AddListener (OnPvpClick);
 
-        //StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_MAIN, CreateMainUI));
+        //StartCoroutine (GlobalRef.AssetMgr.GetAB (AppConst.AB_MAIN, CreateMainUI));
     }
 
     public void OnPveClick()
@@ -67,7 +67,7 @@ public class InitMainController : MonoBehaviour
 
         MemoryStream ms2 = new MemoryStream();
         Serializer.Serialize<Cmd.PvpMatchReq>(ms2, req);
-        NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+        NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
 
         Utility.Log("OnPvpClicked, match req sent");
     }

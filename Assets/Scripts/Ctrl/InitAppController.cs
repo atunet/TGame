@@ -21,7 +21,7 @@ public class InitAppController : MonoBehaviour
 			return;
 		}
 
-        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_COMMON, CreateCommonUI));
+        StartCoroutine (GlobalRef.AssetMgr.GetAB (AppConst.AB_COMMON, CreateCommonUI));
 	}
 
     public void CreateCommonUI(AssetBundle ab_)
@@ -37,7 +37,7 @@ public class InitAppController : MonoBehaviour
         reconnectGo.name = "panel_reconnecting";
         reconnectGo.SetActive(false);
 
-        StartCoroutine (GlobalRef.ABController.GetAB (AppConst.AB_LOGIN, CheckUpdate));
+        StartCoroutine (GlobalRef.AssetMgr.GetAB (AppConst.AB_LOGIN, CheckUpdate));
     }
 
 	public void CheckUpdate(AssetBundle ab_)
@@ -70,11 +70,11 @@ public class InitAppController : MonoBehaviour
         Text accountText = inputGo.GetComponent<Text> ();
         Utility.Log("account:" + accountText.text);
        
-		if (NetController.Instance.Init())
+		if (NetMgr.Instance.Init())
 		{
 			HandleMgr.Init();
-            NetController.Instance.LoginToLoginServer("121.199.48.63", 4445, accountText.text, 3999);
-            //NetController.Instance.LoginToLoginServer("192.168.0.75", 4444, accountText.text, 3999);
+            NetMgr.Instance.LoginToLoginServer("121.199.48.63", 4445, accountText.text, 3999);
+            //NetMgr.Instance.LoginToLoginServer("192.168.0.75", 4444, accountText.text, 3999);
 		}
 	}
 

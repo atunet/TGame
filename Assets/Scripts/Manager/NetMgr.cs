@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using System.IO;
 using ProtoBuf;
 
-public class NetController : MonoBehaviour 
+public class NetMgr : MonoBehaviour 
 { 
-    private static NetController s_instance = null;
-    public static NetController Instance
+    private static NetMgr s_instance = null;
+    public static NetMgr Instance
     {
         get
         {
             if (s_instance == null)
             {
-                GameObject obj = new GameObject("NetController");
-                s_instance = obj.AddComponent<NetController>(); 
+                GameObject obj = new GameObject("NetMgr");
+                s_instance = obj.AddComponent<NetMgr>(); 
                 GameObject.DontDestroyOnLoad(obj);
             }            
             return s_instance;
@@ -49,7 +49,7 @@ public class NetController : MonoBehaviour
         set { m_reconnectingPanel = value; }
     }
 
-    private NetController()
+    private NetMgr()
     {
         m_loginIP = "";
         m_loginPort = 0;
@@ -67,7 +67,7 @@ public class NetController : MonoBehaviour
     {
         if (null != m_thread)
         {
-            Utility.LogWarning("NetController already inited,repeated init ignored!!!");
+            Utility.LogWarning("NetMgr already inited,repeated init ignored!!!");
             return false;
         }
 
@@ -77,10 +77,10 @@ public class NetController : MonoBehaviour
 		m_reconnectingPanel = GlobalRef.UIRoot.FindChild("panel_reconnecting").gameObject;
         if (null == m_reconnectingPanel)
         {
-            Utility.Log("NetController init,reconnectingpanel not found");
+            Utility.Log("NetMgr init,reconnectingpanel not found");
         }
 
-        Utility.Log("NetController init ok,netthread start working!!!");
+        Utility.Log("NetMgr init ok,netthread start working!!!");
         return true;
     }
         

@@ -20,7 +20,7 @@ public static class UserHandle
 
             MemoryStream ms2 = new MemoryStream();
             Serializer.Serialize<Cmd.SelectUserOnline>(ms2, req);
-            NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+            NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
 
             Utility.Log("Select user online:" + req.userid);
         }
@@ -33,7 +33,7 @@ public static class UserHandle
 
             MemoryStream ms2 = new MemoryStream();
             Serializer.Serialize<Cmd.CreateUserReq>(ms2, req);
-            NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+            NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
 
             Utility.Log("Create user:" + Encoding.UTF8.GetString(req.username) + ",type:" + req.usertype);
         }
@@ -50,7 +50,7 @@ public static class UserHandle
         req.userid = rcv.userbase.userid;
         MemoryStream ms2 = new MemoryStream();
         Serializer.Serialize<Cmd.SelectUserOnline>(ms2, req);
-        NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+        NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
 
         Utility.Log("Select user online:" + req.userid);
         return true;

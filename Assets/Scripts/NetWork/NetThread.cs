@@ -182,7 +182,7 @@ internal class NetThread
                         int msgLen = m_loginClient.bufToMsg(ref m_loginRcvBuf);
                         if (msgLen <= 0) 
                             break;                        
-                        NetController.Instance.AddMsg(m_loginRcvBuf, msgLen);
+                        NetMgr.Instance.AddMsg(m_loginRcvBuf, msgLen);
                     }
                 }
                 else if (retCode == TCPClient.EReceiveCode.RCV_CODE_CLOSE)
@@ -202,7 +202,7 @@ internal class NetThread
                         int msgLen = m_gateClient.bufToMsg(ref m_gateRcvBuf);
                         if(msgLen <= 0) 
                             break;
-                        NetController.Instance.AddMsg(m_gateRcvBuf, msgLen);
+                        NetMgr.Instance.AddMsg(m_gateRcvBuf, msgLen);
                     }
                 }
                 else if (retCode == TCPClient.EReceiveCode.RCV_CODE_CLOSE)
@@ -223,7 +223,7 @@ internal class NetThread
                         int msgLen = m_crossClient.bufToMsg(ref m_crossRcvBuf);
                         if(msgLen <= 0) 
                             break;
-                        NetController.Instance.AddMsg(m_crossRcvBuf, msgLen);
+                        NetMgr.Instance.AddMsg(m_crossRcvBuf, msgLen);
                     }
                 }
             }

@@ -25,11 +25,11 @@ public class ZoneListController : MonoBehaviour
         w = null;
         */
         yield return new WaitForSeconds(0.5f);
-		//NetController.Instance.ServerIP = "121.199.48.63";
-		//NetController.Instance.ServerPort = 8888;
+		//NetMgr.Instance.ServerIP = "121.199.48.63";
+		//NetMgr.Instance.ServerPort = 8888;
 
-		//NetController.Instance.ServerIP = "119.15.139.149";
-		//NetController.Instance.ServerPort = 4444;
+		//NetMgr.Instance.ServerIP = "119.15.139.149";
+		//NetMgr.Instance.ServerPort = 4444;
 
 		ShowLoginBtn();
 	}
@@ -49,7 +49,7 @@ public class ZoneListController : MonoBehaviour
         //loginBtnGo.transform.localScale = new Vector3(1f, 1f, 1f);
 
         Destroy(this.gameObject);
-		//BGMController btm = BGMController.Instance;
+		//MusicMgr btm = MusicMgr.Instance;
 	}
 
     public void OnDestroy()

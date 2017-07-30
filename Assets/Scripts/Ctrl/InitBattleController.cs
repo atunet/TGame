@@ -27,12 +27,12 @@ public class InitBattleController : MonoBehaviour
         CreateCommonUI();
 
         string[] abList = new string[]{"sprite_battle", AppConst.AB_BATTLE };
-        StartCoroutine (GlobalRef.ABController.GetABList (abList, CreateBattleUI));
+        StartCoroutine (GlobalRef.AssetMgr.GetABList (abList, CreateBattleUI));
     }
 
     public void CreateCommonUI()
     {
-        AssetBundle commonAB = GlobalRef.ABController.GetAB(AppConst.AB_COMMON);
+        AssetBundle commonAB = GlobalRef.AssetMgr.GetAB(AppConst.AB_COMMON);
         GameObject reconnectPrefab = commonAB.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {
@@ -114,6 +114,6 @@ public class InitBattleController : MonoBehaviour
         Cmd.BattleClientReady req = new Cmd.BattleClientReady();
         MemoryStream ms2 = new MemoryStream();
         Serializer.Serialize<Cmd.BattleClientReady>(ms2, req);
-        NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+        NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
     }
 }

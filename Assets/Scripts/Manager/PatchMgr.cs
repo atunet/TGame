@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System;
 
-public class ResUpdateController : MonoBehaviour 
+public class PatchMgr : MonoBehaviour 
 {
     private Dictionary<string, Hash128> m_remoteDict = null;
     private Dictionary<string, Hash128> m_localDict = null;

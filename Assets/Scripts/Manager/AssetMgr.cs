@@ -4,8 +4,10 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ABController : MonoBehaviour
+public class AssetMgr : SingletonMB<AssetMgr>
 {
+    private bool AssetBundleMode = false;
+
     private Dictionary<string, AssetBundle> m_abMaps = new Dictionary<string, AssetBundle>();
     private ArrayList m_abNameList;
 

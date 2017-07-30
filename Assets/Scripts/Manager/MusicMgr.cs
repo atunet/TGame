@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BGMController : MonoBehaviour 
+public class MusicMgr : MonoBehaviour 
 {
-    private static BGMController s_instance = null;
-    public static BGMController Instance
+    private static MusicMgr s_instance = null;
+    public static MusicMgr Instance
     {
         get
         {
             if (s_instance == null)
             {
-                GameObject obj = new GameObject("BGMController");
-                s_instance = obj.AddComponent<BGMController>(); 
+                GameObject obj = new GameObject("MusicMgr");
+                s_instance = obj.AddComponent<MusicMgr>(); 
                 DontDestroyOnLoad(obj);
             }
 

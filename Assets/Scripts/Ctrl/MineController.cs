@@ -63,6 +63,6 @@ public class MineController : MonoBehaviour {
 
         MemoryStream ms2 = new MemoryStream();
         Serializer.Serialize<Cmd.BattleOpenMineReq>(ms2, req);
-        NetController.Instance.SendMsgToGate(req.id, ms2.ToArray());
+        NetMgr.Instance.SendMsgToGate(req.id, ms2.ToArray());
     }
 }

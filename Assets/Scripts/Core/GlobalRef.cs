@@ -19,10 +19,10 @@ public static class GlobalRef
     }
 
 
-	private static ABController s_abController = null;
-	public static ABController ABController 
+	private static AssetMgr s_AssetMgr = null;
+	public static AssetMgr AssetMgr 
 	{
-		get { return s_abController; }
+		get { return s_AssetMgr; }
 	}
 
 
@@ -36,12 +36,12 @@ public static class GlobalRef
 		if(null == s_sceneRoot)
 			return false;
 
-		GameObject abGo = GameObject.Find ("ABController").gameObject;
+		GameObject abGo = GameObject.Find ("AssetMgr").gameObject;
 		if (null == abGo)
 			return false;
 	
-		s_abController = abGo.GetComponent<ABController>();
-		if (null == s_abController)
+		s_AssetMgr = abGo.GetComponent<AssetMgr>();
+		if (null == s_AssetMgr)
 			return false;
 
 		GameObject.DontDestroyOnLoad (abGo);
