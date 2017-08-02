@@ -20,7 +20,7 @@ public class PathSystem
             else if (Application.platform == RuntimePlatform.Android)
                 s_rtPlatform = "Android";
             else
-                s_rtPlatform = "unknown";
+                s_rtPlatform = "UnknownPlatform";
         }
         return s_rtPlatform;
     }
@@ -61,9 +61,9 @@ public class PathSystem
 
 
     private static string s_localAssetPath = "ResSet/Prefab/";
-    public static string LocalAssetPath(string prefabName)
+    public static string LocalAssetPath(string assetName)
     {
-        return string.Format("{0}{1}", s_localAssetPath, prefabName);
+        return string.Format("{0}{1}", s_localAssetPath, assetName);
     }
 }
 

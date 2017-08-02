@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 public class AssetMgr : SingletonMB<AssetMgr>
 {
-    private bool AssetBundleMode = false;
-
     private Dictionary<string, AssetBundle> m_abMaps = new Dictionary<string, AssetBundle>();
     private ArrayList m_abNameList;
 

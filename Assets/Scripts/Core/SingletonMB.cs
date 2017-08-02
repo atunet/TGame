@@ -16,6 +16,6 @@ public class SingletonMB<T> : MonoBehaviour where T : Component
             return instance;
         }
     }
-
+    
     private static T instance;
 }
