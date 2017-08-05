@@ -79,6 +79,7 @@
      <Compile Include="Assets\Scripts\Manager\MusicMgr.cs" />
      <Compile Include="Assets\Scripts\Manager\NetMgr.cs" />
      <Compile Include="Assets\Scripts\Manager\PatchMgr.cs" />
+     <Compile Include="Assets\Scripts\Manager\UIMgr.cs" />
      <Compile Include="Assets\Scripts\MsgDefine\battle.pb.cs" />
      <Compile Include="Assets\Scripts\MsgDefine\blob.proto.pb.cs" />
      <Compile Include="Assets\Scripts\MsgDefine\chat.proto.pb.cs" />

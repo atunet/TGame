@@ -18,7 +18,7 @@ public class InitMainController : MonoBehaviour
 
     public void CreateCommonUI()
     {
-        AssetBundle commonAB = GlobalRef.AssetMgr.GetAB(AppConst.AB_COMMON);
+        AssetBundle commonAB = GlobalRef.AssetMgr.TryGetAB(AppConst.AB_COMMON);
         GameObject reconnectPrefab = commonAB.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {

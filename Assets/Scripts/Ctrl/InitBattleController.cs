@@ -26,13 +26,14 @@ public class InitBattleController : MonoBehaviour
 
         CreateCommonUI();
 
-        string[] abList = new string[]{"sprite_battle", AppConst.AB_BATTLE };
+        // string[] abList = new string[]{"sprite_battle", AppConst.AB_BATTLE };
+        string[] abList = { "sprite_battle", AppConst.AB_BATTLE };
         StartCoroutine (GlobalRef.AssetMgr.GetABList (abList, CreateBattleUI));
     }
 
     public void CreateCommonUI()
     {
-        AssetBundle commonAB = GlobalRef.AssetMgr.GetAB(AppConst.AB_COMMON);
+        AssetBundle commonAB = GlobalRef.AssetMgr.TryGetAB(AppConst.AB_COMMON);
         GameObject reconnectPrefab = commonAB.LoadAsset("panel_reconnecting") as GameObject;
         if (null == reconnectPrefab)
         {
