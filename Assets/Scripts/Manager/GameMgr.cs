@@ -2,19 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMgr : SingletonMB<GameMgr>
+public class GameMgr : MonoBehaviour
 {
     public bool AssetBundleMode = false;
 
-    private GameMgr()
-    {
-    }
     // Use this for initialization
-    void Start () {
+    void Start () 
+    {
+        string abName = "";
+        string assetName = "";
+        AssetMgr.Instance.GetAsset(abName, assetName, ShowLoginBG);
+
+        abName = "";
+        assetName = "";
+        AssetMgr.Instance.GetAsset(abName, assetName, ShowPatchUI);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void ShowLoginBG(GameObject prefab)
+    {
+    }
+
+    public void ShowPatchUI(GameObject prefab)
+    {
+        // ...
+        PatchMgr.Instance;
+    }
 }

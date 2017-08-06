@@ -18,7 +18,7 @@ public class AssetMgr : SingletonMB<AssetMgr>
         return ab;
     }
 
-    public void GetAB1<T>(string abName, string assetName, System.Action<T> callback) where T : Object
+    public void GetAsset<T>(string abName, string assetName, System.Action<T> callback) where T : Object
     {
 #if UNITY_EDITOR
         if (abMode)
@@ -34,6 +34,22 @@ public class AssetMgr : SingletonMB<AssetMgr>
 #endif
     }
 
+    public void GetAsset<T>(string[] abList, string assetName, System.Action<T> callback) where T : Object
+    {
+#if UNITY_EDITOR
+        if (abMode)
+        {
+            StartCoroutine(LoadAssetBundleAsync(abList, assetName, callback));
+        }
+        else
+        {
+            LoadLocalAsset(assetName, callback);
+        }
+#else
+        StartCoroutine(LoadAssetBundleAsync(abList, assetName, callback));
+#endif
+    }
+
     public IEnumerator LoadAssetBundleAsync<T>(string abName, string assetName, System.Action<T> callback) where T : Object
     {
         AssetBundle ab = null;
@@ -45,33 +61,85 @@ public class AssetMgr : SingletonMB<AssetMgr>
             ab = request.assetBundle;
             if (null != ab)
             {
-                Utility.Log("ABManager load ab file ok:" + abName);
+                Utility.Log("[AssetMgr] load ab file ok:" + abName);
                 m_abMaps[abName] = ab;
             }
             else
             {
-                Utility.LogError("ABManager load ab file failed:" + abName);
-                yield break;
+                Utility.LogError("[AssetMgr] load ab file failed:" + abName);
+                yield return false;
             }
         }
 
-        T assetObject = ab.LoadAsset(assetName) as T;
+        if (assetName.Length > 0 && callback != null)
+        {
+            T assetObject = ab.LoadAsset<T>(assetName);
+            if (null != assetObject)
+            {
+                callback.DynamicInvoke(assetObject);
+            }
+            else
+            {
+                Utility.LogError("[AssetMgr] load asset failed:" + assetName);
+            }
+        }
+    }
 
-        callback.DynamicInvoke(assetObject);
+    public IEnumerator LoadAssetBundleAsync<T>(string[] abList, string assetName, System.Action<T> callback) where T : Object
+    {
+        AssetBundle ab = null;
+        for(int i = 0; i < abList.Length; ++i)
+        {
+            string abName = abList[i];
+            if (!m_abMaps.TryGetValue(abName, out ab))
+            {
+                AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath (abName));
+                yield return request;
+
+                ab = request.assetBundle;
+                if (null != ab)
+                {
+                    Utility.Log("[AssetMgr] load ab file ok:" + abName);
+                    m_abMaps[abName] = ab;
+                }
+                else
+                {
+                    Utility.LogError("[AssetMgr] load ab file failed:" + abName);
+                    yield return false;
+                }
+            }
+        }
+       
+        if (assetName.Length > 0 && callback != null)
+        {
+            T assetObject = ab.LoadAsset<T>(assetName);
+            if (null != assetObject)
+            {
+                callback.DynamicInvoke(assetObject);
+            }
+            else
+            {
+                Utility.LogError("[AssetMgr] load asset failed:" + assetName);
+            }
+        }
     }
 
     public void LoadLocalAsset<T>(string assetName, System.Action<T> callback) where T : Object
     {
-        T assetObject = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(assetName);
-        if(null != assetObject)
+        if (assetName.Length > 0 && callback != null)
         {
-            callback.DynamicInvoke(assetObject);
-        }
-        else
-        {
-            // trigger ui event ...
+            T assetObject = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(assetName);
+            if (null != assetObject)
+            {
+                callback.DynamicInvoke(assetObject);
+            }
+            else
+            {
+                Utility.LogError("[AssetMgr] load local asset failed:" + assetName);
+            }
         }
     }
+
     public IEnumerator GetAB(string abName_, System.Action<AssetBundle> cb_)
     {
         AssetBundle ab = null;
@@ -95,47 +163,7 @@ public class AssetMgr : SingletonMB<AssetMgr>
 
 		if(null != cb_) cb_ (ab);
     }
-
-    public IEnumerator GetAB2<T>(string abName_, string assetName, System.Action<T> cb_) where T : Object
-    {
-        T assetObject = default(T);
-
-        if(abMode)
-        {
-            AssetBundle ab = null;
-            if(!m_abMaps.TryGetValue(abName_, out ab))
-            {
-                AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(Utility.GetResourcePath(abName_));
-                yield return request;
-
-                ab = request.assetBundle;
-                if (null != ab)
-                {
-                    Utility.Log("ABManager load ab file ok:" + abName_);
-                    m_abMaps[abName_] = ab;
-                }
-                else
-                {
-                    Utility.LogError("ABManager load ab file failed:" + abName_);
-                    yield return false;
-                }
-            }
-            assetObject = ab.LoadAsset(assetName) as T;
-        }   
-        else
-        {
-            assetObject = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(assetName);
-        } 
-
-        if(assetObject)
-        {
-            cb_(assetObject);
-        }
-        else
-        {
-            //Event;
-        }
-}
+        
     public IEnumerator GetABList(string[] abList_, System.Action<AssetBundle> cb_)
     {
         AssetBundle ab = null;

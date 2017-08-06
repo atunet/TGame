@@ -14,7 +14,7 @@ public class InitAppController : MonoBehaviour
 	void Start () 
 	{
         AppConst.PrintPath();
-
+       
 		if (!GlobalRef.Init ()) 
 		{
 			Utility.LogError ("Globalref init failed");
@@ -22,7 +22,7 @@ public class InitAppController : MonoBehaviour
 		}
 
         StartCoroutine (GlobalRef.AssetMgr.GetAB (AppConst.AB_COMMON, CreateCommonUI));
-	}
+    }
 
     public void CreateCommonUI(AssetBundle ab_)
     {
